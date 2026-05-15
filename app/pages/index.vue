@@ -6,6 +6,6 @@
     <HomeReviews />
     <HomeHowWorks />
     <HomeInsights />
-    <HomeFeeCta />
+    <SiteLeadFeeSection />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <section class="fee" id="contact">
+  <section class="fee" :id="sectionId">
     <div class="container fee__grid">
       <div class="fee__copy">
         <h2 class="fee__title">THE FEE IS FREE®</h2>
@@ -21,11 +21,20 @@
           </div>
           <input type="email" placeholder="E-mail" autocomplete="email" />
           <div class="select-wrap">
-            <select class="select" aria-label="Case type">
+            <select v-model="caseType" class="select" aria-label="Case type">
               <option value="">- Case Type -</option>
-              <option>Car Accident</option>
-              <option>Slip and Fall</option>
-              <option>Medical Malpractice</option>
+              <option value="Car Accident">Car Accident</option>
+              <option value="Slip and Fall">Slip and Fall</option>
+              <option value="Truck Accident">Truck Accident</option>
+              <option value="Motorcycle Accident">Motorcycle Accident</option>
+              <option value="Personal Injury">Personal Injury</option>
+              <option value="Aviation Accident">Aviation Accident</option>
+              <option value="Boating Accident">Boating Accident</option>
+              <option value="Brain Injury">Brain Injury</option>
+              <option value="Burn Injury">Burn Injury</option>
+              <option value="Mesothelioma">Mesothelioma</option>
+              <option value="Spinal Cord Injury">Spinal Cord Injury</option>
+              <option value="Medical Malpractice">Medical Malpractice</option>
             </select>
           </div>
           <textarea
@@ -60,7 +69,27 @@
 </template>
 
 <script setup lang="ts">
+import { ref, watch } from 'vue'
+
+const props = withDefaults(
+  defineProps<{
+    /** When set, pre-selects a case type (must match an option value). */
+    presetCaseType?: string
+    /** Anchor id for in-page links (e.g. #contact). */
+    sectionId?: string
+  }>(),
+  { presetCaseType: '', sectionId: 'contact' },
+)
+
 const year = new Date().getFullYear()
+const caseType = ref(props.presetCaseType || '')
+
+watch(
+  () => props.presetCaseType,
+  (v) => {
+    if (v) caseType.value = v
+  },
+)
 </script>
 
 <style scoped>

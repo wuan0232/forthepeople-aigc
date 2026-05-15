@@ -21,7 +21,7 @@
         <ul>
           <li><a href="#locations">Locations</a></li>
           <li><a href="#practice">Practice Areas</a></li>
-          <li><a href="#results">Our Results</a></li>
+          <li><NuxtLink to="/our-results">Our Results</NuxtLink></li>
           <li><a href="#how">How It Works</a></li>
           <li><a href="#careers">Careers</a></li>
           <li><a href="#contact">Contact Us</a></li>

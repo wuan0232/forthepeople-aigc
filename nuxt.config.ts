@@ -4,6 +4,18 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
+  components: {
+    dirs: [
+      {
+        path: '~/components',
+        ignore: ['practice-areas/**'],
+      },
+      {
+        path: '~/components/practice-areas',
+        pathPrefix: false,
+      },
+    ],
+  },
   app: {
     head: {
       title: 'Morgan & Morgan — Injury Law Firm',
