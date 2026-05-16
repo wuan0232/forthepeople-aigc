@@ -8,10 +8,14 @@ export default defineNuxtConfig({
     dirs: [
       {
         path: '~/components',
-        ignore: ['practice-areas/**'],
+        ignore: ['practice-areas/**', 'the-case-process/**'],
       },
       {
         path: '~/components/practice-areas',
+        pathPrefix: false,
+      },
+      {
+        path: '~/components/the-case-process',
         pathPrefix: false,
       },
     ],
@@ -28,5 +32,19 @@ export default defineNuxtConfig({
         }
       ]
     }
-  }
+  },
+  hooks: {
+    'pages:extend'(pages) {
+      pages.push({
+        name: 'locations',
+        path: '/locations',
+        file: '~/pages/Location/locations.vue',
+      })
+      pages.push({
+        name: 'our-results',
+        path: '/our-results',
+        file: '~/pages/ourResult/our-results.vue',
+      })
+    },
+  },
 })

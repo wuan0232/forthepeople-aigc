@@ -35,6 +35,9 @@
               <option value="Mesothelioma">Mesothelioma</option>
               <option value="Spinal Cord Injury">Spinal Cord Injury</option>
               <option value="Medical Malpractice">Medical Malpractice</option>
+              <option value="Dangerous Drugs">Dangerous Drugs</option>
+              <option value="Depo-Provera">Depo-Provera</option>
+              <option value="Weight Loss Drug">Weight Loss Drug</option>
             </select>
           </div>
           <textarea

@@ -74,7 +74,12 @@
             </ul>
           </div>
         </div>
-        <a href="#about" class="has-chevron">About</a>
+        <div class="header__nav-item header__nav-item--mega header__nav-item--about">
+          <NuxtLink to="/about" class="header__nav-trigger has-chevron" aria-haspopup="true">
+            About
+          </NuxtLink>
+          <AboutNavDropdown />
+        </div>
         <NuxtLink to="/contact">Contact</NuxtLink>
       </nav>
 
@@ -296,6 +301,130 @@ const practiceAreas: PracticeAreaItem[] = [
   opacity: 1;
   pointer-events: auto;
   transform: translateX(-50%);
+}
+
+.header__nav-item--about:hover :deep(.about-menu),
+.header__nav-item--about:focus-within :deep(.about-menu),
+.header__nav-item--about :deep(.about-menu:hover) {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%);
+}
+
+:deep(.about-menu) {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  padding-top: 0.5rem;
+  margin-top: -0.5rem;
+  transform: translateX(-50%);
+  min-width: 15rem;
+  max-width: min(18rem, calc(100vw - 2rem));
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    visibility 0.18s;
+  z-index: 220;
+}
+
+:deep(.about-menu__list) {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: #fff;
+  color: #0f172a;
+  border-radius: 4px;
+  box-shadow:
+    0 10px 40px rgba(15, 23, 42, 0.12),
+    0 0 0 1px rgba(15, 23, 42, 0.06);
+}
+
+:deep(.about-menu__link) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.85rem 1.1rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0f172a;
+  text-decoration: none;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.12s ease;
+  box-sizing: border-box;
+}
+
+:deep(.about-menu__item:last-child .about-menu__link) {
+  border-bottom: 0;
+}
+
+:deep(.about-menu__link:hover),
+:deep(.about-menu__link:focus-visible),
+:deep(.about-menu__link.router-link-active) {
+  background: #f1f5f9;
+  outline: none;
+  text-decoration: none;
+}
+
+:deep(.about-menu__label) {
+  flex: 1;
+  text-align: left;
+  line-height: 1.25;
+}
+
+:deep(.about-menu__chev) {
+  flex-shrink: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.85;
+}
+
+:deep(.about-menu__link--parent) {
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+:deep(.about-menu__item--open > .about-menu__link--parent) {
+  background: #f1f5f9;
+}
+
+:deep(.about-menu__sub) {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: #f8fafc;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+:deep(.about-menu__sublink) {
+  display: block;
+  padding: 0.7rem 1.1rem 0.7rem 1.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #334155;
+  text-decoration: none;
+  border-top: 1px solid #e8edf2;
+  transition:
+    background-color 0.12s ease,
+    color 0.12s ease;
+}
+
+:deep(.about-menu__sublink:hover),
+:deep(.about-menu__sublink:focus-visible),
+:deep(.about-menu__sublink.router-link-active) {
+  background: #eef2f7;
+  color: var(--blue, #0066cc);
+  outline: none;
+  text-decoration: none;
 }
 
 .header__nav-trigger {

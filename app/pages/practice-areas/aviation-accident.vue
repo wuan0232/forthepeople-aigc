@@ -83,7 +83,7 @@ useHead({
 
 const lawyers = [
   { name: 'Joe Harrison Wade, II', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&fit=crop' },
-  { name: 'Andrew Parker Felix', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80&fit=crop' },
+  // { name: 'Andrew Parker Felix', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80&fit=crop' },
 ]
 
 const takeaways: TextBlock[] = [

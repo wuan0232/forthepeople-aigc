@@ -11,6 +11,7 @@
           <p>{{ p.text }}</p>
         </article>
       </div>
+      <slot name="after-grid" />
       <div v-if="expandable && !expanded" class="ca-places-more-wrap">
         <button type="button" class="ca-learn__more" @click="expanded = true">
           {{ moreLabel }}

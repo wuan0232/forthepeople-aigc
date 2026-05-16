@@ -22,9 +22,6 @@
             <div class="ca-tw-slide__media">
               <div class="ca-tw-video" :style="{ background: c.thumbBg }">
                 <img v-if="c.thumb" :src="c.thumb" :alt="`${c.name} video`" class="ca-tw-video__img" loading="lazy" />
-                <button type="button" class="ca-play" aria-label="Play video">
-                  <span class="ca-play__tri" aria-hidden="true" />
-                </button>
               </div>
             </div>
           </article>

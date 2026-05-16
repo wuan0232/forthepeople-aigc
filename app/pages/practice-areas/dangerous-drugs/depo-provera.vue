@@ -1,5 +1,5 @@
 <template>
-  <PracticeAreaPage>
+  <PracticeAreaPage class="ca-dangerous-drugs-page">
     <PracticeAreaHero
       breadcrumb-label="Depo-Provera"
       title="Depo-Provera Lawyers"
@@ -75,6 +75,8 @@ import type {
   StatItem,
   TextBlock,
 } from '~/types/practice-area'
+// @ts-ignore - large data URI constants are exported from this file
+import { TESTIMONIAL_THUMB_2, TESTIMONIAL_THUMB_3 } from '~/constants/testimonial-thumbs'
 
 useHead({
   title: 'Depo-Provera Lawyers | Morgan & Morgan',
@@ -95,7 +97,7 @@ const breadcrumbItems: PracticeAreaBreadcrumbItem[] = [
 ]
 
 const lawyers = [
-  { name: 'Mike Morgan', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80&fit=crop' },
+  // { name: 'Mike Morgan', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80&fit=crop' },
   { name: 'Jonathan M. Sedgh', img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80&fit=crop' },
   { name: 'Michael Goetz', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80&fit=crop' },
 ]
@@ -213,14 +215,14 @@ const clients: ClientTestimonial[] = [
     quote:
       'They answered every question and kept me updated. I felt like someone was actually fighting for me—not just checking boxes.',
     thumbBg: 'linear-gradient(135deg,#cfe8fc,#8ec5f2)',
-    thumb: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=80&fit=crop',
+    thumb: TESTIMONIAL_THUMB_2,
   },
   {
     name: 'Maria',
     quote:
       'From the first call, they explained my options clearly. I never felt rushed or pushed into a decision I was not ready to make.',
     thumbBg: 'linear-gradient(135deg,#d4e8f7,#9ec9ef)',
-    thumb: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80&fit=crop',
+    thumb: TESTIMONIAL_THUMB_3,
   },
 ]
 

@@ -1,5 +1,9 @@
 <template>
-  <section class="ca-block ca-block--white" :aria-labelledby="headingId">
+  <section
+    class="ca-block"
+    :class="variant === 'soft' ? 'ca-block--soft' : 'ca-block--white'"
+    :aria-labelledby="headingId"
+  >
     <div class="container">
       <h2 :id="headingId" class="ca-h2 ca-center">{{ title }}</h2>
       <div class="ca-ways-grid">
@@ -22,7 +26,9 @@ withDefaults(
     headingId?: string
     title?: string
     items: IconCard[]
+    /** Soft blue band background (e.g. dangerous drugs landing). */
+    variant?: 'white' | 'soft'
   }>(),
-  { headingId: 'ways-heading', title: 'Ways We Can Help' },
+  { headingId: 'ways-heading', title: 'Ways We Can Help', variant: 'white' },
 )
 </script>

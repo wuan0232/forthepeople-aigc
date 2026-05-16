@@ -56,18 +56,24 @@
     </section>
 
     <section class="loc-no-visit" aria-label="No office visit needed">
-      <div class="container loc-no-visit__grid">
-        <h2>No office visit needed.</h2>
-        <ul>
+      <div class="container">
+        <div class="loc-no-visit__top">
+          <h2 class="loc-no-visit__title">No office visit needed.</h2>
+          <NuxtLink to="/contact" class="loc-no-visit__link link-arrow">
+            Start your claim
+            <span class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 12 12" width="8" height="8">
+                <path d="M2 10L10 2M10 2H4M10 2V8" />
+              </svg>
+            </span>
+          </NuxtLink>
+        </div>
+        <ul class="loc-no-visit__benefits">
           <li v-for="b in benefits" :key="b">
-            <span aria-hidden="true">✓</span>
+            <span class="loc-no-visit__check" aria-hidden="true">✓</span>
             {{ b }}
           </li>
         </ul>
-        <a href="#contact" class="loc-no-visit__link">
-          Start your claim
-          <span aria-hidden="true">↗</span>
-        </a>
       </div>
     </section>
 
@@ -425,8 +431,7 @@ const howItWorks: HowCard[] = [
   font-weight: 800;
 }
 
-.loc-view-all span,
-.loc-no-visit__link span {
+.loc-view-all span {
   display: inline-grid;
   place-items: center;
   width: 1.35rem;
@@ -505,65 +510,89 @@ const howItWorks: HowCard[] = [
 
 .loc-no-visit {
   background: #f3f4f6;
-  padding: 2rem 0;
+  padding: clamp(1.75rem, 3vw, 2.25rem) 0;
 }
 
-.loc-no-visit__grid {
-  display: grid;
-  gap: 1rem;
-  align-items: center;
+.loc-no-visit__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
-@media (min-width: 960px) {
-  .loc-no-visit__grid {
-    grid-template-columns: auto 1fr auto;
-    gap: 1.5rem;
-  }
-}
-
-.loc-no-visit h2 {
+.loc-no-visit__title {
   margin: 0;
-  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+  font-weight: 800;
   color: #1f2933;
+  line-height: 1.2;
 }
 
-.loc-no-visit ul {
+.loc-no-visit__link {
+  flex-shrink: 0;
+  color: #1f2933;
+  font-weight: 800;
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.loc-no-visit__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.loc-no-visit__link .icon-box {
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 4px;
+}
+
+.loc-no-visit__benefits {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.65rem;
 }
 
 @media (min-width: 720px) {
-  .loc-no-visit ul {
+  .loc-no-visit__benefits {
     grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
   }
 }
 
-.loc-no-visit li {
+.loc-no-visit__benefits li {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.55rem;
   align-items: center;
-  min-height: 2.85rem;
-  padding: 0.55rem 1.1rem;
-  background: #dadde2;
-  border-radius: 0.4rem;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.75rem 1rem;
+  background: #e0e3e8;
+  border-radius: 6px;
+  font-size: 0.92rem;
   font-weight: 800;
   color: #1f2933;
+  line-height: 1.25;
+  text-align: left;
 }
 
-.loc-no-visit li span {
-  color: var(--blue);
+@media (min-width: 720px) {
+  .loc-no-visit__benefits li {
+    justify-content: flex-start;
+  }
 }
 
-.loc-no-visit__link {
-  display: inline-flex;
-  gap: 0.5rem;
-  align-items: center;
-  color: #1f2933;
-  text-decoration: none;
+.loc-no-visit__check {
+  flex-shrink: 0;
+  font-size: 0.85rem;
   font-weight: 800;
+  color: #111;
+  line-height: 1;
 }
 
 .loc-all {
@@ -772,8 +801,7 @@ const howItWorks: HowCard[] = [
   background: #000;
 }
 
-.loc-view-all:hover,
-.loc-no-visit__link:hover {
+.loc-view-all:hover {
   text-decoration: underline;
 }
 </style>
