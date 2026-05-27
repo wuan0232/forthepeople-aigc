@@ -5,8 +5,43 @@ export const TCP_OPEN_LEARN_MORE = Symbol('tcpOpenLearnMore')
 export type TcpTopicCard = {
   title: string
   href: string
+  /** Inline SVG markup when `imageSrc` is not set */
   art: string
+  imageSrc?: string
 }
+
+export const TCP_AFTER_INJURY_POST_CHECKLIST_IMAGE =
+  '/images/about/the-case-process/tcp-after-injury-post-checklist.avif'
+
+export const TCP_AFTER_INJURY_BASICS_IMAGE =
+  '/images/about/the-case-process/tcp-after-injury-basics.avif'
+
+export const TCP_AFTER_INJURY_INSURANCE_IMAGE =
+  '/images/about/the-case-process/tcp-after-injury-insurance.avif'
+
+export const TCP_QUALIFY_VISUAL_IMAGE =
+  '/images/about/the-case-process/tcp-qualify-visual.png'
+
+export const TCP_WORTH_VISUAL_IMAGE =
+  '/images/about/the-case-process/tcp-worth-visual.webp'
+
+export const TCP_WORKING_TIMELINE_IMAGE =
+  '/images/about/the-case-process/tcp-working-timeline.avif'
+
+export const TCP_WORKING_PAID_IMAGE =
+  '/images/about/the-case-process/tcp-working-paid.avif'
+
+export const TCP_WORKING_DOS_DONTS_IMAGE =
+  '/images/about/the-case-process/tcp-working-dos-donts.avif'
+
+export const TCP_CTA_CAR_IMAGE =
+  '/images/about/the-case-process/tcp-cta-car.webp'
+
+export const TCP_DOCUMENTS_CHECKLIST_IMAGE =
+  '/images/about/the-case-process/tcp-documents-checklist.avif'
+
+export const TCP_RIGHT_ILLUSTRATION_IMAGE =
+  '/images/about/the-case-process/the-case-process-right-illustration.avif'
 
 export type TcpNavLink = {
   label: string
@@ -23,29 +58,20 @@ export const tcpAfterInjuryCards: TcpTopicCard[] = [
   {
     title: 'Next Steps: The Post-Injury Checklist',
     href: '#learn-more',
-    art: `<svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-      <path d="M70 55c8-18 52-18 60 0 6 14-4 28-18 32l-6 38h-12l-6-38c-14-4-24-18-18-32z" fill="#1f6dde" stroke="#0a1f44" stroke-width="2"/>
-      <rect x="78" y="118" width="44" height="14" rx="4" fill="#fff" stroke="#0a1f44" stroke-width="2"/>
-      <path d="M88 132h24" stroke="#0a1f44" stroke-width="3" stroke-linecap="round"/>
-    </svg>`,
+    art: '',
+    imageSrc: TCP_AFTER_INJURY_POST_CHECKLIST_IMAGE,
   },
   {
     title: 'The Basics: What is a personal injury lawsuit?',
     href: '#learn-more',
-    art: `<svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-      <path d="M55 145h90" stroke="#0a1f44" stroke-width="3"/>
-      <path d="M70 145l18-55 14 35 16-20 12 40" fill="none" stroke="#1f6dde" stroke-width="4" stroke-linejoin="round"/>
-      <rect x="95" y="118" width="28" height="18" rx="3" fill="#ffde00" stroke="#0a1f44" stroke-width="2"/>
-    </svg>`,
+    art: '',
+    imageSrc: TCP_AFTER_INJURY_BASICS_IMAGE,
   },
   {
     title: "What Your Insurance Company Doesn't Want You to Know",
     href: '#learn-more',
-    art: `<svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-      <circle cx="95" cy="95" r="28" fill="#ffde00" stroke="#0a1f44" stroke-width="2"/>
-      <path d="M125 70l35-20 8 14-35 20z" fill="#1f6dde" stroke="#0a1f44" stroke-width="2"/>
-      <path d="M70 120c10 18 50 18 60 0" fill="none" stroke="#0a1f44" stroke-width="3" stroke-linecap="round"/>
-    </svg>`,
+    art: '',
+    imageSrc: TCP_AFTER_INJURY_INSURANCE_IMAGE,
   },
 ]
 
@@ -87,29 +113,20 @@ export const tcpWorkingCards: TcpTopicCard[] = [
   {
     title: 'The Case Process: A Timeline',
     href: '#learn-more',
-    art: `<svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-      <circle cx="100" cy="108" r="42" fill="#1f6dde" stroke="#0a1f44" stroke-width="2"/>
-      <path d="M100 78v34l22 12" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
-      <path d="M78 58h44l-8-12H86z" fill="#ffde00" stroke="#0a1f44" stroke-width="2"/>
-    </svg>`,
+    art: '',
+    imageSrc: TCP_WORKING_TIMELINE_IMAGE,
   },
   {
     title: 'How Long Does It Take to Get Paid?',
     href: '#learn-more',
-    art: `<svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-      <rect x="55" y="70" width="90" height="52" rx="6" fill="#4ade80" stroke="#0a1f44" stroke-width="2"/>
-      <circle cx="75" cy="130" r="14" fill="#ffde00" stroke="#0a1f44" stroke-width="2"/>
-      <circle cx="125" cy="130" r="14" fill="#ffde00" stroke="#0a1f44" stroke-width="2"/>
-    </svg>`,
+    art: '',
+    imageSrc: TCP_WORKING_PAID_IMAGE,
   },
   {
     title: "Dos and Don'ts for Case Success",
     href: '#learn-more',
-    art: `<svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-      <path d="M100 48 L148 148 H52 Z" fill="#1f6dde" stroke="#0a1f44" stroke-width="2"/>
-      <rect x="92" y="88" width="16" height="36" rx="2" fill="#ffde00"/>
-      <circle cx="100" cy="132" r="5" fill="#0a1f44"/>
-    </svg>`,
+    art: '',
+    imageSrc: TCP_WORKING_DOS_DONTS_IMAGE,
   },
 ]
 

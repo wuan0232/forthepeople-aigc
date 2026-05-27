@@ -1,3 +1,3 @@
 <template>
-  <AboutNavRow to="/about/blog" label="Blog" />
+  <AboutNavRow to="/blog" label="Blog" />
 </template>

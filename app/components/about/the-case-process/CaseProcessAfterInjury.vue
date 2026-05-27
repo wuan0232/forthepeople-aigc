@@ -15,7 +15,16 @@
           class="tcp-card"
           @click.prevent="onTopicClick"
         >
-          <div class="tcp-card__art" v-html="card.art" />
+          <div class="tcp-card__art">
+            <img
+              v-if="card.imageSrc"
+              :src="card.imageSrc"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <div v-else v-html="card.art" />
+          </div>
           <h3 class="tcp-card__title">{{ card.title }}</h3>
         </a>
       </div>
@@ -25,6 +34,7 @@
 
 <script setup lang="ts">
 import { tcpAfterInjuryCards } from '~/constants/the-case-process'
+import { useTcpLearnMore } from '~/composables/about/the-case-process/useTcpLearnMore'
 
 const openLearnMore = useTcpLearnMore()
 

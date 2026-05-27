@@ -11,10 +11,10 @@
         ]"
       />
       <div class="tcp-hero__grid">
-        <div>
+        <div class="tcp-hero__copy">
           <img
             class="tcp-hero__title-img"
-            src="/images/the-case-process-title.png"
+            src="/images/about/the-case-process/the-case-process-title.png"
             alt="The Case Process"
             width="635"
             height="136"
@@ -28,14 +28,30 @@
             Start here. We'll guide you through what you need to know.
           </p>
         </div>
-        <div class="tcp-hero__art" v-html="tcpHeroBriefcaseArt" />
+        <div class="tcp-hero__art" aria-hidden="true">
+          <img
+            v-if="useAvif"
+            :src="TCP_RIGHT_ILLUSTRATION_IMAGE"
+            alt=""
+            loading="eager"
+            decoding="async"
+            @error="useAvif = false"
+          />
+          <div v-else v-html="tcpHeroBriefcaseArt" />
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { tcpHeroBriefcaseArt } from '~/constants/the-case-process'
+import { ref } from 'vue'
+import {
+  TCP_RIGHT_ILLUSTRATION_IMAGE,
+  tcpHeroBriefcaseArt,
+} from '~/constants/the-case-process'
+
+const useAvif = ref(true)
 </script>
 
 <style scoped>

@@ -33,7 +33,7 @@
         <ul>
           <li><a href="#about">Our Story</a></li>
           <li><a href="#contact">The Fee is Free®</a></li>
-          <li><a href="#blog">Blog</a></li>
+          <li><NuxtLink to="/blog">Blog</NuxtLink></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#media">In the Media</a></li>
           <li><a href="#testimonials">Testimonials</a></li>

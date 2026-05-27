@@ -80,15 +80,12 @@
           </NuxtLink>
           <AboutNavDropdown />
         </div>
-        <NuxtLink to="/contact">Contact</NuxtLink>
+        <NuxtLink to="/blog" class="header__nav-link">Blog</NuxtLink>
+        <NuxtLink to="/contact" class="header__nav-link">Contact</NuxtLink>
       </nav>
 
       <div class="header__tools">
-        <button type="button" class="lang" aria-label="Language">
-          <span class="flag" aria-hidden="true" />
-          <span>EN</span>
-          <span class="chev" aria-hidden="true" />
-        </button>
+        <NuxtLink to="/blog" class="header__blog-mobile">Blog</NuxtLink>
         <button type="button" class="icon-btn" aria-label="Search">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="7" />
@@ -282,9 +279,31 @@ const practiceAreas: PracticeAreaItem[] = [
   font-weight: 600;
 }
 
-.header__nav a:hover {
+.header__nav a:hover,
+.header__nav-link:hover {
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+
+.header__nav-link {
+  position: relative;
+  z-index: 230;
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.header__blog-mobile {
+  display: inline-flex;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: inherit;
+  text-decoration: none;
+}
+
+.header__blog-mobile:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .header__nav-item--mega {
@@ -590,32 +609,6 @@ const practiceAreas: PracticeAreaItem[] = [
   gap: 0.75rem;
 }
 
-.lang {
-  display: none;
-  align-items: center;
-  gap: 0.35rem;
-  background: none;
-  border: 0;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: inherit;
-}
-
-.flag {
-  width: 1.1rem;
-  height: 0.75rem;
-  border-radius: 2px;
-  background: linear-gradient(180deg, #b22234 0 40%, #fff 40% 60%, #b22234 60% 100%);
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
-}
-
-.chev::before {
-  content: '▾';
-  font-size: 0.65rem;
-  margin-left: 0.1rem;
-}
-
 .icon-btn {
   display: grid;
   place-items: center;
@@ -648,9 +641,12 @@ const practiceAreas: PracticeAreaItem[] = [
 }
 
 @media (min-width: 960px) {
-  .header__nav,
-  .lang {
+  .header__nav {
     display: flex;
+  }
+
+  .header__blog-mobile {
+    display: none;
   }
 }
 </style>

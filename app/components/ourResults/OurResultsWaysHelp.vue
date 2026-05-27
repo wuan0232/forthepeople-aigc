@@ -45,7 +45,7 @@ const cards = [
   {
     title: 'Injured on the job?',
     text: 'We guide workers through the claims process to secure the benefits they deserve for workplace injuries.',
-    href: '#contact',
+    href: '/practice-areas/workers-compensation',
     icon: '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4v6M9 8l4 4M23 8l-4 4"/><rect x="9" y="13" width="14" height="14" rx="2"/><path d="M13 18h6M13 22h4"/></svg>',
   },
 ]

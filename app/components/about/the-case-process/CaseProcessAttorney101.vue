@@ -24,7 +24,16 @@
 
   <section class="tcp-worth" aria-labelledby="tcp-worth-heading">
     <div class="container tcp-worth__grid">
-      <div class="tcp-worth__icon" v-html="tcpMoneyBagArt" aria-hidden="true" />
+      <div class="tcp-worth__icon" aria-hidden="true">
+        <img
+          :src="TCP_WORTH_VISUAL_IMAGE"
+          alt=""
+          width="185"
+          height="185"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
       <div class="tcp-worth__copy">
         <h2 id="tcp-worth-heading">How much is my case worth?</h2>
         <p>The estimated value of a claim is based on something called "damages."</p>
@@ -42,7 +51,8 @@
 </template>
 
 <script setup lang="ts">
-import { tcpAttorneyLinks, tcpMoneyBagArt } from '~/constants/the-case-process'
+import { TCP_WORTH_VISUAL_IMAGE, tcpAttorneyLinks } from '~/constants/the-case-process'
+import { useTcpLearnMore } from '~/composables/about/the-case-process/useTcpLearnMore'
 
 const openLearnMore = useTcpLearnMore()
 </script>

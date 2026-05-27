@@ -9,7 +9,16 @@
       </header>
 
       <div class="tcp-qualify__body">
-        <div class="tcp-qualify__visual" v-html="tcpFlashlightArt" aria-hidden="true" />
+        <div class="tcp-qualify__visual" aria-hidden="true">
+          <img
+            :src="TCP_QUALIFY_VISUAL_IMAGE"
+            alt=""
+            width="546"
+            height="374"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
 
         <div class="tcp-qualify__acc-wrap">
           <div class="tcp-qualify__rail" aria-hidden="true" />
@@ -49,7 +58,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { tcpFlashlightArt, tcpQualifyCriteria } from '~/constants/the-case-process'
+import { TCP_QUALIFY_VISUAL_IMAGE, tcpQualifyCriteria } from '~/constants/the-case-process'
 
 /** First two panels open by default to match design. */
 const openIndices = ref<Set<number>>(new Set([0, 1]))

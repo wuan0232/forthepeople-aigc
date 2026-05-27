@@ -8,17 +8,25 @@ export default defineNuxtConfig({
     dirs: [
       {
         path: '~/components',
-        ignore: ['practice-areas/**', 'the-case-process/**'],
+        ignore: ['practice-areas/**', 'blog/**'],
       },
       {
         path: '~/components/practice-areas',
         pathPrefix: false,
       },
       {
-        path: '~/components/the-case-process',
+        path: '~/components/about/the-case-process',
+        pathPrefix: false,
+      },
+      {
+        path: '~/components/blog',
         pathPrefix: false,
       },
     ],
+  },
+  routeRules: {
+    '/about/blog': { redirect: { to: '/blog', statusCode: 301 } },
+    '/blog/posts': { redirect: { to: '/blog#blog-latest-posts', statusCode: 301 } },
   },
   app: {
     head: {
@@ -44,6 +52,11 @@ export default defineNuxtConfig({
         name: 'our-results',
         path: '/our-results',
         file: '~/pages/ourResult/our-results.vue',
+      })
+      pages.push({
+        name: 'blog',
+        path: '/blog',
+        file: '~/pages/blog/index.vue',
       })
     },
   },

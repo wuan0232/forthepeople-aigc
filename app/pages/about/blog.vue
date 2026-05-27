@@ -1,3 +1,5 @@
-<template>
-  <AboutPageShell title="Blog" description="News, insights, and updates from Morgan &amp; Morgan." />
-</template>
+<script setup lang="ts">
+definePageMeta({
+  redirect: '/blog',
+})
+</script>

@@ -32,7 +32,7 @@
         </div>
         <div class="grid-box__grid">
           <span v-for="t in caseTypes" :key="t" class="grid-box__item">
-            <span class="chk" aria-hidden="true">�?/span>{{ t }}
+            <span class="chk" aria-hidden="true">?</span>{{ t }}
           </span>
         </div>
       </div>
@@ -144,19 +144,19 @@
         <div class="band__pills">
           <div class="band__pill">
             <span class="band__pill-inner">
-              <span class="chk" aria-hidden="true">�?/span>
+              <span class="chk" aria-hidden="true">?</span>
               Medical Treatments
             </span>
           </div>
           <div class="band__pill">
             <span class="band__pill-inner">
-              <span class="chk" aria-hidden="true">�?/span>
+              <span class="chk" aria-hidden="true">?</span>
               Lost Wages
             </span>
           </div>
           <div class="band__pill">
             <span class="band__pill-inner">
-              <span class="chk" aria-hidden="true">�?/span>
+              <span class="chk" aria-hidden="true">?</span>
               Pain &amp; Suffering
             </span>
           </div>
@@ -741,9 +741,9 @@ onMounted(() => {
 .band__surface {
   background: #f3f8ff;
   border-radius: var(--radius-lg);
-  /* 增大浅蓝区域垂直高度；左右与内部比例样式保持不变 */
+  /* ???????????????????????? */
   padding-block: clamp(2.25rem, 6vw, 3.5rem);
-  /* 左右留白加大，让正文相对浅蓝盒占比更�?*/
+  /* ????????????????????*/
   padding-inline: clamp(1.75rem, 7vw, 4rem);
 }
 
