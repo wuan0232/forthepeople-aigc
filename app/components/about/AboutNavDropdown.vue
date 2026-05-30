@@ -1,19 +1,9 @@
 <template>
   <div class="about-menu" aria-label="About menu">
     <ul class="about-menu__list">
-      <AboutNavAttorneys />
-      <AboutNavTheCaseProcess />
-      <AboutNavWhoWeAre />
-      <AboutNavProductRecalls />
-      <AboutNavBlog />
+      <AboutNavRow to="/about/the-case-process" label="The Case Process" />
       <AboutNavTestimonials />
-      <AboutNavFaq />
-      <AboutNavReferrals />
-      <AboutNavTvCommercials />
-      <AboutNavCareers />
-      <AboutNavEnEspanol />
-      <AboutNavMobileApp />
-      <AboutNavShop />
+      <AboutNavRow to="/about/faq" label="FAQ" />
     </ul>
   </div>
 </template>

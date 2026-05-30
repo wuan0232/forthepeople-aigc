@@ -1,4 +1,4 @@
-import { onMounted, onUnmounted, ref, type MaybeRefOrGetter, toValue } from 'vue'
+import { nextTick, onMounted, onUnmounted, ref, watch, type MaybeRefOrGetter, toValue } from 'vue'
 
 export type HorizontalStripMode = 'proportional' | 'paged' | 'cards'
 
@@ -29,14 +29,16 @@ export function useHorizontalStrip(options: {
     return childRect.left - elRect.left + el.scrollLeft
   }
 
-  /** Leftmost card aligned with (or just before) the visible start — matches multi-card strips. */
-  function activeCardIndex(el: HTMLElement, children: HTMLElement[]) {
-    const scrollLeft = el.scrollLeft
-    let index = 0
-    for (let i = 0; i < children.length; i++) {
-      if (cardLeft(el, children[i]!) <= scrollLeft + 1) index = i
-    }
-    return index
+  /** 按横向滚动进度映射圆点（多卡同屏时比单卡 offset 对齐更准） */
+  function cardIndexFromScroll(el: HTMLElement, childCount: number) {
+    if (childCount <= 1) return 0
+
+    const maxScroll = Math.max(0, el.scrollWidth - el.clientWidth)
+    if (maxScroll <= 4) return 0
+    if (el.scrollLeft >= maxScroll - 4) return childCount - 1
+
+    const t = el.scrollLeft / maxScroll
+    return Math.min(childCount - 1, Math.max(0, Math.round(t * (childCount - 1))))
   }
 
   function syncIndex() {
@@ -47,7 +49,7 @@ export function useHorizontalStrip(options: {
     if (options.mode === 'cards') {
       const children = cardChildren(el)
       if (!children.length) return
-      activeIndex.value = Math.min(n - 1, activeCardIndex(el, children))
+      activeIndex.value = cardIndexFromScroll(el, children.length)
       return
     }
 
@@ -133,10 +135,12 @@ export function useHorizontalStrip(options: {
     } else if (options.mode === 'cards') {
       const children = cardChildren(el)
       if (children.length) {
-        const index = activeCardIndex(el, children)
+        const index = cardIndexFromScroll(el, children.length)
         const child = children[index]
         if (child) el.scrollTo({ left: cardLeft(el, child), behavior: 'smooth' })
       }
+      requestAnimationFrame(() => requestAnimationFrame(syncIndex))
+      return
     }
     syncIndex()
   }
@@ -145,13 +149,32 @@ export function useHorizontalStrip(options: {
     syncIndex()
   }
 
-  onMounted(() => {
+  let scrollSyncTimer: ReturnType<typeof setTimeout> | undefined
+
+  function onScrollDebounced() {
     syncIndex()
+    if (scrollSyncTimer) clearTimeout(scrollSyncTimer)
+    scrollSyncTimer = setTimeout(syncIndex, 120)
+  }
+
+  function onScrollEnd() {
+    syncIndex()
+  }
+
+  watch(stripRef, (el, _, onCleanup) => {
+    if (!el) return
+    el.addEventListener('scrollend', onScrollEnd, { passive: true })
+    onCleanup(() => el.removeEventListener('scrollend', onScrollEnd))
+  })
+
+  onMounted(() => {
+    nextTick(syncIndex)
     window.addEventListener('resize', onResize, { passive: true })
   })
 
   onUnmounted(() => {
     window.removeEventListener('resize', onResize)
+    if (scrollSyncTimer) clearTimeout(scrollSyncTimer)
   })
 
   return {
@@ -159,7 +182,7 @@ export function useHorizontalStrip(options: {
     activeIndex,
     syncIndex,
     scrollToIndex,
-    onScroll,
+    onScroll: options.mode === 'cards' ? onScrollDebounced : onScroll,
     onPointerDown,
     onPointerMove,
     onPointerUp,

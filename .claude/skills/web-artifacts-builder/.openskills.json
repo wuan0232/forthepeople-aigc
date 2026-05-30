@@ -1,0 +1,7 @@
+{
+  "source": "anthropics/skills",
+  "sourceType": "git",
+  "repoUrl": "https://github.com/anthropics/skills",
+  "subpath": "skills\\web-artifacts-builder",
+  "installedAt": "2026-05-30T05:18:26.417Z"
+}

@@ -1,0 +1,177 @@
+/* About FAQ — /about/faq */
+
+.afaq-page {
+  background: #f3f4f6;
+  color: #111;
+  min-height: 50vh;
+  padding: clamp(5.5rem, 10vw, 6.5rem) 0 clamp(3rem, 6vw, 4.5rem);
+}
+
+.afaq__layout {
+  display: grid;
+  gap: 2rem 2.5rem;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .afaq__layout {
+    grid-template-columns: minmax(0, 0.34fr) minmax(0, 0.66fr);
+    gap: 2.5rem 3.5rem;
+  }
+
+  .afaq__aside {
+    position: sticky;
+    top: 6.5rem;
+  }
+}
+
+.afaq__title {
+  margin: 0 0 1.75rem;
+  font-size: clamp(2.1rem, 4.2vw, 3.1rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #111;
+}
+
+.afaq__title span {
+  display: block;
+}
+
+/* Left nav card */
+.afaq-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.85rem;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.afaq-nav__btn {
+  position: relative;
+  width: 100%;
+  padding: 1rem 1rem 1rem 1.35rem;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #111;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.afaq-nav__btn:hover {
+  background: rgba(0, 102, 204, 0.04);
+}
+
+.afaq-nav__btn--active {
+  background: var(--blue-soft, #e8f2fc);
+  border-color: var(--blue, #0066cc);
+  color: var(--blue, #0066cc);
+}
+
+.afaq-nav__btn--active::before {
+  content: '';
+  position: absolute;
+  left: 0.55rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid var(--blue, #0066cc);
+}
+
+/* Right panels */
+.afaq__main {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.afaq-panel__card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.25rem, 3vw, 2rem);
+}
+
+.afaq-panel__title {
+  margin: 0 0 1.25rem;
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: #111;
+}
+
+/* Accordion */
+.afaq-acc__item {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.afaq-acc__item:first-child .afaq-acc__trigger {
+  padding-top: 0;
+}
+
+.afaq-acc__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.15rem 0;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.afaq-acc__trigger:hover .afaq-acc__q {
+  color: var(--blue, #0066cc);
+}
+
+.afaq-acc__q {
+  flex: 1;
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: #111;
+  transition: color 0.15s ease;
+}
+
+.afaq-acc__icon {
+  flex-shrink: 0;
+  font-size: 1.35rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #111;
+  width: 1.5rem;
+  text-align: center;
+}
+
+.afaq-acc__panel {
+  padding: 0 0 1.15rem;
+}
+
+.afaq-acc__panel p {
+  margin: 0 0 0.85rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #374151;
+}
+
+.afaq-acc__panel p:last-child {
+  margin-bottom: 0;
+}

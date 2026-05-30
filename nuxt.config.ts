@@ -1,6 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   srcDir: 'app/',
+  dir: {
+    public: 'public',
+  },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
@@ -8,7 +11,7 @@ export default defineNuxtConfig({
     dirs: [
       {
         path: '~/components',
-        ignore: ['practice-areas/**', 'blog/**'],
+        ignore: ['practice-areas/**', 'blog/**', 'about/testimonials/**', 'about/faq/**'],
       },
       {
         path: '~/components/practice-areas',
@@ -16,6 +19,14 @@ export default defineNuxtConfig({
       },
       {
         path: '~/components/about/the-case-process',
+        pathPrefix: false,
+      },
+      {
+        path: '~/components/about/testimonials',
+        pathPrefix: false,
+      },
+      {
+        path: '~/components/about/faq',
         pathPrefix: false,
       },
       {
@@ -31,6 +42,10 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'Morgan & Morgan — Injury Law Firm',
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      ],
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {

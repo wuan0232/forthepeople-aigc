@@ -113,29 +113,18 @@
           <p>Explore these resources to help you make informed decisions after an accident.</p>
         </div>
 
-        <MediaCarousel
-          :count="howItWorks.length"
-          mode="cards"
-          region-label="How it works carousel"
-          dots-label="How it works position"
-          strip-class="loc-how__strip"
-          dots-class="loc-how__dots"
-          dot-class="loc-how__dot"
-          active-dot-class="loc-how__dot--on"
-          dragging-class="loc-how__strip--dragging"
-          dot-label-prefix="How it works slide"
-          dot-key-prefix="how-dot"
-        >
+        <div class="loc-how__grid" role="list">
           <article
             v-for="card in howItWorks"
             :key="card.title"
             class="loc-how__card"
             :class="{ 'loc-how__card--muted': card.muted }"
+            role="listitem"
           >
             <div class="loc-how__art" v-html="card.art" />
             <h3 :class="{ 'loc-how__title--underline': card.muted }">{{ card.title }}</h3>
           </article>
-        </MediaCarousel>
+        </div>
       </div>
     </section>
 
@@ -288,45 +277,20 @@ type HowCard = { title: string; art: string; muted?: boolean }
 const howItWorks: HowCard[] = [
   {
     title: 'The Basics: What is a personal injury lawsuit?',
-    art: `<svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-      <rect width="200" height="200" rx="14" fill="#cfe1ff"/>
-      <path d="M70 150 L80 150 L86 100 L74 100 Z" fill="#1f6dde" stroke="#0a1f44" stroke-width="2"/>
-      <rect x="60" y="148" width="36" height="14" rx="3" fill="#ffd200" stroke="#0a1f44" stroke-width="2"/>
-      <rect x="60" y="160" width="60" height="6" fill="#1f6dde" stroke="#0a1f44" stroke-width="2"/>
-    </svg>`,
+    art: `<img src="/images/locations/loc-how-basics-lawsuit.webp" alt="" width="400" height="400" loading="lazy" decoding="async" />`,
   },
   {
     title: 'How Much is My Personal Injury Case Worth?',
-    art: `<svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-      <rect width="200" height="200" rx="14" fill="#b9d4ff"/>
-      <path d="M100 60 c-22 0 -38 30 -38 60 c0 24 18 38 38 38 s38 -14 38 -38 c0 -30 -16 -60 -38 -60z" fill="#ffd200" stroke="#0a1f44" stroke-width="3"/>
-      <text x="100" y="130" font-family="Arial" font-size="32" font-weight="800" text-anchor="middle" fill="#0a1f44">$</text>
-      <path d="M82 60 l36 0 l-6 -10 l-24 0z" fill="#0a1f44"/>
-    </svg>`,
+    art: `<img src="/images/locations/loc-how-case-worth.webp" alt="" width="400" height="400" loading="lazy" decoding="async" />`,
   },
   {
     title: 'The Morgan & Morgan Difference',
-    art: `<svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-      <rect width="200" height="200" rx="14" fill="#b9d4ff"/>
-      <circle cx="60" cy="110" r="22" fill="#fff" stroke="#0a1f44" stroke-width="2"/>
-      <circle cx="60" cy="110" r="10" fill="#ffd200"/>
-      <rect x="78" y="98" width="60" height="28" rx="4" fill="#1f6dde" stroke="#0a1f44" stroke-width="2"/>
-      <polygon points="138,98 158,108 158,116 138,126" fill="#ffd200" stroke="#0a1f44" stroke-width="2"/>
-    </svg>`,
+    art: `<img src="/images/locations/loc-how-morgan-difference.webp" alt="" width="400" height="400" loading="lazy" decoding="async" />`,
   },
   {
     title: 'Why Do Some Personal Injury Cases Get Turned Down ("Are Ineligible")?',
     muted: true,
-    art: `<svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-      <rect width="200" height="200" rx="14" fill="#e8ecf1"/>
-      <g stroke="#0a1f44" stroke-width="3" stroke-linejoin="round">
-        <path d="M58 78 l54 -28 l16 26 l-54 28z" fill="#1f6dde"/>
-        <rect x="78" y="76" width="22" height="22" transform="rotate(-25 89 87)" fill="#ffd200"/>
-        <line x1="120" y1="78" x2="160" y2="138" />
-        <line x1="120" y1="78" x2="170" y2="120" />
-        <line x1="156" y1="116" x2="170" y2="148" />
-      </g>
-    </svg>`,
+    art: `<img src="/images/locations/loc-how-cases-ineligible.webp" alt="" width="400" height="400" loading="lazy" decoding="async" />`,
   },
 ]
 
@@ -681,16 +645,11 @@ const howItWorks: HowCard[] = [
 
 .loc-how__head {
   display: grid;
-  gap: 0.5rem;
-  align-items: end;
+  gap: 0.75rem;
   margin-bottom: 2rem;
-}
-
-@media (min-width: 720px) {
-  .loc-how__head {
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
+  max-width: 40rem;
+  margin-inline: auto;
+  text-align: center;
 }
 
 .loc-how__head h2 {
@@ -705,48 +664,38 @@ const howItWorks: HowCard[] = [
   line-height: 1.5;
 }
 
-:deep(.loc-how__strip) {
-  display: flex;
+.loc-how__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.25rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  touch-action: pan-x;
-  cursor: grab;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding-bottom: 0.5rem;
   width: 100%;
-  max-width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  justify-items: center;
 }
 
-:deep(.loc-how__strip)::-webkit-scrollbar {
-  display: none;
-}
-
-:deep(.loc-how__strip--dragging) {
-  cursor: grabbing;
-  scroll-snap-type: none;
-  scroll-behavior: auto;
-  user-select: none;
-}
-
-:deep(.loc-how__card) {
-  flex: 0 0 auto;
-  width: calc((100% - 2.5rem) / 3);
-  min-width: 14rem;
+.loc-how__card {
+  width: 100%;
+  max-width: 16.5rem;
   display: grid;
   gap: 0.85rem;
-  scroll-snap-align: start;
 }
 
-@media (max-width: 720px) {
-  :deep(.loc-how__card) {
-    width: 80%;
+@media (max-width: 1024px) {
+  .loc-how__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 36rem;
   }
 }
 
-:deep(.loc-how__art) {
+@media (max-width: 520px) {
+  .loc-how__grid {
+    grid-template-columns: 1fr;
+    max-width: 18rem;
+  }
+}
+
+.loc-how__art {
   width: 100%;
   aspect-ratio: 1 / 1;
   background: #cfe1ff;
@@ -756,49 +705,31 @@ const howItWorks: HowCard[] = [
   user-select: none;
 }
 
-:deep(.loc-how__card--muted .loc-how__art) {
+.loc-how__card--muted .loc-how__art {
   background: #e8ecf1;
 }
 
-:deep(.loc-how__art svg) {
+.loc-how__art svg,
+.loc-how__art img {
   display: block;
   width: 100%;
   height: 100%;
+  object-fit: cover;
   pointer-events: none;
 }
 
-:deep(.loc-how__card h3) {
+.loc-how__card h3 {
   margin: 0;
   font-size: clamp(0.95rem, 1.2vw, 1.05rem);
   font-weight: 800;
   color: #1f2933;
   line-height: 1.35;
+  text-align: center;
 }
 
 .loc-how__title--underline {
   text-decoration: underline;
   text-underline-offset: 3px;
-}
-
-:deep(.loc-how__dots) {
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
-}
-
-:deep(.loc-how__dot) {
-  width: 0.55rem;
-  height: 0.55rem;
-  padding: 0;
-  border: 0;
-  background: #c9d3df;
-  border-radius: 999px;
-  cursor: pointer;
-}
-
-:deep(.loc-how__dot--on) {
-  background: #000;
 }
 
 .loc-view-all:hover {
