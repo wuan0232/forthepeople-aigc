@@ -3,7 +3,7 @@
     <div class="container">
       <div class="ca-lawsuit-head">
         <h2 :id="headingId" class="ca-h2">{{ title }}</h2>
-        <a href="tel:+18448278082" class="link-arrow">
+        <a :href="linkHref" class="link-arrow">
           {{ linkLabel }}
           <span class="icon-box" aria-hidden="true">
             <svg viewBox="0 0 12 12" width="8" height="8">
@@ -29,7 +29,9 @@ withDefaults(
     title: string
     requirements: string[]
     linkLabel?: string
+    /** 页内表单锚点，默认滚动到底部 THE FEE IS FREE 表单区 */
+    linkHref?: string
   }>(),
-  { headingId: 'lawsuit-heading', linkLabel: 'Learn more' },
+  { headingId: 'lawsuit-heading', linkLabel: 'Learn more', linkHref: '#contact' },
 )
 </script>

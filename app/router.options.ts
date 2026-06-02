@@ -9,12 +9,13 @@ export default {
     if (to.path === '/blog' && from.path.startsWith('/blog/')) {
       return false
     }
-    // 仅在 blog 首页内点击锚点（如 #blog-latest-posts）
-    if (to.hash && to.path === '/blog' && from.path === '/blog') {
+    if (to.hash) {
+      const behavior =
+        to.path === '/blog' && from.path === '/blog' ? 'auto' : 'smooth'
       return {
         el: to.hash,
         top: 88,
-        behavior: 'auto',
+        behavior,
       }
     }
     return { top: 0, behavior: 'auto' }

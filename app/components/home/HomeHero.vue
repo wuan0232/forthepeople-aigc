@@ -62,7 +62,7 @@
 <br>
 By submitting this form, you agree to our Terms & acknowledge our privacy policy.
           </p>
-          <button type="submit" class="cta">See if you qualify</button>
+          <button type="button" class="cta" @click="scrollToContactForm">See if you qualify</button>
           <p class="micro">
             Results may vary depending on your particular facts and legal circumstances. ©2026 Morgan and Morgan, P.A. All rights reserved.
           </p>
@@ -71,6 +71,14 @@ By submitting this form, you agree to our Terms & acknowledge our privacy policy
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { scrollToSection } from '~/composables/useScrollToSection'
+
+function scrollToContactForm() {
+  scrollToSection('contact')
+}
+</script>
 
 <style scoped>
 .hero {

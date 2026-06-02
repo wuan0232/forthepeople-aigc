@@ -107,6 +107,7 @@ watch(
   background: var(--fee-bg);
   color: #fff;
   padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+  scroll-margin-top: var(--header-offset);
 }
 
 .fee__grid {
