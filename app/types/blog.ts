@@ -6,6 +6,7 @@ export type BlogTagLabel =
   | 'Recent Data Breaches'
   | 'Social Media Harm'
   | 'Maritime & Admiralty'
+  | 'Medical Malpractice'
 
 export type BlogPost = {
   slug: string
@@ -60,4 +61,21 @@ export type BlogCategoryArchiveMeta = {
   path: string
   postsPerPage: number
   totalPages: number
+}
+
+export type BlogArticleSection = {
+  heading: string
+  paragraphs: string[]
+}
+
+export type BlogArticle = {
+  slug: string
+  title: string
+  summary: string
+  categoryLabel: string
+  readMinutes: number
+  publishedIso: string
+  imageSrc?: string
+  imageAlt?: string
+  sections: BlogArticleSection[]
 }

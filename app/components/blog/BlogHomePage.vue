@@ -38,13 +38,13 @@
     </div>
   </section>
 
-  <!-- 3. Filing a Claim 三卡片 -->
+  <!-- 3. Medical Next Steps 三卡片 -->
   <section class="blog-block blog-block--white" aria-labelledby="blog-filing-heading">
     <div class="container">
       <BlogSectionHead
         heading-id="blog-filing-heading"
-        title="Filing a Claim"
-        description="Learn about how we can help after an auto accident, slip and fall, and more."
+        title="Medical Next Steps"
+        description="Start with practical recovery guidance after a crash, fall, workplace injury, or medication concern."
       />
       <div class="blog-filing__grid">
         <NuxtLink
@@ -75,10 +75,10 @@
     </div>
   </section>
 
-  <!-- 4. Latest Cases -->
+  <!-- 4. Medication Safety Updates -->
   <section class="blog-block blog-block--soft-blue" aria-labelledby="blog-cases-heading">
     <div class="container">
-      <h2 id="blog-cases-heading" class="blog-head__title">Latest Cases</h2>
+      <h2 id="blog-cases-heading" class="blog-head__title">Medication Safety Updates</h2>
       <div class="blog-cases__grid">
         <NuxtLink
           v-for="item in blogLatestCases"

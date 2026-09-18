@@ -1,4 +1,5 @@
 import type {
+  BlogArticle,
   BlogCaseCard,
   BlogCategoryArchiveMeta,
   BlogCategoryCard,
@@ -25,7 +26,7 @@ export const BLOG_SOCIAL = [
   },
   {
     label: 'Email',
-    href: 'mailto:info@forthepeople.com',
+    href: 'mailto:NY@spineandneurosurgery.com',
     icon: 'email',
   },
 ] as const
@@ -33,12 +34,12 @@ export const BLOG_SOCIAL = [
 export const blogFeaturedPosts: BlogPost[] = [
   {
     slug: 'morgan-origin-story',
-    title: 'Why We Fight: The Morgan & Morgan Origin Story',
+    title: 'Why We Fight: The For The People Clinic Origin Story',
     href: '/blog/posts',
     readMinutes: 5,
     tag: 'In The Community',
     imageSrc: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=1200&q=85&fit=crop',
-    imageAlt: 'Morgan & Morgan origin story video',
+    imageAlt: 'For The People Clinic origin story video',
     featured: true,
   },
   {
@@ -54,7 +55,7 @@ export const blogFeaturedPosts: BlogPost[] = [
   {
     slug: 'ultra-processed-foods-lawsuit',
     title:
-      'Morgan & Morgan Files Lawsuit over Allegedly Harmful, Addictive Ultra-Processed Foods',
+      'For The People Clinic Files Lawsuit over Allegedly Harmful, Addictive Ultra-Processed Foods',
     href: '/blog/posts',
     readMinutes: 5,
     tag: 'In The Media',
@@ -65,26 +66,26 @@ export const blogFeaturedPosts: BlogPost[] = [
 
 export const blogFilingCards: BlogIllustrationCard[] = [
   {
-    title: 'The Personal Injury Case Process',
-    text: "Injured and not sure what to do next? Start here. We'll guide you through what you need to know.",
-    href: '/about/the-case-process',
+    title: 'Your Injury Recovery Checklist',
+    text: 'Start with a no-personal-information checklist for urgent warning signs, early actions, and follow-up planning.',
+    href: '/contact',
     imageSrc: '/images/blog/filing-case-process.webp',
-    imageAlt: 'The Personal Injury Case Process',
+    imageAlt: 'Injury recovery checklist',
   },
   {
-    title: "Working Out Workers' Compensation",
-    text: "Injured at work? We'll guide you through what you need to know.",
-    href: '#',
+    title: 'Workplace Injury Recovery',
+    text: 'Learn how to document symptoms, discuss medical restrictions, and plan a safer return to activity.',
+    href: '/practice-areas/workers-compensation',
     accent: true,
     imageSrc: '/images/blog/filing-workers-comp.webp',
-    imageAlt: "Working Out Workers' Compensation",
+    imageAlt: 'Workplace injury recovery',
   },
   {
-    title: 'Guide to Social Security Disability',
-    text: 'Filing for Social Security benefits? Find out what you need to know here.',
-    href: '#',
+    title: 'Medication Safety Guide',
+    text: 'Review warning signs, questions for your prescriber, and safer follow-up steps for medication concerns.',
+    href: '/practice-areas/dangerous-drugs',
     imageSrc: '/images/blog/filing-ssdi.webp',
-    imageAlt: 'Guide to Social Security Disability',
+    imageAlt: 'Medication safety guide',
   },
 ]
 
@@ -96,8 +97,8 @@ export const blogLatestCases: BlogCaseCard[] = [
   },
   {
     title: 'Ultra-Processed Foods',
-    text: 'Food giants sued for marketing addictive foods',
-    href: '/blog/posts',
+    text: 'Practical guidance for discussing nutrition and health concerns with your care team',
+    href: '/medical/what-to-do',
   },
   {
     title: 'Weight Loss Drugs',
@@ -145,7 +146,7 @@ export const blogAfterAccidentPosts: BlogPost[] = [
 
 export const blogBeingPrepared: BlogListItem[] = [
   {
-    title: "Scrolling Smart: Morgan & Morgan's Guide to Social Media Safety",
+    title: "Scrolling Smart: For The People Clinic's Guide to Social Media Safety",
     href: '/blog/posts',
   },
   {
@@ -162,7 +163,7 @@ export const blogBeingPrepared: BlogListItem[] = [
 export const blogNewsroomPosts: BlogPost[] = [
   {
     slug: 'miami-boat-explosion',
-    title: 'Morgan & Morgan investigating Miami boat explosion',
+    title: 'For The People Clinic investigating Miami boat explosion',
     href: '/blog/posts',
     readMinutes: 4,
     tag: 'In The Media',
@@ -192,6 +193,42 @@ export const blogNewsroomPosts: BlogPost[] = [
 
 export const blogLatestListPosts: BlogPost[] = [
   {
+    slug: 'medical-malpractice-vs-medical-dispute',
+    title: 'Medical Malpractice vs. Medical Dispute: What Is the Difference?',
+    href: '/blog/posts/medical-malpractice-vs-medical-dispute',
+    readMinutes: 6,
+    tag: 'Medical Malpractice',
+    imageSrc: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=160&q=85&fit=crop',
+    imageAlt: 'Doctor and patient reviewing records',
+  },
+  {
+    slug: 'how-to-build-a-complete-medical-timeline',
+    title: 'How to Build a Complete Medical Timeline After a Suspected Error',
+    href: '/blog/posts/how-to-build-a-complete-medical-timeline',
+    readMinutes: 7,
+    tag: 'Medical Malpractice',
+    imageSrc: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=160&q=85&fit=crop',
+    imageAlt: 'Checklist and medical documents on desk',
+  },
+  {
+    slug: 'second-medical-opinion-patient-checklist',
+    title: 'Second Medical Opinion: A Patient Checklist That Actually Helps',
+    href: '/blog/posts/second-medical-opinion-patient-checklist',
+    readMinutes: 6,
+    tag: 'Medical Malpractice',
+    imageSrc: 'https://images.unsplash.com/photo-1551076805-e1869033e561?w=160&q=85&fit=crop',
+    imageAlt: 'Two clinicians discussing patient chart',
+  },
+  {
+    slug: 'informed-consent-what-to-check-before-you-sign',
+    title: 'Informed Consent: What to Check Before You Sign',
+    href: '/blog/posts/informed-consent-what-to-check-before-you-sign',
+    readMinutes: 5,
+    tag: 'Medical Malpractice',
+    imageSrc: 'https://images.unsplash.com/photo-1584515933487-779824d29309?w=160&q=85&fit=crop',
+    imageAlt: 'Patient reading consent document in clinic',
+  },
+  {
     slug: 'youtube-super-thanks',
     title:
       'Did You Buy or Receive YouTube “Super Thanks”? You May Be Surprised by How Much YouTube Kept, and You May Have Legal Options',
@@ -220,7 +257,7 @@ export const blogLatestListPosts: BlogPost[] = [
   },
   {
     slug: 'miami-boat-explosion',
-    title: 'Morgan & Morgan investigating Miami boat explosion',
+    title: 'For The People Clinic investigating Miami boat explosion',
     href: '#',
     readMinutes: 4,
     tag: 'In The Media',
@@ -381,6 +418,126 @@ export const blogAccidentsIncidentsArchive: BlogCategoryCard[] = accidentsArchiv
 
 export const blogPostFilters = [
   { label: 'Accidents & Incidents', href: BLOG_ACCIDENTS_INCIDENTS_PATH },
+  { label: 'Medical Malpractice', href: '/blog/medical-malpractice' },
   { label: 'Newsroom', href: '#blog-latest-posts' },
   { label: 'The Case Process', href: '/about/the-case-process' },
 ] as const
+
+export const BLOG_MEDICAL_MALPRACTICE_PATH = '/blog/medical-malpractice'
+export const BLOG_PLACEHOLDER_POST_PATH = '/blog/posts/coming-soon'
+
+export const blogMedicalMalpracticeCategory: BlogCategoryArchiveMeta = {
+  slug: 'medical-malpractice',
+  title: 'Medical Malpractice',
+  path: BLOG_MEDICAL_MALPRACTICE_PATH,
+  postsPerPage: 9,
+  totalPages: 1,
+}
+
+export const blogMedicalArticles: BlogArticle[] = [
+  {
+    slug: 'medical-malpractice-vs-medical-dispute',
+    title: 'Medical Malpractice vs. Medical Dispute: What Is the Difference?',
+    summary:
+      'Not every bad experience in healthcare is malpractice. Learn the practical difference and when to seek deeper medical review.',
+    categoryLabel: 'Medical Malpractice',
+    readMinutes: 6,
+    publishedIso: '2026-07-07',
+    imageSrc: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=85&fit=crop',
+    imageAlt: 'Doctor and patient reviewing records',
+    sections: [
+      {
+        heading: 'Why the distinction matters',
+        paragraphs: [
+          'Patients often use one phrase for many different issues: poor communication, billing frustration, treatment complications, or possible negligence. These are not the same thing clinically or procedurally.',
+          'A medical dispute can involve service and communication. Medical malpractice is narrower and typically concerns a deviation from accepted standards of care that contributes to avoidable harm.',
+        ],
+      },
+      {
+        heading: 'A practical three-part check',
+        paragraphs: [
+          'Start with three questions: Was there a possible care deviation? Did measurable harm occur? Is there a plausible clinical connection between the two?',
+          'A poor outcome alone is not enough. Complications can happen even when care is appropriate and timely.',
+        ],
+      },
+      {
+        heading: 'What patients should do first',
+        paragraphs: [
+          'Prioritize medical stability, collect complete records, and build a timeline. If uncertainty remains, get a second medical opinion from a qualified specialist in the same field.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'how-to-build-a-complete-medical-timeline',
+    title: 'How to Build a Complete Medical Timeline After a Suspected Error',
+    summary:
+      'Static placeholder article. This topic will later be replaced by API-published SEO content with richer sections and references.',
+    categoryLabel: 'Medical Malpractice',
+    readMinutes: 3,
+    publishedIso: '2026-07-08',
+    imageSrc: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=85&fit=crop',
+    imageAlt: 'Medical timeline placeholder',
+    sections: [
+      {
+        heading: 'Placeholder: Timeline Structure',
+        paragraphs: [
+          'Use this temporary page as a static placeholder for the future SEO article.',
+          'Planned production content will include structured timeline templates, examples, and downloadable checklists.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'second-medical-opinion-patient-checklist',
+    title: 'Second Medical Opinion: A Patient Checklist That Actually Helps',
+    summary:
+      'Static placeholder article. Final content will be automatically published via backend agent and API workflow.',
+    categoryLabel: 'Medical Malpractice',
+    readMinutes: 3,
+    publishedIso: '2026-07-08',
+    imageSrc: 'https://images.unsplash.com/photo-1551076805-e1869033e561?w=1200&q=85&fit=crop',
+    imageAlt: 'Second opinion placeholder',
+    sections: [
+      {
+        heading: 'Placeholder: Second Opinion Workflow',
+        paragraphs: [
+          'This is a temporary static page reserved for automated publishing.',
+          'Future SEO content will cover preparation, question sets, record packaging, and follow-up comparison methods.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'informed-consent-what-to-check-before-you-sign',
+    title: 'Informed Consent: What to Check Before You Sign',
+    summary:
+      'Static placeholder article. This slot remains intentionally lightweight until API-driven publishing is enabled.',
+    categoryLabel: 'Medical Malpractice',
+    readMinutes: 3,
+    publishedIso: '2026-07-08',
+    imageSrc: 'https://images.unsplash.com/photo-1584515933487-779824d29309?w=1200&q=85&fit=crop',
+    imageAlt: 'Informed consent placeholder',
+    sections: [
+      {
+        heading: 'Placeholder: Consent Review Checklist',
+        paragraphs: [
+          'This page is kept as a minimal static placeholder for current navigation and SEO continuity.',
+          'It will be replaced by detailed, API-published content covering risk disclosure, alternatives, and post-procedure warning signs.',
+        ],
+      },
+    ],
+  },
+]
+
+export const blogMedicalMalpracticeArchive: BlogCategoryCard[] = blogMedicalArticles.map((article) => ({
+  slug: article.slug,
+  title: article.title,
+  href: `/blog/posts/${article.slug}`,
+  publishedAt: formatArchiveDate(article.publishedIso),
+  publishedIso: article.publishedIso,
+  categoryLabel: article.categoryLabel,
+  summary: article.summary,
+  imageSrc: article.imageSrc,
+  imageAlt: article.imageAlt,
+}))

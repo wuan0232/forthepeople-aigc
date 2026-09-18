@@ -98,11 +98,11 @@ const pageLinks = computed((): PageLink[] => {
 })
 
 useHead(() => ({
-  title: `${props.category.title} | Morgan & Morgan Blog`,
+  title: `${props.category.title} | For The People Clinic Blog`,
   meta: [
     {
       name: 'description',
-      content: `Browse ${props.category.title} articles from Morgan & Morgan Law School.`,
+      content: `Browse ${props.category.title} articles from For The People Clinic Law School.`,
     },
   ],
 }))
