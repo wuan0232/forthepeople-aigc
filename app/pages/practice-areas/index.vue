@@ -7,12 +7,12 @@
 
 <script setup lang="ts">
 useHead({
-  title: 'Practice Areas | Morgan & Morgan',
+  title: 'Recovery Guides | For The People Clinic',
   meta: [
     {
       name: 'description',
       content:
-        'Explore Morgan & Morgan practice areas, case types, and legal services. Free case evaluation, 24/7 support.',
+        'Explore medical-first recovery guides for injuries and health concerns, including warning signs, early actions, and follow-up planning.',
     },
   ],
 })

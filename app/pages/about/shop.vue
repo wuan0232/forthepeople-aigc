@@ -1,3 +1,3 @@
 <template>
-  <AboutPageShell title="Shop" description="Official Morgan &amp; Morgan merchandise and gear." />
+  <AboutPageShell title="Shop" description="Official For The People Clinic merchandise and gear." />
 </template>

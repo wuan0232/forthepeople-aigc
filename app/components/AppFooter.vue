@@ -2,13 +2,13 @@
   <footer class="footer">
     <div class="footer__top container">
       <div class="footer__brand">
-        <div class="logo-box" aria-label="Morgan and Morgan">
-          <span class="logo-box__main">MORGAN &amp; MORGAN</span>
-          <span class="logo-box__sub">AMERICA'S LARGEST INJURY LAW FIRM</span>
+        <div class="logo-box" aria-label="For The People Clinic">
+          <span class="logo-box__main">FOR THE PEOPLE CLINIC</span>
+          <span class="logo-box__sub">Patient Care & Medical Guidance</span>
         </div>
         <p class="footer__lead">
-          After 35 years, Morgan &amp; Morgan remains a family firm dedicated to fighting for the
-          average American family.
+          For The People Clinic provides patient-focused injury recovery guidance and practical medical next steps
+          for families across New York.
         </p>
         <div class="footer__stars">
           <span class="stars" aria-hidden="true">★★★★★</span>
@@ -16,27 +16,27 @@
         </div>
       </div>
 
-      <nav class="footer__col" aria-label="M and M">
-        <h3 class="footer__heading">M&amp;M</h3>
+      <nav class="footer__col" aria-label="Clinic">
+        <h3 class="footer__heading">Clinic</h3>
         <ul>
-          <li><a href="#locations">Locations</a></li>
-          <li><a href="#practice">Practice Areas</a></li>
-          <li><NuxtLink to="/our-results">Our Results</NuxtLink></li>
-          <li><a href="#how">How It Works</a></li>
+          <li><NuxtLink to="/locations">Locations</NuxtLink></li>
+          <li><NuxtLink to="/injury-recovery-guides">Injury Recovery Guides</NuxtLink></li>
+          <li><NuxtLink to="/recovery-stories">Recovery Stories</NuxtLink></li>
+          <li><NuxtLink to="/about/the-case-process">How It Works</NuxtLink></li>
           <li><a href="#careers">Careers</a></li>
-          <li><a href="#contact">Contact Us</a></li>
+          <li><NuxtLink to="/contact">Contact Us</NuxtLink></li>
         </ul>
       </nav>
 
       <nav class="footer__col" aria-label="About">
         <h3 class="footer__heading">About</h3>
         <ul>
-          <li><a href="#about">Our Story</a></li>
-          <li><a href="#contact">The Fee is Free®</a></li>
+          <li><NuxtLink to="/about">Our Story</NuxtLink></li>
+          <li><a href="#contact">Medical Action Plan</a></li>
           <li><NuxtLink to="/blog">Blog</NuxtLink></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#media">In the Media</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
+          <li><NuxtLink to="/about/faq">FAQ</NuxtLink></li>
+          <li><a href="#media">Resources</a></li>
+          <li><NuxtLink to="/about/testimonials">Testimonials</NuxtLink></li>
         </ul>
       </nav>
 
@@ -54,45 +54,21 @@
 
       <div class="footer__aside">
         <div class="aside-block">
-          <h3 class="footer__heading">Social</h3>
+          <h3 class="footer__heading">Share</h3>
           <div class="social">
-            <a v-for="s in socials" :key="s.label" :href="s.href" class="social__btn" :aria-label="s.label">
+            <button
+              v-for="s in socials"
+              :key="s.label"
+              type="button"
+              class="social__btn"
+              :aria-label="`Share this page on ${s.label}`"
+              :title="`Share on ${s.label}`"
+              @click="sharePage(s.label)"
+            >
               <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
                 <path :d="s.path" />
               </svg>
-            </a>
-          </div>
-        </div>
-        <div class="aside-block">
-          <h3 class="footer__heading">App Stores</h3>
-          <div class="store-badges">
-            <a class="store-btn store-btn--apple" href="#" aria-label="Download on the App Store">
-              <span class="store-btn__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-                  <path
-                    d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.17 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.65 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"
-                  />
-                </svg>
-              </span>
-              <span class="store-btn__text">
-                <span class="store-btn__small">Download on the</span>
-                <span class="store-btn__large">App Store</span>
-              </span>
-            </a>
-            <a class="store-btn store-btn--google" href="#" aria-label="Get it on Google Play">
-              <span class="store-btn__gicon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="#EA4335" d="M3.6 3.05l11.35 6.55-2.6 2.6L3.6 3.05z" />
-                  <path fill="#FBBC04" d="M3.6 20.95l8.75-8.75 2.6 2.6L3.6 20.95z" />
-                  <path fill="#34A853" d="M22.4 12L15 16.9l-2.65-2.65L15 11.6l7.4 4.4z" />
-                  <path fill="#4285F4" d="M3.6 3.05L12.35 12 3.6 20.95V3.05z" />
-                </svg>
-              </span>
-              <span class="store-btn__text">
-                <span class="store-btn__small store-btn__small--caps">GET IT ON</span>
-                <span class="store-btn__large">Google Play</span>
-              </span>
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -101,39 +77,46 @@
     <div class="footer__partners-wrap container">
       <div class="footer__partner-rail" role="list">
         <div class="partner partner--outlined" role="listitem">
-          <span class="partner__line">Morgan &amp; Morgan</span>
-          <span class="partner__sub">The Morgan Connection</span>
+          <span class="partner__line">For The People Clinic</span>
+          <span class="partner__sub">Patient Care Network</span>
         </div>
         <div class="partner partner--bold" role="listitem">
-          Morgan &amp; Morgan<br />Business Trial Group
+          For The People Clinic<br />Recovery Care Team
         </div>
-        <div class="partner partner--tilt" role="listitem">The Whistleblower Attorneys</div>
+        <div class="partner partner--tilt" role="listitem">Medical Guidance Desk</div>
         <div class="partner partner--abogados" role="listitem">
-          <span class="partner__ab">Abogados.com</span>
-          <span class="partner__mm">Morgan &amp; Morgan</span>
+          <span class="partner__ab">Patient Resources</span>
+          <span class="partner__mm">For The People Clinic</span>
         </div>
         <div class="partner partner--class" role="listitem">
           <span class="partner__flag" aria-hidden="true" />
-          <span>ClassAction.com</span>
+          <span>Injury Recovery Guides</span>
         </div>
       </div>
     </div>
 
     <div class="footer__legal container">
-      <p class="office-line">
-        <span>20 N. Orange Ave., Suite 1600, Orlando, FL 32801</span>
-        <a href="#locations" class="office-link">Office Locations</a>
-      </p>
+      <div class="office-line">
+        <div class="office-line__list">
+          <p v-for="office in offices" :key="office.id" class="office-line__item">
+            <strong>{{ office.name }}</strong>
+            <span>
+              {{ office.addressLines.join(', ') }} ·
+              <a :href="`tel:${office.phoneTel}`">{{ office.phoneDisplay }}</a>
+            </span>
+          </p>
+        </div>
+        <a href="/locations" class="office-link">Office Locations</a>
+      </div>
       <div class="legal-row">
         <p class="fineprint">
           If you are vision-impaired or have some other impairment covered by the Americans with
           Disabilities Act or a similar law, and you wish to discuss potential accommodations
           related to using this website, please contact us at
-          <a href="tel:+18448278082">(844) 827-8082</a> or
-          <a href="mailto:ada@morganandmorgan.com">ada@morganandmorgan.com</a>. Attorney Advertising.
-          Prior results do not guarantee a similar outcome. Not licensed to practice in all states.
-          Communication through this website may not constitute the formation of an
-          attorney-client relationship.
+          <a href="tel:+19293993134">(929) 399-3134</a> or
+          <a href="mailto:NY@spineandneurosurgery.com">NY@spineandneurosurgery.com</a>.
+          This website provides educational medical guidance and does not replace emergency care.
+          Results and recommendations may vary depending on individual medical circumstances.
         </p>
         <button type="button" class="privacy-btn">
           <span class="privacy-btn__icon" aria-hidden="true">
@@ -146,7 +129,7 @@
         </button>
       </div>
       <div class="copyright-row">
-        <span>© {{ year }} Morgan and Morgan, P.A. All rights reserved</span>
+        <span>© {{ year }} For The People Clinic All rights reserved</span>
         <span class="copyright-links">
           <a href="#privacy">Privacy Policy</a>
           <a href="#terms">Disclaimers and Terms of Use</a>
@@ -157,35 +140,41 @@
 </template>
 
 <script setup lang="ts">
+import { SITE_OFFICES } from '~/constants/offices'
+
 const year = new Date().getFullYear()
+const offices = SITE_OFFICES
 
 const socials = [
   {
     label: 'X',
-    href: '#',
     path: 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'
   },
   {
     label: 'Facebook',
-    href: '#',
     path: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z'
   },
   {
-    label: 'YouTube',
-    href: '#',
-    path: 'M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z'
-  },
-  {
-    label: 'Instagram',
-    href: '#',
-    path: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z'
-  },
-  {
     label: 'LinkedIn',
-    href: '#',
     path: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'
   }
 ]
+
+function sharePage(platform: string) {
+  if (typeof window === 'undefined') return
+
+  const url = encodeURIComponent(window.location.href)
+  const text = encodeURIComponent('For The People Clinic — Injury Recovery & Medical Guidance')
+  const shareUrls: Record<string, string> = {
+    X: `https://x.com/intent/post?text=${text}&url=${url}`,
+    Facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+    LinkedIn: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+  }
+  const shareUrl = shareUrls[platform]
+  if (shareUrl) {
+    window.open(shareUrl, '_blank', 'noopener,noreferrer,width=720,height=640')
+  }
+}
 </script>
 
 <style scoped>
@@ -334,11 +323,14 @@ const socials = [
 .social__btn {
   width: 2.5rem;
   height: 2.5rem;
+  padding: 0;
+  border: 0;
   border-radius: 6px;
   background: #e8eaed;
   color: #374151;
   display: grid;
   place-items: center;
+  cursor: pointer;
   transition: background 0.15s ease;
 }
 
@@ -528,8 +520,43 @@ const socials = [
   color: #4b5563;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem 0.65rem;
-  align-items: baseline;
+  gap: 0.75rem 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.office-line__list {
+  display: grid;
+  gap: 0.55rem;
+  flex: 1 1 18rem;
+}
+
+@media (min-width: 720px) {
+  .office-line__list {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 1.5rem;
+  }
+}
+
+.office-line__item {
+  margin: 0;
+  display: grid;
+  gap: 0.15rem;
+}
+
+.office-line__item strong {
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.office-line__item a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.office-line__item a:hover {
+  text-decoration: underline;
 }
 
 .office-link {

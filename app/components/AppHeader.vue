@@ -3,22 +3,22 @@
     <div class="header__inner container">
       <a href="/" class="header__logo" aria-label="Home">
         <span class="logo-badge">
-          <span class="logo-badge__title">MORGAN &amp; MORGAN</span>
-          <span class="logo-badge__tag">AMERICA'S LARGEST INJURY LAW FIRM</span>
+          <span class="logo-badge__title">FOR THE PEOPLE CLINIC</span>
+          <span class="logo-badge__tag">INJURY RECOVERY &amp; MEDICAL GUIDANCE</span>
         </span>
       </a>
 
       <nav class="header__nav" aria-label="Primary">
-        <NuxtLink to="/our-results">Our Results</NuxtLink>
+        <NuxtLink to="/recovery-stories">Recovery Stories</NuxtLink>
         <NuxtLink to="/locations">Locations</NuxtLink>
         <div class="header__nav-item header__nav-item--mega">
           <a
-            href="#practice"
+            href="/injury-recovery-guides"
             class="header__nav-trigger has-chevron"
             aria-haspopup="true"
-            title="业务领域"
+            title="Injury recovery guides"
           >
-            Practice Areas
+            Injury Recovery Guides
           </a>
           <div class="practice-menu" aria-label="Practice areas">
             <ul class="practice-menu__list">
@@ -86,15 +86,16 @@
 
       <div class="header__tools">
         <NuxtLink to="/blog" class="header__blog-mobile">Blog</NuxtLink>
-        <button type="button" class="icon-btn" aria-label="Search">
+        <button type="button" class="icon-btn" aria-label="Search" aria-haspopup="dialog" :aria-expanded="isSearchOpen" @click="isSearchOpen = true">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="7" />
             <path d="M20 20l-3-3" />
           </svg>
         </button>
-        <a class="header__phone" href="tel:+18448278082">(844) 827-8082</a>
+        <a class="header__phone" href="tel:+19293993134">(929) 399-3134</a>
       </div>
     </div>
+    <SiteSearchOverlay v-model="isSearchOpen" />
   </header>
 </template>
 
@@ -102,6 +103,7 @@
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 
 const route = useRoute()
+const isSearchOpen = ref(false)
 /** Scroll position; only used on home to toggle transparent vs solid header. */
 const scrollY = ref(0)
 
@@ -165,30 +167,30 @@ function isInternalRoute(href: string) {
 
 /** Order matches design reference: scrollable full list with chevrons where nested menus apply. */
 const practiceAreas: PracticeAreaItem[] = [
-  { label: 'Car Accident', href: '/practice-areas/car-accident' },
-  { label: 'Slip and Fall', href: '/practice-areas/slip-and-fall' },
+  { label: 'Car Crash Recovery', href: '/practice-areas/car-accident' },
+  { label: 'Fall Injury Recovery', href: '/practice-areas/slip-and-fall' },
   // { label: "Workers' Compensation", href: '#practice' },
-  { label: 'Truck Accidents', href: '/practice-areas/truck-accident' },
-  { label: 'Motorcycle Accidents', href: '/practice-areas/motorcycle-accident' },
-  { label: 'Personal Injury', href: '/practice-areas/personal-injury' },
+  { label: 'Truck Crash Recovery', href: '/practice-areas/truck-accident' },
+  { label: 'Motorcycle Injury Recovery', href: '/practice-areas/motorcycle-accident' },
+  { label: 'General Injury Recovery', href: '/practice-areas/personal-injury' },
   // { label: 'General Liability', href: '#practice', hasSub: true },
-  { label: 'Medical Malpractice', href: '/practice-areas/medical-malpractice' },
+  { label: 'Medical Harm Recovery', href: '/practice-areas/medical-malpractice' },
   // { label: 'Workplace', href: '#practice', hasSub: true },
-  { label: 'Aviation Accident', href: '/practice-areas/aviation-accident' },
-  { label: 'Boating Accident', href: '/practice-areas/boating-accident' },
-  { label: 'Brain Injury', href: '/practice-areas/brain-injury' },
-  { label: 'Burn Injury', href: '/practice-areas/burn-injury' },
+  { label: 'Aviation Trauma Recovery', href: '/practice-areas/aviation-accident' },
+  { label: 'Boating Injury Recovery', href: '/practice-areas/boating-accident' },
+  { label: 'Brain Injury Follow-Up', href: '/practice-areas/brain-injury' },
+  { label: 'Burn Injury Recovery', href: '/practice-areas/burn-injury' },
   // { label: 'Business Litigation', href: '#practice', hasSub: true },
   // { label: 'Catastrophic Event', href: '#practice', hasSub: true },
   // { label: 'Child Sexual Abuse', href: '#practice' },
   // { label: 'Class Actions', href: '#practice' },
   {
-    label: 'Dangerous Drugs',
+    label: 'Medication Safety',
     hasSub: true,
     children: [
-      { label: 'Depo-Provera', href: '/practice-areas/dangerous-drugs/depo-provera' },
-      { label: 'View All', href: '/practice-areas/dangerous-drugs' },
-      { label: 'Weight Loss Drug', href: '/practice-areas/dangerous-drugs/weight-loss-drug' },
+      { label: 'Depo-Provera Safety Guide', href: '/practice-areas/dangerous-drugs/depo-provera' },
+      { label: 'All Medication Safety Guides', href: '/practice-areas/dangerous-drugs' },
+      { label: 'GLP-1 & Weight Loss Drug Guide', href: '/practice-areas/dangerous-drugs/weight-loss-drug' },
     ],
   },
   // { label: 'Data Privacy', href: '#practice', hasSub: true },
@@ -199,9 +201,9 @@ const practiceAreas: PracticeAreaItem[] = [
   // { label: 'Insurance Disputes', href: '#practice', hasSub: true },
   // { label: 'Mass Arbitration', href: '#practice' },
   // { label: 'Mass Tort', href: '#practice', hasSub: true },
-  { label: 'Mesothelioma', href: '/practice-areas/mesothelioma' },
-  { label: 'Spinal Cord Injury', href: '/practice-areas/spinal-cord-injury' },
-  { label: 'View All', href: '/practice-areas' },
+  { label: 'Mesothelioma Care Pathway', href: '/practice-areas/mesothelioma' },
+  { label: 'Spinal Cord Injury Follow-Up', href: '/practice-areas/spinal-cord-injury' },
+  { label: 'All Recovery Guides', href: '/injury-recovery-guides' },
 ]
 </script>
 

@@ -19,12 +19,12 @@ definePageMeta({
 useBlogScrollCache()
 
 useHead({
-  title: 'Law School | Morgan & Morgan Blog',
+  title: 'Law School | For The People Clinic Blog',
   meta: [
     {
       name: 'description',
       content:
-        'Resources, guides, and insights on injury law, safety, and the latest cases from Morgan & Morgan.',
+        'Resources, guides, and insights on injury law, safety, and the latest cases from For The People Clinic.',
     },
   ],
 })

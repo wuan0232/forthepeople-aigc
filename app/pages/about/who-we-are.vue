@@ -1,3 +1,3 @@
 <template>
-  <AboutPageShell title="Who We Are" description="America's largest injury law firm, dedicated to representing the people, not the powerful." />
+  <AboutPageShell title="Who We Are" description="Patient Care & Medical Guidance, dedicated to representing the people, not the powerful." />
 </template>

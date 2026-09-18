@@ -1,3 +1,3 @@
 <template>
-  <AboutPageShell title="Careers" description="Join America's largest injury law firm. Explore open roles and culture." />
+  <AboutPageShell title="Careers" description="Join Patient Care & Medical Guidance. Explore open roles and culture." />
 </template>

@@ -1,3 +1,3 @@
 <template>
-  <AboutPageShell title="TV Commercials" description="Watch Morgan &amp; Morgan commercials and campaigns." />
+  <AboutPageShell title="TV Commercials" description="Watch For The People Clinic commercials and campaigns." />
 </template>
