@@ -3,7 +3,10 @@
     <div class="container">
       <div class="or-ways__head">
         <h2 id="or-ways-heading">Ways We Can Help</h2>
-        <p>From trucking accidents to pedestrian injuries, Morgan & Morgan has the experience and resources to fight for the compensation you deserve.</p>
+        <p>
+          From crash injuries to medication concerns, For The People Clinic focuses on medical next
+          steps, recovery planning, and clear follow-up guidance.
+        </p>
       </div>
 
       <div class="or-ways__cards">
@@ -11,17 +14,17 @@
           <span class="or-way-card__icon" v-html="card.icon" />
           <h3>{{ card.title }}</h3>
           <p>{{ card.text }}</p>
-          <a :href="card.href">How We Help <span aria-hidden="true">↗</span></a>
+          <a :href="card.href">Recovery guide <span aria-hidden="true">↗</span></a>
         </article>
       </div>
 
       <div class="or-case-types">
         <div class="or-case-types__head">
-          <h3>Over 50 Case Types, Like:</h3>
-          <a href="/practice-areas">View All <span aria-hidden="true">›</span></a>
+          <h3>Injury Recovery Guides, Like:</h3>
+          <a href="/">View All <span aria-hidden="true">›</span></a>
         </div>
         <ul>
-          <li v-for="type in caseTypes" :key="type">{{ type }}</li>
+          <li v-for="type in guideTypes" :key="type">{{ type }}</li>
         </ul>
       </div>
     </div>
@@ -31,34 +34,34 @@
 <script setup lang="ts">
 const cards = [
   {
-    title: 'Injured in a car accident?',
-    text: "We've helped thousands recover medical bills, lost wages, and more after crashes caused by negligence.",
+    title: 'Injured in a car crash?',
+    text: 'Use red-flag checks, a 48-hour action list, and clinic follow-up guidance after collisions.',
     href: '/practice-areas/car-accident',
     icon: '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18l2-6h12l2 6"/><path d="M4 18h20v5H4z"/><circle cx="8" cy="23" r="2"/><circle cx="20" cy="23" r="2"/><path d="M24 9l4-4M25 5h3v3"/></svg>',
   },
   {
     title: 'Hurt in a slip and fall?',
-    text: 'From wet floors to unsafe conditions, we fight to hold property owners accountable for your injuries.',
+    text: 'Learn which fall injuries need urgent imaging, concussion monitoring, and safer mobility plans.',
     href: '/practice-areas/slip-and-fall',
     icon: '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><circle cx="14" cy="7" r="3"/><path d="M14 10l-3 7 6 2 3 6M12 17l-6 3M18 13l5 2"/></svg>',
   },
   {
     title: 'Injured on the job?',
-    text: 'We guide workers through the claims process to secure the benefits they deserve for workplace injuries.',
+    text: 'Get medical restriction guidance and recovery planning before returning to demanding duties.',
     href: '/practice-areas/workers-compensation',
     icon: '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4v6M9 8l4 4M23 8l-4 4"/><rect x="9" y="13" width="14" height="14" rx="2"/><path d="M13 18h6M13 22h4"/></svg>',
   },
 ]
 
-const caseTypes = [
-  'Social Security',
+const guideTypes = [
+  'Brain Injury',
   'Dangerous Drugs',
-  'Defective Products',
-  'Medical Malpractice',
-  'Nursing Home Abuse',
-  'Labor & Employment',
-  'Truck Accidents',
-  'Class Actions',
+  'Burn Injury',
+  'Medical Harm',
+  'Spinal Cord Injury',
+  'Truck Crash Recovery',
+  'Motorcycle Injury',
+  'Mesothelioma Care Pathway',
 ]
 </script>
 

@@ -10,12 +10,12 @@
 
 <script setup lang="ts">
 useHead({
-  title: 'Our Results | Morgan & Morgan',
+  title: 'Recovery Stories | For The People Clinic',
   meta: [
     {
       name: 'description',
       content:
-        'Explore Morgan & Morgan case results, major verdicts, settlements, and the ways our attorneys fight for clients.',
+        'Patient-focused recovery stories from For The People Clinic: post-injury follow-up, symptom monitoring, rehab pathways, and practical medical next steps.',
     },
   ],
 })

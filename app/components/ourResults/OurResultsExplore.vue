@@ -2,15 +2,18 @@
   <section id="explore-results" class="or-explore" aria-labelledby="or-explore-heading">
     <div class="container">
       <header class="or-explore__head">
-        <h2 id="or-explore-heading">Explore Big Results</h2>
-        <p>We've built a reputation that corporations know well: we fight for what's fair, taking it to court if necessary.</p>
+        <h2 id="or-explore-heading">Explore Recovery Pathways</h2>
+        <p>
+          These stories highlight practical medical next steps—symptom monitoring, documentation, and
+          clinic follow-up—not courtroom outcomes.
+        </p>
       </header>
 
       <div class="or-explore__grid">
         <img
           class="or-explore__photo"
-          src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=900&q=85&fit=crop"
-          alt="Attorneys and client after a case result"
+          src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&q=85&fit=crop"
+          alt="Clinician reviewing a patient recovery plan"
           width="620"
           height="560"
           loading="lazy"
@@ -18,38 +21,41 @@
         <div class="or-explore__copy">
           <h3>MEET CEMRAN B.</h3>
           <p>
-            Cemran was rear-ended while driving on an expressway. She sustained several painful and permanent injuries to her neck and lower back, requiring extensive treatment and surgery. She won a verdict of $2.6M.
+            Cemran was rear-ended on an expressway and developed lasting neck and lower-back pain.
+            With structured follow-up, imaging review, and a staged rehab plan, she regained safer
+            daily function and clearer return-to-activity guidance.
           </p>
 
           <div class="or-offer">
             <div class="or-offer__x">
-              <strong>13x</strong>
-              <span>Insurance Offer</span>
+              <strong>5</strong>
+              <span>Step Care Path</span>
             </div>
-            <div class="or-offer__bars" aria-label="Insurance offer compared with verdict">
+            <div class="or-offer__bars" aria-label="Early visit compared with structured follow-up">
               <div class="or-offer__row or-offer__row--small">
                 <span></span>
-                <p><strong>$225,000</strong> insurance offer</p>
+                <p><strong>Day 1</strong> urgent evaluation</p>
               </div>
               <div class="or-offer__row or-offer__row--large">
                 <span></span>
-                <p><strong>$2,668,652</strong> verdict</p>
+                <p><strong>Week 1–4</strong> clinic + rehab plan</p>
               </div>
             </div>
           </div>
 
           <div class="or-explore__actions">
-            <button type="button" disabled aria-label="Previous case">←</button>
-            <button type="button" aria-label="Next case">→</button>
+            <NuxtLink to="/medical/what-to-do" class="or-explore__guide">Open the 5-step guide</NuxtLink>
           </div>
         </div>
       </div>
 
-      <a href="#contact" class="or-explore__more">View more cases <span aria-hidden="true">↗</span></a>
+      <NuxtLink to="/about/meet-our-doctors" class="or-explore__more">
+        Meet our clinicians <span aria-hidden="true">↗</span>
+      </NuxtLink>
       <p class="or-explore__note">
-        Results may vary depending on your particular facts and legal circumstances. Prior results do not guarantee a similar outcome.
-        <br />
-        The attorneys shown in these photos may not be licensed in your state. To find an attorney licensed in your area, please visit our attorney page.
+        Stories are educational and anonymized for privacy. They are not a substitute for emergency
+        care or individualized medical advice. If symptoms are severe or worsening, seek urgent care
+        first.
       </p>
     </div>
   </section>
@@ -72,7 +78,7 @@
 
 .or-explore__head h2 {
   margin: 0 0 1rem;
-  font-size: clamp(2.6rem, 6vw, 4.8rem);
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
   line-height: 0.95;
   font-weight: 900;
   letter-spacing: -0.04em;
@@ -81,7 +87,7 @@
 .or-explore__head p {
   margin: 0 auto;
   max-width: 45rem;
-  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
   line-height: 1.35;
   color: #34383f;
 }
@@ -185,6 +191,9 @@
   background: transparent;
   font-size: 0.95rem;
   line-height: 1.15;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .or-offer__row--large p {
@@ -193,30 +202,23 @@
 
 .or-offer__row strong {
   display: block;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
 }
 
 .or-explore__actions {
-  display: flex;
-  gap: 0.55rem;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
 }
 
-.or-explore__actions button {
-  width: 2.3rem;
-  height: 2.3rem;
-  border: 0;
-  border-radius: 8px;
-  background: #020617;
+.or-explore__guide {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.55rem 1rem;
+  border-radius: 6px;
+  background: #071f3c;
   color: #fff;
-  font-size: 1.25rem;
-  font-weight: 900;
-  cursor: pointer;
-}
-
-.or-explore__actions button:disabled {
-  background: #a6a8ac;
-  cursor: not-allowed;
+  font-weight: 800;
+  text-decoration: none;
 }
 
 .or-explore__more {
@@ -244,7 +246,7 @@
   margin: 0 auto;
   max-width: 44rem;
   text-align: center;
-  font-size: 0.66rem;
+  font-size: 0.75rem;
   line-height: 1.45;
   color: #8b8f96;
 }

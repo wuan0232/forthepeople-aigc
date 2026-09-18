@@ -2,17 +2,17 @@
   <section class="or-hero" aria-labelledby="or-hero-heading">
     <div class="container">
       <div class="or-hero__head">
-        <h1 id="or-hero-heading">$30 BILLION RECOVERED<br />FOR CLIENTS</h1>
-        <p>Every verdict and settlement is a life back on track.</p>
-        <a href="#contact" class="or-hero__cta">See if you qualify</a>
+        <h1 id="or-hero-heading">RECOVERY STORIES<br />FOCUSED ON CARE</h1>
+        <p>Real patient pathways after injury—stabilization, follow-up, and getting daily life back on track.</p>
+        <a href="/medical/what-to-do" class="or-hero__cta">Start your medical action plan</a>
       </div>
 
-      <div class="or-results" aria-label="Featured case results">
+      <div class="or-results" aria-label="Featured recovery stories">
         <div class="or-results__track" :style="{ transform: `translateX(-${activePage * 100}%)` }">
           <div v-for="(page, pageIndex) in pages" :key="pageIndex" class="or-results__page">
             <article
               v-for="item in page"
-              :key="item.amount + item.title"
+              :key="item.highlight + item.title"
               class="or-result-card"
               :class="{ 'or-result-card--flipped': isFlipped(item) }"
             >
@@ -24,7 +24,7 @@
                   </div>
                   <div class="or-result-card__body">
                     <span class="or-result-card__icon" v-html="icons[item.icon]" />
-                    <strong>{{ item.amount }}</strong>
+                    <strong>{{ item.highlight }}</strong>
                     <h2>{{ item.title }}</h2>
                   </div>
                   <button type="button" class="or-result-card__link" @click="openCard(item)">
@@ -35,7 +35,7 @@
                 <div class="or-result-card__face or-result-card__face--back">
                   <div class="or-result-card__detail">
                     <h2>{{ item.title }}</h2>
-                    <p>{{ item.detail ?? fallbackDetail(item) }}</p>
+                    <p>{{ item.detail }}</p>
                   </div>
                   <button type="button" class="or-result-card__link" @click="closeCard(item)">
                     Close <span aria-hidden="true">×</span>
@@ -48,19 +48,19 @@
       </div>
 
       <div class="or-results__footer">
-        <div class="or-results__controls" aria-label="Case result pages">
-          <button type="button" :disabled="activePage === 0" aria-label="Previous results" @click="prevPage">←</button>
+        <div class="or-results__controls" aria-label="Recovery story pages">
+          <button type="button" :disabled="activePage === 0" aria-label="Previous stories" @click="prevPage">←</button>
           <button
             type="button"
             :disabled="activePage === pages.length - 1"
-            aria-label="Next results"
+            aria-label="Next stories"
             @click="nextPage"
           >
             →
           </button>
         </div>
-        <p>Results may vary depending on your particular facts and legal circumstances.</p>
-        <a href="#explore-results" class="or-results__more">View more cases <span aria-hidden="true">↗</span></a>
+        <p>Stories are educational examples. Individual recovery timelines vary and are not medical advice.</p>
+        <a href="#explore-results" class="or-results__more">View more stories <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
@@ -73,10 +73,10 @@ type IconKey = 'group' | 'shield' | 'car' | 'scale' | 'bike' | 'briefcase' | 'fi
 
 type ResultCard = {
   location: string
-  amount: string
+  highlight: string
   title: string
   icon: IconKey
-  detail?: string
+  detail: string
 }
 
 const activePage = ref(0)
@@ -88,173 +88,151 @@ const LocationIcon = {
 
 const pages: ResultCard[][] = [
   [
-    { location: 'New Orleans, LA', amount: '$13,000,000,000', title: 'Deepwater Horizon Oil Spill', icon: 'group' },
-    { location: 'Los Angeles, CA', amount: '$1,800,000,000', title: 'Porter Ranch Gas Leak', icon: 'group' },
-    { location: 'Orlando, FL', amount: '$644,751,855', title: 'Plaintiff v. Soho WP, LLC and BE-1 Concepts Holdings, LLC', icon: 'car' },
-    { location: 'San Francisco, CA', amount: '$425,651,947', title: 'Rodriguez v. Google', icon: 'shield' },
-    { location: 'Nationwide', amount: '$400,000,000', title: 'Dicamba Herbicide Settlement', icon: 'group' },
-    { location: 'Northern District of Georgia', amount: '$380,500,000', title: 'Equifax, Inc., Customer Data Security Breach Litigation', icon: 'shield' },
-    { location: 'Eastern District of Virginia', amount: '$190,000,000', title: 'Capital One Consumer Data Security Breach Litigation', icon: 'shield' },
-    { location: 'Alachua, FL', amount: '$120,000,000', title: 'Jacob T. Rodgers v. City of Gainesville', icon: 'car' },
-    { location: 'Northern District of California', amount: '$117,500,000', title: 'Yahoo! Inc. Customer Data Security Breach Litigation', icon: 'shield' },
-  ],
-  [
-    { location: 'Miami, FL', amount: '$100,000,000', title: 'Campbell v. Monte Carlo of Miami Condo Association', icon: 'briefcase' },
-    { location: 'Volusia County, FL', amount: '$90,800,000', title: 'Estate of Frank Townsend v. RJ Reynolds, et al.', icon: 'group' },
-    { location: 'Washington, DC', amount: '$63,000,000', title: 'U.S. OPM Data Security Breach Litigation', icon: 'shield' },
-    { location: 'S.D. NY', amount: '$60,000,000', title: 'Morgan Stanley Data Security Litigation', icon: 'shield' },
-    { location: 'Tampa, FL', amount: '$45,000,000', title: 'MGM Resorts Data Breach', icon: 'group' },
-    { location: 'Escambia, FL', amount: '$40,000,000', title: 'Estate of Patricia Allen v. RJ Reynolds, et al.', icon: 'group' },
-    { location: 'Hillsborough, FL', amount: '$37,850,000', title: 'Coleman v. Martinez', icon: 'briefcase' },
-    { location: 'Nashville, TN', amount: '$31,894,263', title: 'Gooch v. Smyrna Ready Mix Concrete', icon: 'car' },
-    { location: 'Jacksonville, FL', amount: '$30,600,000', title: 'Scott Winckler vs. Suzuki Motor Corporation', icon: 'bike' },
-  ],
-  [
     {
-      location: 'Tampa, FL',
-      amount: '$30,000,000',
-      title: 'Conrad v. Woodward',
-      icon: 'fire',
-      detail:
-        'In 2024, a Tampa jury awarded $30.1 million in Conrad v. Woodward following a devastating fire. Morgan & Morgan attorney Ryan Will helped hold the responsible parties accountable.',
-    },
-    {
-      location: 'Philadelphia, PA',
-      amount: '$29,045,285',
-      title: 'Heath J. Wilson v. JM Lapp Plumbing and Heating',
+      location: 'Flushing, NY',
+      highlight: '48-HR PLAN',
+      title: 'Car crash → delayed neck pain',
       icon: 'car',
       detail:
-        'In 2024, a Philadelphia jury awarded $29 million to cyclist Heath Wilson after a plumber’s truck struck him at an intersection, leaving him with catastrophic brain injuries.',
+        'After a rear-end crash, symptoms worsened on day two. A structured 48-hour checklist, imaging review, and clinic follow-up helped stabilize pain and guide safer activity limits.',
     },
     {
-      location: 'Orlando, FL',
-      amount: '$25,927,183',
-      title: 'Brink v. Ruiz',
+      location: 'Syracuse, NY',
+      highlight: 'CONCUSSION CARE',
+      title: 'Fall injury → fogginess & sleep change',
+      icon: 'shield',
+      detail:
+        'A slip-and-fall led to delayed headache and concentration trouble. Daily symptom logging and neurology-oriented follow-up clarified when rest versus gradual return-to-activity was appropriate.',
+    },
+    {
+      location: 'Brooklyn, NY',
+      highlight: 'WOUND FOLLOW-UP',
+      title: 'Motorcycle road rash recovery',
       icon: 'bike',
       detail:
-        'In 2024, a Florida jury awarded $25 million to a motorcyclist who suffered a traumatic brain injury in a crash. Morgan & Morgan fought for his life-changing injuries.',
+        'Deep abrasions needed disciplined dressing care and infection checks. Clinic reassessment caught stalled healing early and adjusted the wound-care plan.',
     },
     {
-      location: 'Orlando, FL',
-      amount: '$20,839,758',
-      title: 'Hurley v. John Mina',
-      icon: 'car',
+      location: 'Queens, NY',
+      highlight: 'ORTHO PATH',
+      title: 'Ankle sprain that would not bear weight',
+      icon: 'briefcase',
       detail:
-        'In 2023, an Orlando jury awarded $20.8 million to a motorcyclist injured in a serious crash. Morgan & Morgan attorney Ryan Rudd fought to ensure fair compensation.',
+        'Initial urgent care was reassuring, but instability persisted. Orthopedic follow-up and a graded mobility plan reduced reinjury risk during return to work.',
     },
     {
-      location: 'San Francisco, CA',
-      amount: '$20,000,000',
-      title: 'Smith v. Apple, Inc.',
+      location: 'Long Island, NY',
+      highlight: 'MULTI-VISIT',
+      title: 'Truck impact → multi-system monitoring',
       icon: 'group',
       detail:
-        'In 2024, Apple agreed to a $20 million settlement resolving claims that certain Apple Watch models were prone to battery swelling and screen damage.',
+        'High-energy trauma required coordinated checks for chest, spine, and soft-tissue symptoms. Centralizing records made specialty sequencing clearer.',
     },
     {
-      location: 'Lawrenceville, GA',
-      amount: '$19,000,000',
-      title: 'Entrekin, Amos vs Comcast',
+      location: 'Manhattan, NY',
+      highlight: 'REHAB STEPS',
+      title: 'Back strain after workplace lift',
       icon: 'scale',
       detail:
-        'In 2023, a Gwinnett County jury awarded nearly $19M to the family of Amos Entrekin after a Comcast work van ran a red light and crashed into his car.',
+        'Clear lifting limits, therapy timing, and a written work-status note helped the patient progress without rushing back to full duty too early.',
     },
     {
-      location: 'Florida',
-      amount: '$18,888,875',
-      title: 'Van Zyl v. Kincaid',
-      icon: 'car',
-      detail:
-        'In 2024, a Florida jury awarded $18.8 million to Deon Van Zyl after a negligent driver cut him off, causing a crash that left him permanently wheelchair-bound.',
-    },
-    {
-      location: 'Gainesville, FL',
-      amount: '$17,000,000',
-      title: 'Gainesville Apartment Fire',
+      location: 'Bronx, NY',
+      highlight: 'BURN CARE',
+      title: 'Kitchen scald → dressing & infection watch',
       icon: 'fire',
       detail:
-        'In 2025, an Alachua County jury awarded $17 million to a mother and child badly burned in a Gainesville apartment fire caused by preventable safety failures.',
+        'A care log for dressings, pain, and fever checks supported safer home recovery and timely clinic rechecks when redness spread.',
     },
     {
-      location: 'Jacksonville, FL',
-      amount: '$16,422,353',
-      title: 'Jessica Long vs. The Travelers Home and Marine Insurance Company',
+      location: 'Staten Island, NY',
+      highlight: '5-STEP GUIDE',
+      title: 'Family organizing post-ER records',
+      icon: 'shield',
+      detail:
+        'Discharge papers, imaging portals, and medication lists were gathered into one packet before the first clinic visit—improving questions and second-opinion readiness.',
+    },
+    {
+      location: 'Westchester, NY',
+      highlight: 'RETURN PLAN',
+      title: 'Boating injury → breathing watch',
       icon: 'car',
       detail:
-        'In 2022, a Jacksonville jury awarded $16.4 million to Jessica Long after a devastating car crash left her with lasting injuries.',
+        'After water exposure, delayed cough and fatigue triggered urgent reassessment. Follow-up clarified when returning to water activity was medically appropriate.',
     },
   ],
   [
     {
-      location: 'Orange County, FL',
-      amount: '$14,500,000',
-      title: 'Good Gateway LLC and SEG Gateway LLC',
+      location: 'Flushing, NY',
+      highlight: 'IMAGING REVIEW',
+      title: 'Missed fracture concern after a fall',
       icon: 'briefcase',
       detail:
-        'In 2014, an Orange County jury awarded $14.5 million to Good Gateway LLC and SEG Gateway LLC after developers proved they were defrauded out of membership interests.',
+        'Persistent inability to walk prompted imaging reassessment. Confirming the fracture early changed bracing and weight-bearing instructions.',
     },
     {
-      location: 'Volusia, FL',
-      amount: '$13,500,000',
-      title: 'Brown v. R. J. Reynolds Tobacco Company',
+      location: 'Syracuse, NY',
+      highlight: 'SPECIALIST MAP',
+      title: 'Head injury with stalled recovery',
+      icon: 'shield',
+      detail:
+        'When fogginess lasted beyond the first week, the clinic helped sequence neurology and rehab input instead of waiting indefinitely.',
+    },
+    {
+      location: 'Albany, NY',
+      highlight: 'PAIN STRATEGY',
+      title: 'Soft-tissue injury sleep disruption',
       icon: 'group',
       detail:
-        'In 2024, a Florida jury awarded $13.5 million to the family of Arthur Brown, who died from COPD after decades of cigarette addiction.',
+        'A practical plan balanced rest, activity, and medication side-effect monitoring so pain control supported function—not just overnight relief.',
     },
     {
-      location: 'Kissimmee, FL',
-      amount: '$12,206,398',
-      title: 'Woida, Joanne vs Evers Wood Products Inc. and Thomas, Rosetta',
-      icon: 'car',
-      detail:
-        'In 2023, an Osceola County jury awarded $12.2 million to Joanne Woida after a dump truck struck her car, causing severe neck and back injuries.',
-    },
-    {
-      location: 'Florida',
-      amount: '$12,023,195',
-      title: 'Rausin v. Rodgers',
-      icon: 'car',
-      detail:
-        'In 2024, a Florida jury awarded $12 million to the family of a 13-year-old girl left paraplegic after a reckless driver rear-ended her grandparents’ car.',
-    },
-    {
-      location: 'Philadelphia, PA',
-      amount: '$11,997,285',
-      title: 'Yvette Torres v. Penske, et al.',
-      icon: 'car',
-      detail:
-        'In 2024, a Philadelphia jury awarded $12 million to Yvette Torres, who suffered severe neck and back injuries after being struck by a commercial truck.',
-    },
-    {
-      location: 'Orlando, FL',
-      amount: '$11,391,183',
-      title: 'Olga Mun v. Site Centers Corp., (Target) et. al',
-      icon: 'car',
-      detail:
-        'In 2025, an Orange County jury awarded $11.3 million to a woman who fractured her leg after tripping on an uneven curb at Target in Winter Garden.',
-    },
-    {
-      location: 'Orlando, FL',
-      amount: '$11,000,000',
-      title: 'Estate of Vinh Chung v. AK Family Holdings',
+      location: 'Rochester, NY',
+      highlight: 'HOME SAFETY',
+      title: 'Older adult fall prevention after injury',
       icon: 'scale',
       detail:
-        'In 2025, an Orlando jury awarded $11 million to the estate of Vinh Chung for wrongful death claims after a preventable incident.',
+        'Beyond the acute sprain, follow-up included footwear, lighting, and balance discussion to reduce a second fall while healing.',
     },
     {
-      location: 'Daytona Beach, FL',
-      amount: '$10,766,000',
-      title: 'William Duffey v. Janet Rogier',
-      icon: 'bike',
+      location: 'Buffalo, NY',
+      highlight: 'MEDS CHECK',
+      title: 'Medication reaction after discharge',
+      icon: 'fire',
       detail:
-        'In 2025, a Volusia County jury awarded $10.6 million to Marine Corps veteran William Duffey, who was severely injured when a driver turned into his path.',
+        'New nausea and dizziness after a pain regimen led to clinician review. Adjusting the plan avoided unsafe self-dose changes.',
     },
     {
-      location: 'Fulton, GA',
-      amount: '$10,042,880',
-      title: 'Wright v. Hagos Park, LLC & John Doe Corporation',
+      location: 'Newark, NJ',
+      highlight: 'TIMELINE',
+      title: 'Building a clear injury diary',
       icon: 'briefcase',
       detail:
-        'In 2024, a Fulton County jury awarded $10 million to the family of Sharon Wright, who was fatally shot during an unprovoked attack at an apartment complex.',
+        'Daily notes on pain location, sleep, and activity limits made the first clinic visit more efficient and reduced repeated testing gaps.',
+    },
+    {
+      location: 'Jersey City, NJ',
+      highlight: 'PT START',
+      title: 'Shoulder impact → therapy timing',
+      icon: 'bike',
+      detail:
+        'Waiting too long risked stiffness; starting too early risked flare. Clinic guidance set a safer physical-therapy window.',
+    },
+    {
+      location: 'Yonkers, NY',
+      highlight: 'SECOND LOOK',
+      title: 'Unclear diagnosis after urgent care',
+      icon: 'shield',
+      detail:
+        'A second medical review clarified whether symptoms matched expected recovery or needed additional imaging.',
+    },
+    {
+      location: 'White Plains, NY',
+      highlight: 'CARE TEAM',
+      title: 'Family coordinating multiple visits',
+      icon: 'group',
+      detail:
+        'One coordinating clinician visit helped prioritize orthopedics versus neurology first, cutting down on conflicting instructions.',
     },
   ],
 ]
@@ -285,7 +263,7 @@ function prevPage() {
 }
 
 function cardKey(item: ResultCard) {
-  return `${item.amount}-${item.title}`
+  return `${item.highlight}-${item.title}`
 }
 
 function isFlipped(item: ResultCard) {
@@ -300,10 +278,6 @@ function closeCard(item: ResultCard) {
   const next = new Set(flippedCards.value)
   next.delete(cardKey(item))
   flippedCards.value = next
-}
-
-function fallbackDetail(item: ResultCard) {
-  return `Morgan & Morgan helped clients pursue accountability in ${item.location}, securing ${item.amount} in ${item.title}.`
 }
 </script>
 
@@ -324,14 +298,15 @@ function fallbackDetail(item: ResultCard) {
 .or-hero__head h1 {
   margin: 0;
   font-family: 'Roboto Condensed', Impact, sans-serif;
-  font-size: clamp(3rem, 8vw, 5.25rem);
+  font-size: clamp(2.4rem, 7vw, 4.5rem);
   font-weight: 900;
   line-height: 0.95;
   letter-spacing: -0.025em;
 }
 
 .or-hero__head p {
-  margin: 1.1rem 0 1.5rem;
+  margin: 1.1rem auto 1.5rem;
+  max-width: 36rem;
   font-size: clamp(1rem, 1.7vw, 1.25rem);
   color: rgba(255, 255, 255, 0.88);
 }
@@ -450,8 +425,8 @@ function fallbackDetail(item: ResultCard) {
 
 .or-result-card strong {
   font-family: 'Roboto Condensed', Impact, sans-serif;
-  font-size: clamp(1.7rem, 3.5vw, 2.35rem);
-  line-height: 0.9;
+  font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+  line-height: 0.95;
   color: #0872d9;
 }
 
@@ -502,10 +477,6 @@ function fallbackDetail(item: ResultCard) {
   font-family: inherit;
   text-decoration: none;
   cursor: pointer;
-}
-
-.or-result-card__face--front .or-result-card__link {
-  background: #dceeff;
 }
 
 .or-result-card__face--back .or-result-card__link {

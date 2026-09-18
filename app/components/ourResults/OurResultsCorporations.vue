@@ -2,15 +2,23 @@
   <section class="or-corps" aria-labelledby="or-corps-heading">
     <div class="container">
       <div class="or-corps__head">
-        <h2 id="or-corps-heading">Unafraid of Big Corporations</h2>
-        <p>We've taken on the biggest corporations, and won. When companies disregard customer safety and care, we fight to hold them accountable.</p>
+        <h2 id="or-corps-heading">Patient Education Spotlight</h2>
+        <p>
+          Practical guides that help families understand symptoms, documentation, medication safety,
+          and when to escalate care after injury or suspected medical harm.
+        </p>
       </div>
 
       <div class="or-corps__grid">
-        <article v-for="story in stories" :key="story.title" class="or-story">
+        <NuxtLink
+          v-for="story in stories"
+          :key="story.title"
+          :to="story.href"
+          class="or-story"
+        >
           <img :src="story.img" :alt="story.alt" width="360" height="250" loading="lazy" />
           <h3>{{ story.title }}</h3>
-        </article>
+        </NuxtLink>
       </div>
     </div>
   </section>
@@ -19,24 +27,28 @@
 <script setup lang="ts">
 const stories = [
   {
-    title: 'Morgan & Morgan Files Lawsuit over Allegedly Harmful, Addictive Ultra-Processed Foods',
+    title: '5-Step Medical Action Guide after an injury',
+    href: '/medical/what-to-do',
     img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=520&q=85&fit=crop',
-    alt: 'Medical test for a consumer safety case',
+    alt: 'Clinician reviewing medical notes with a patient',
   },
   {
-    title: "Morgan & Morgan Files Lawsuit Against Boar's Head Over Florida Man's Listeria Death.",
-    img: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=520&q=85&fit=crop',
-    alt: 'Prepared meats on a board',
+    title: 'Medication safety: what to monitor and when to call',
+    href: '/practice-areas/dangerous-drugs',
+    img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=520&q=85&fit=crop',
+    alt: 'Prescription medication bottles on a counter',
   },
   {
-    title: 'Morgan & Morgan Files Lawsuit Over Massive Toxic Plume At Georgia Chemical Plant',
-    img: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=520&q=85&fit=crop',
-    alt: 'Dark smoke from an industrial incident',
+    title: 'Brain injury recovery: delayed symptoms to watch',
+    href: '/practice-areas/brain-injury',
+    img: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=520&q=85&fit=crop',
+    alt: 'Neurological care illustration context',
   },
   {
-    title: '$600M Settlement Reached in East Palestine Train Derailment Litigation',
-    img: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=520&q=85&fit=crop',
-    alt: 'Railway tracks and train cars',
+    title: 'Meet the clinicians coordinating follow-up care',
+    href: '/about/meet-our-doctors',
+    img: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=520&q=85&fit=crop',
+    alt: 'Clinic doctor portrait',
   },
 ]
 </script>
@@ -64,7 +76,7 @@ const stories = [
 .or-corps__head h2 {
   margin: 0;
   max-width: 28rem;
-  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
   line-height: 1.02;
   font-weight: 900;
   letter-spacing: -0.04em;
@@ -87,6 +99,15 @@ const stories = [
   .or-corps__grid {
     grid-template-columns: repeat(4, 1fr);
   }
+}
+
+.or-story {
+  color: inherit;
+  text-decoration: none;
+}
+
+.or-story:hover h3 {
+  text-decoration: underline;
 }
 
 .or-story img {

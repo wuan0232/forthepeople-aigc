@@ -1,50 +1,50 @@
 import type { TestimonialResourceLink, TestimonialReview, TestimonialStory } from '~/types/testimonials'
 
 export const TESTIMONIALS_HERO = {
-  title: 'Client success stories that inspire and drive change',
+  title: 'Patient recovery stories that support practical next steps',
   disclaimer:
-    'Results may vary depending on your particular facts and legal circumstances.',
+    'Individual recovery timelines vary. Stories are educational examples and not a guarantee of similar outcomes or a substitute for personalized medical care.',
   description:
-    'Explore over 150,000 5-star reviews and 800 client testimonials to discover why people trust Morgan & Morgan.',
-  primaryCta: { label: 'Get in touch', href: '#tst-contact' },
-  secondaryCta: { label: 'View all stories', href: '#client-stories' },
+    'Explore patient recovery stories and reviews to understand how For The People Clinic supports medical next steps after injury.',
+  primaryCta: { label: 'Get in touch', href: '/locations' },
+  secondaryCta: { label: 'View all recovery stories', href: '#client-stories' },
 } as const
 
 export const TESTIMONIALS_REVIEWS_INTRO = {
   title:
-    'Read amazing things past clients have said about the team at Morgan & Morgan.',
+    'Read what patients say about practical guidance from For The People Clinic.',
   disclaimer:
-    'Results may vary depending on your particular facts and legal circumstances. Based on Select nationwide reviews',
+    'Individual experiences vary. Based on select patient reviews.',
 } as const
 
 export const testimonialReviews: TestimonialReview[] = [
   {
     quote:
-      'After receiving a denial for disability, I called Morgan & Morgan. I chose them because I trust them. Life has now gotten a lot easier.',
+      'After my injury, the clinic helped me understand which symptoms to watch and what follow-up to schedule. Having a clear plan made daily life feel more manageable.',
     author: 'Robert',
     year: 2026,
   },
   {
     quote:
-      'I reached out to several different law firms, but the one that gave me the most attention and answered my questions immediately was Morgan & Morgan.',
+      'I reached out to several different clinics, but the one that gave me the most attention and answered my questions immediately was For The People Clinic.',
     author: 'Dawn',
     year: 2026,
   },
   {
     quote:
-      'Finally, somebody believed me—somebody listened—and I finally got my settlement.',
+      'Finally, somebody listened closely to what had changed and explained the next medical steps in plain language.',
     author: 'Joanne',
     year: 2026,
   },
   {
     quote:
-      'They treated my family with respect from day one and kept us informed at every step of the case.',
+      'They treated my family with respect from day one and kept us informed about each visit, referral, and recovery milestone.',
     author: 'Marcus',
     year: 2025,
   },
   {
     quote:
-      'I was nervous about hiring a lawyer, but the team made the process straightforward and fought hard for a fair outcome.',
+      'I was nervous about what recovery would involve, but the team made the medical follow-up process straightforward and practical.',
     author: 'Elena',
     year: 2025,
   },
@@ -53,56 +53,56 @@ export const testimonialReviews: TestimonialReview[] = [
 export const testimonialStories: TestimonialStory[] = [
   {
     id: 'antonia',
-    title: "She Didn't Settle for Less – Antonia",
-    text: 'In the ordinary act of stepping into a supermarket, Antonia slipped on a wet floor and suffered serious injuries. Morgan & Morgan helped her hold the store accountable and secure compensation for medical bills and lost wages.',
+    title: 'A Safer Return to Everyday Steps – Antonia',
+    text: 'After a supermarket fall left Antonia with serious pain and mobility concerns, For The People Clinic helped her organize follow-up, monitor changes, and plan a safer return to daily routines.',
     imageSrc:
       'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80&fit=crop',
-    imageAlt: 'Antonia, client story',
+    imageAlt: 'Antonia, patient recovery story',
     variant: 'standard',
   },
   {
     id: 'alysia',
-    title: 'Alysia Trusted Morgan & Morgan to Support Those Who Depend on Her',
-    text: 'Facing the aftermath of a life-altering accident, Alysia needed an advocate who understood what was at stake for her family. Our attorneys fought for the resources she needed to move forward with confidence and stability.',
+    title: 'Alysia Built a Clearer Recovery Plan for Her Family',
+    text: 'After a life-altering accident, Alysia needed a practical way to coordinate symptoms, appointments, and questions for her care team. Her recovery plan gave her family clearer next steps.',
     imageSrc:
       'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&q=80&fit=crop',
-    imageAlt: 'Alysia, client story',
+    imageAlt: 'Alysia, patient recovery story',
     variant: 'large',
   },
   {
     id: 'james',
     title: 'Back on the Road – James',
-    text: 'After a crash left James unable to work, our car accident team pursued compensation for his injuries, vehicle damage, and ongoing care so he could focus on recovery.',
+    text: 'After a crash left James with pain and functional limits, he used structured follow-up, symptom tracking, and activity guidance to focus on a safer recovery.',
     imageSrc:
       'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80&fit=crop',
-    imageAlt: 'James, client story',
+    imageAlt: 'James, patient recovery story',
     variant: 'standard',
   },
   {
     id: 'mike-lynette',
-    title: 'Fighting for What They Deserve – Mike & Lynette',
-    text: 'Severe damage from Hurricane Irma made their house unlivable. Morgan & Morgan helped them navigate a complex insurance dispute and fight for the coverage their family needed to rebuild.',
+    title: 'Finding Steady Support After a Disruptive Event – Mike & Lynette',
+    text: 'After a disruptive event upended their routine, Mike and Lynette used the clinic’s practical guidance to organize appointments, medication questions, and the next steps for their family’s wellbeing.',
     imageSrc:
       'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80&fit=crop',
-    imageAlt: 'Mike and Lynette, client story',
+    imageAlt: 'Mike and Lynette, patient recovery story',
     variant: 'large',
   },
   {
     id: 'sandra',
     title: 'A Workplace Injury, Handled with Care – Sandra',
-    text: 'When Sandra was hurt on the job, she faced mounting medical bills and uncertainty about her benefits. Our team guided her through the claims process and advocated for the support she deserved.',
+    text: 'When Sandra was hurt at work, she needed clear medical restrictions and a practical recovery schedule. Her care plan helped her prepare for follow-up and a safer return to activity.',
     imageSrc:
       'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80&fit=crop',
-    imageAlt: 'Sandra, client story',
+    imageAlt: 'Sandra, patient recovery story',
     variant: 'standard',
   },
   {
     id: 'david',
-    title: 'Standing Up After a Slip and Fall – David',
-    text: 'David injured his back after falling on an unmarked hazard at a retail store. We investigated the scene, documented negligence, and pursued fair compensation for his pain and rehabilitation.',
+    title: 'Regaining Confidence After a Slip and Fall – David',
+    text: 'After a fall caused back pain and disrupted David’s routine, he focused on clinical reassessment, gradual activity guidance, and tracking symptoms that needed more attention.',
     imageSrc:
       'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&q=80&fit=crop',
-    imageAlt: 'David, client story',
+    imageAlt: 'David, patient recovery story',
     variant: 'standard',
   },
 ]
@@ -111,7 +111,7 @@ export const TESTIMONIALS_RESOURCES = {
   eyebrow: 'Resources & Insights',
   title: 'Let us help you get started',
   lead:
-    'Discover the resources you need to succeed with Morgan & Morgan by browsing our resource center, educational videos, digital formats, and customer stories.',
+    'Discover the resources you need to succeed with For The People Clinic by browsing our resource center, educational videos, digital formats, and customer stories.',
   explore: {
     title: 'Explore',
     description:
@@ -129,7 +129,7 @@ export const testimonialsExploreLinks: TestimonialResourceLink[] = [
   { label: 'The Case Process', href: '/about/the-case-process' },
   { label: 'FAQ', href: '/about/faq' },
   { label: 'In the Media', href: '/blog' },
-  { label: 'Results', href: '/our-results' },
+  { label: 'Recovery Stories', href: '/recovery-stories' },
 ]
 
 export const testimonialsLearnLinks: TestimonialResourceLink[] = [
