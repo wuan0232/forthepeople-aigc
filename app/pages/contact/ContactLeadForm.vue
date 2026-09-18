@@ -1,42 +1,43 @@
 <template>
   <aside class="contact-lead" :class="`contact-lead--${variant}`" :aria-labelledby="titleId">
-    <h2 :id="titleId" class="contact-lead__title">{{ title }}</h2>
+    <h2 :id="titleId" class="contact-lead__title">Build Your Recovery Checklist</h2>
     <p v-if="subtitle" class="contact-lead__sub">{{ subtitle }}</p>
-    <form class="contact-lead__form" @submit.prevent>
-      <div class="contact-lead__row2">
-        <input type="text" placeholder="First Name" autocomplete="given-name" />
-        <input type="text" placeholder="Last Name" autocomplete="family-name" />
-      </div>
-      <div class="contact-lead__row2">
-        <input type="tel" placeholder="Phone Number" autocomplete="tel" />
-        <input type="text" placeholder="Zip Code" autocomplete="postal-code" />
-      </div>
-      <input type="email" placeholder="E-mail" autocomplete="email" />
+    <form class="contact-lead__form" @submit.prevent="onSubmit">
       <div class="contact-lead__select-wrap">
-        <select v-model="caseType" class="contact-lead__select" aria-label="Case type">
-          <option value="">- Case Type -</option>
-          <option v-for="opt in caseTypes" :key="opt" :value="opt">{{ opt }}</option>
+        <select v-model="caseType" class="contact-lead__select" aria-label="Injury or medication context">
+          <option value="">- Injury / Medication Context -</option>
+          <option v-for="opt in MEDICAL_INTAKE_OPTIONS" :key="opt.value" :value="opt.value">
+            {{ opt.label }}
+          </option>
         </select>
       </div>
-      <textarea class="contact-lead__textarea" rows="5" placeholder="Please describe what happened" />
+      <div class="contact-lead__select-wrap">
+        <select v-model="timing" class="contact-lead__select" aria-label="When the injury or symptoms began">
+          <option value="">- When did it happen? -</option>
+          <option v-for="opt in MEDICAL_TIMING_OPTIONS" :key="opt.value" :value="opt.value">
+            {{ opt.label }}
+          </option>
+        </select>
+      </div>
+      <fieldset class="contact-lead__status">
+        <legend>Are symptoms worsening or changing?</legend>
+        <label v-for="opt in MEDICAL_WORSENING_OPTIONS" :key="opt.value">
+          <input v-model="worsening" type="radio" name="contact-worsening" :value="opt.value" />
+          <span>{{ opt.label }}</span>
+        </label>
+      </fieldset>
+      <p v-if="formError" class="contact-lead__error" role="alert">{{ formError }}</p>
       <div class="contact-lead__disclaimers">
         <p>
-          By submitting my phone number above I authorize Morgan &amp; Morgan, and its service providers, to deliver
-          calls including using an automatic telephone dialing system or artificial or prerecorded voice, to the number
-          submitted. Consent is not a condition to receive services. Msg frequency varies. Msg &amp; data rates may apply.
-          Upon receipt of any message, reply STOP to unsubscribe.
-        </p>
-        <p>
-          By submitting this form, you agree to our
-          <a href="#terms">Terms</a>
-          &amp; acknowledge our
-          <a href="#privacy">privacy policy</a>.
+          This public tool is educational and does not collect your contact details or medical notes.
+          If symptoms are severe or rapidly worsening, seek urgent medical attention immediately.
         </p>
       </div>
-      <button type="submit" class="contact-lead__cta">See if you qualify</button>
+      <button type="submit" class="contact-lead__cta" :disabled="submitting">
+        {{ submitting ? 'Opening your checklist…' : 'Show My Recovery Checklist' }}
+      </button>
       <p class="contact-lead__micro">
-        Results may vary depending on your particular facts and legal circumstances. © {{ year }} Morgan and Morgan,
-        P.A. All rights reserved.
+        No name, phone number, email, or medical notes are collected by this tool. © {{ year }} For The People Clinic.
       </p>
     </form>
   </aside>
@@ -44,6 +45,12 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
+import {
+  MEDICAL_INTAKE_OPTIONS,
+  MEDICAL_TIMING_OPTIONS,
+  MEDICAL_WORSENING_OPTIONS,
+} from '~/constants/medical/intake'
+import { useMedicalIntake } from '~/composables/useMedicalIntake'
 
 const props = withDefaults(
   defineProps<{
@@ -63,16 +70,13 @@ const props = withDefaults(
 )
 
 const year = new Date().getFullYear()
-const caseType = ref(props.presetCaseType || '')
+const { buildChecklist } = useMedicalIntake()
 
-const caseTypes = [
-  'Car Accident',
-  'Slip and Fall',
-  'Truck Accident',
-  'Motorcycle Accident',
-  'Personal Injury',
-  'Medical Malpractice',
-]
+const caseType = ref(props.presetCaseType || '')
+const timing = ref('')
+const worsening = ref('')
+const formError = ref('')
+const submitting = ref(false)
 
 watch(
   () => props.presetCaseType,
@@ -80,6 +84,22 @@ watch(
     if (v) caseType.value = v
   },
 )
+
+function onSubmit() {
+  formError.value = ''
+  submitting.value = true
+
+  const result = buildChecklist({
+    caseType: caseType.value,
+    timing: timing.value,
+    worsening: worsening.value,
+  })
+
+  if (!result.ok) {
+    formError.value = result.error
+    submitting.value = false
+  }
+}
 </script>
 
 <style scoped>
@@ -193,6 +213,47 @@ watch(
   line-height: 1.45;
 }
 
+.contact-lead__status {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0.8rem;
+  border: 1px solid var(--lead-border);
+  border-radius: 6px;
+}
+
+.contact-lead__status legend {
+  padding: 0 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--lead-sub);
+}
+
+.contact-lead__status label {
+  display: flex;
+  gap: 0.55rem;
+  align-items: flex-start;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--lead-sub);
+  cursor: pointer;
+}
+
+.contact-lead__status input {
+  width: auto;
+  margin: 0.1rem 0 0;
+}
+
+.contact-lead__error {
+  margin: 0;
+  padding: 0.55rem 0.7rem;
+  background: #fee2e2;
+  border-radius: 4px;
+  color: #991b1b;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
 .contact-lead__disclaimers {
   display: grid;
   gap: 0.5rem;
@@ -230,8 +291,13 @@ watch(
   cursor: pointer;
 }
 
-.contact-lead__cta:hover {
+.contact-lead__cta:hover:not(:disabled) {
   filter: brightness(1.04);
+}
+
+.contact-lead__cta:disabled {
+  opacity: 0.85;
+  cursor: wait;
 }
 
 .contact-lead__micro {

@@ -40,7 +40,7 @@
     <div class="container ca-faq__foot">
       <p class="ca-faq__reviewed">
         Reviewed by
-        <a :href="reviewedBy.href ?? '#'">{{ reviewedBy.name }}</a>, Trial Attorney at Morgan &amp; Morgan, on
+        <a :href="reviewedBy.href ?? '#'">{{ reviewedBy.name }}</a>, Trial Attorney at For The People Clinic, on
         {{ reviewedBy.date }}.
       </p>
       <p class="ca-faq__scroll-hint">

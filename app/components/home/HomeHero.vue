@@ -3,9 +3,10 @@
     <div class="hero__bg" aria-hidden="true" />
     <div class="container hero__grid">
       <div class="hero__copy">
-        <h1 class="hero__title">AMERICA'S LARGEST INJURY LAW FIRM™</h1>
+        <h1 class="hero__title">ACCIDENT RECOVERY STARTS WITH A CLEAR MEDICAL PLAN</h1>
         <p class="hero__sub">
-          Get a <span class="ul">FREE case evaluation</span> today.
+          Use a practical <span class="ul">5-step medical action path</span> to stabilize symptoms,
+          document what happened, and plan safer follow-up.
         </p>
 
         <div class="hero__video">
@@ -21,50 +22,50 @@
           </button>
         </div>
 
-        <p class="seen-label">As seen on:</p>
+        <p class="seen-label">Common recovery priorities:</p>
         <div class="seen-logos" role="list">
-          <span>abc NEWS</span>
-          <span>CNN</span>
-          <span>USA TODAY</span>
-          <span>FOX</span>
-          <span>NBC NEWS</span>
+          <span>URGENT RED FLAGS</span>
+          <span>48-HOUR CHECKLIST</span>
+          <span>SYMPTOM TIMELINE</span>
+          <span>SPECIALIST REVIEW</span>
+          <span>RECOVERY FOLLOW-UP</span>
         </div>
       </div>
 
       <aside class="lead-form" aria-labelledby="lead-form-title">
-        <h2 id="lead-form-title" class="lead-form__title">It's Easy to Get Started.</h2>
-        <form class="lead-form__form" @submit.prevent>
-          <div class="row2">
-            <label class="sr-only" for="fn">First Name</label>
-            <input id="fn" type="text" placeholder="First Name" autocomplete="given-name" />
-            <label class="sr-only" for="ln">Last Name</label>
-            <input id="ln" type="text" placeholder="Last Name" autocomplete="family-name" />
-          </div>
-          <div class="row2">
-            <label class="sr-only" for="ph">Phone Number</label>
-            <input id="ph" type="tel" placeholder="Phone Number" autocomplete="tel" />
-            <label class="sr-only" for="zip">Zip Code</label>
-            <input id="zip" type="text" placeholder="Zip Code" autocomplete="postal-code" />
-          </div>
-          <label class="sr-only" for="em">E-mail</label>
-          <input id="em" type="email" placeholder="E-mail" autocomplete="email" />
-          <label class="sr-only" for="case">Case Type</label>
-          <select id="case">
-            <option value="">- Case Type -</option>
-            <option>Car Accident</option>
-            <option>Medical Malpractice</option>
-            <option>Workers' Comp</option>
+        <h2 id="lead-form-title" class="lead-form__title">Build Your Recovery Checklist</h2>
+        <form class="lead-form__form" @submit.prevent="onSubmit">
+          <label class="sr-only" for="case">Injury or medication context</label>
+          <select id="case" v-model="caseType">
+            <option value="">- Injury / Medication Context -</option>
+            <option v-for="opt in MEDICAL_INTAKE_OPTIONS" :key="opt.value" :value="opt.value">
+              {{ opt.label }}
+            </option>
           </select>
-          <label class="sr-only" for="desc">Describe what happened</label>
-          <textarea id="desc" rows="4" placeholder="Please describe what happened." />
+          <label class="sr-only" for="timing">When did it happen?</label>
+          <select id="timing" v-model="timing">
+            <option value="">- When did it happen? -</option>
+            <option v-for="opt in MEDICAL_TIMING_OPTIONS" :key="opt.value" :value="opt.value">
+              {{ opt.label }}
+            </option>
+          </select>
+          <fieldset class="status-fieldset">
+            <legend>Are symptoms worsening or changing?</legend>
+            <label v-for="opt in MEDICAL_WORSENING_OPTIONS" :key="opt.value" class="status-option">
+              <input v-model="worsening" type="radio" name="hero-worsening" :value="opt.value" />
+              <span>{{ opt.label }}</span>
+            </label>
+          </fieldset>
+          <p v-if="formError" class="form-error" role="alert">{{ formError }}</p>
           <p class="disclaimer">
-            By submitting my phone number above I authorize Morgan & Morgan, and its service providers, to deliver calls including using an automatic telephone dialing system or artificial or prerecorded voice, to the number submitted. Consent is not a condition to receive services. Msg frequency varies. Msg & data rates may apply. Upon receipt of any message, reply STOP to unsubscribe.
-<br>
-By submitting this form, you agree to our Terms & acknowledge our privacy policy.
+            This intake provides educational recovery guidance and does not replace emergency care.
+            If symptoms are severe or rapidly worsening, seek urgent medical attention immediately.
           </p>
-          <button type="button" class="cta" @click="scrollToContactForm">See if you qualify</button>
+          <button type="submit" class="cta" :disabled="submitting">
+            {{ submitting ? 'Opening your checklist…' : 'Show My Recovery Checklist' }}
+          </button>
           <p class="micro">
-            Results may vary depending on your particular facts and legal circumstances. ©2026 Morgan and Morgan, P.A. All rights reserved.
+            No name, phone number, email, or medical notes are collected by this tool.
           </p>
         </form>
       </aside>
@@ -73,10 +74,36 @@ By submitting this form, you agree to our Terms & acknowledge our privacy policy
 </template>
 
 <script setup lang="ts">
-import { scrollToSection } from '~/composables/useScrollToSection'
+import { ref } from 'vue'
+import {
+  MEDICAL_INTAKE_OPTIONS,
+  MEDICAL_TIMING_OPTIONS,
+  MEDICAL_WORSENING_OPTIONS,
+} from '~/constants/medical/intake'
+import { useMedicalIntake } from '~/composables/useMedicalIntake'
 
-function scrollToContactForm() {
-  scrollToSection('contact')
+const { buildChecklist } = useMedicalIntake()
+
+const caseType = ref('')
+const timing = ref('')
+const worsening = ref('')
+const formError = ref('')
+const submitting = ref(false)
+
+function onSubmit() {
+  formError.value = ''
+  submitting.value = true
+
+  const result = buildChecklist({
+    caseType: caseType.value,
+    timing: timing.value,
+    worsening: worsening.value,
+  })
+
+  if (!result.ok) {
+    formError.value = result.error
+    submitting.value = false
+  }
 }
 </script>
 
@@ -227,11 +254,50 @@ function scrollToContactForm() {
   min-height: 6rem;
 }
 
+.status-fieldset {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0.75rem;
+  border: 1px solid rgba(147, 197, 253, 0.55);
+  border-radius: 8px;
+}
+
+.status-fieldset legend {
+  padding: 0 0.2rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.status-option {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  font-size: 0.76rem;
+  line-height: 1.3;
+  cursor: pointer;
+}
+
+.status-option input {
+  width: auto;
+  margin: 0.1rem 0 0;
+}
+
 .disclaimer {
   font-size: 0.65rem;
   line-height: 1.45;
   opacity: 0.9;
   margin: 0.25rem 0 0;
+}
+
+.form-error {
+  margin: 0;
+  padding: 0.55rem 0.7rem;
+  background: rgba(254, 226, 226, 0.95);
+  border-radius: 4px;
+  color: #991b1b;
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
 .cta {
@@ -248,8 +314,13 @@ function scrollToContactForm() {
   font-size: 1rem;
 }
 
-.cta:hover {
+.cta:hover:not(:disabled) {
   filter: brightness(1.03);
+}
+
+.cta:disabled {
+  opacity: 0.85;
+  cursor: wait;
 }
 
 .micro {

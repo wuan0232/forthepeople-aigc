@@ -2,68 +2,50 @@
   <section class="fee" :id="sectionId">
     <div class="container fee__grid">
       <div class="fee__copy">
-        <h2 class="fee__title">THE FEE IS FREE®</h2>
-        <p class="fee__sub">Only pay if we win. Contact us 24/7.</p>
+        <h2 class="fee__title">START YOUR 5-STEP MEDICAL ACTION PLAN</h2>
+        <p class="fee__sub">Get a structured recovery checklist and safer follow-up guidance in minutes.</p>
       </div>
       <aside class="lead-form" aria-labelledby="fee-form-title">
-        <h2 id="fee-form-title" class="lead-form__title">It's Easy to Get Started</h2>
+        <h2 id="fee-form-title" class="lead-form__title">Build Your Recovery Checklist</h2>
         <p class="lead-form__sub">
-          Provide a few simple details about your injury and our team will take it from there.
+          Choose three non-identifying details to see a practical recovery checklist. Nothing is submitted or saved.
         </p>
-        <form class="lead-form__form" @submit.prevent>
-          <div class="row2">
-            <input type="text" placeholder="First Name" autocomplete="given-name" />
-            <input type="text" placeholder="Last Name" autocomplete="family-name" />
-          </div>
-          <div class="row2">
-            <input type="tel" placeholder="Phone Number" autocomplete="tel" />
-            <input type="text" placeholder="Zip Code" autocomplete="postal-code" />
-          </div>
-          <input type="email" placeholder="E-mail" autocomplete="email" />
+        <form class="lead-form__form" @submit.prevent="onSubmit">
           <div class="select-wrap">
-            <select v-model="caseType" class="select" aria-label="Case type">
-              <option value="">- Case Type -</option>
-              <option value="Car Accident">Car Accident</option>
-              <option value="Slip and Fall">Slip and Fall</option>
-              <option value="Truck Accident">Truck Accident</option>
-              <option value="Motorcycle Accident">Motorcycle Accident</option>
-              <option value="Personal Injury">Personal Injury</option>
-              <option value="Aviation Accident">Aviation Accident</option>
-              <option value="Boating Accident">Boating Accident</option>
-              <option value="Brain Injury">Brain Injury</option>
-              <option value="Burn Injury">Burn Injury</option>
-              <option value="Mesothelioma">Mesothelioma</option>
-              <option value="Spinal Cord Injury">Spinal Cord Injury</option>
-              <option value="Medical Malpractice">Medical Malpractice</option>
-              <option value="Dangerous Drugs">Dangerous Drugs</option>
-              <option value="Depo-Provera">Depo-Provera</option>
-              <option value="Weight Loss Drug">Weight Loss Drug</option>
+            <select v-model="caseType" class="select" aria-label="Injury or medication context">
+              <option value="">- Injury / Medication Context -</option>
+              <option v-for="opt in MEDICAL_INTAKE_OPTIONS" :key="opt.value" :value="opt.value">
+                {{ opt.label }}
+              </option>
             </select>
           </div>
-          <textarea
-            class="textarea"
-            rows="5"
-            placeholder="Please describe what happened"
-          />
+          <div class="select-wrap">
+            <select v-model="timing" class="select" aria-label="When the injury or symptoms began">
+              <option value="">- When did it happen? -</option>
+              <option v-for="opt in MEDICAL_TIMING_OPTIONS" :key="opt.value" :value="opt.value">
+                {{ opt.label }}
+              </option>
+            </select>
+          </div>
+          <fieldset class="status-fieldset">
+            <legend>Are symptoms worsening or changing?</legend>
+            <label v-for="opt in MEDICAL_WORSENING_OPTIONS" :key="opt.value" class="status-option">
+              <input v-model="worsening" type="radio" :name="`${sectionId}-worsening`" :value="opt.value" />
+              <span>{{ opt.label }}</span>
+            </label>
+          </fieldset>
+          <p v-if="formError" class="form-error" role="alert">{{ formError }}</p>
           <div class="disclaimers">
             <p>
-              By submitting my phone number above I authorize Morgan &amp; Morgan, and its service
-              providers, to deliver calls including using an automatic telephone dialing system or
-              artificial or prerecorded voice, to the number submitted. Consent is not a condition
-              to receive services. Msg frequency varies. Msg &amp; data rates may apply. Upon receipt
-              of any message, reply STOP to unsubscribe.
-            </p>
-            <p>
-              By submitting this form, you agree to our
-              <a href="#terms">Terms</a>
-              &amp; acknowledge our
-              <a href="#privacy">privacy policy</a>.
+              This public tool provides educational recovery guidance and does not replace emergency care.
+              If symptoms are severe or rapidly worsening, seek urgent medical attention immediately.
             </p>
           </div>
-          <button type="submit" class="cta">See if you qualify</button>
+          <button type="submit" class="cta" :disabled="submitting">
+            {{ submitting ? 'Opening your checklist…' : 'Show My Recovery Checklist' }}
+          </button>
           <p class="micro">
-            Results may vary depending on your particular facts and legal circumstances. ©
-            {{ year }} Morgan and Morgan, P.A. All rights reserved.
+            No name, phone number, email, or medical notes are collected by this tool. © {{ year }} For The People Clinic.
           </p>
         </form>
       </aside>
@@ -73,19 +55,29 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
+import {
+  MEDICAL_INTAKE_OPTIONS,
+  MEDICAL_TIMING_OPTIONS,
+  MEDICAL_WORSENING_OPTIONS,
+} from '~/constants/medical/intake'
+import { useMedicalIntake } from '~/composables/useMedicalIntake'
 
 const props = withDefaults(
   defineProps<{
-    /** When set, pre-selects a case type (must match an option value). */
     presetCaseType?: string
-    /** Anchor id for in-page links (e.g. #contact). */
     sectionId?: string
   }>(),
   { presetCaseType: '', sectionId: 'contact' },
 )
 
 const year = new Date().getFullYear()
+const { buildChecklist } = useMedicalIntake()
+
 const caseType = ref(props.presetCaseType || '')
+const timing = ref('')
+const worsening = ref('')
+const formError = ref('')
+const submitting = ref(false)
 
 watch(
   () => props.presetCaseType,
@@ -93,6 +85,22 @@ watch(
     if (v) caseType.value = v
   },
 )
+
+function onSubmit() {
+  formError.value = ''
+  submitting.value = true
+
+  const result = buildChecklist({
+    caseType: caseType.value,
+    timing: timing.value,
+    worsening: worsening.value,
+  })
+
+  if (!result.ok) {
+    formError.value = result.error
+    submitting.value = false
+  }
+}
 </script>
 
 <style scoped>
@@ -250,6 +258,47 @@ watch(
   line-height: 1.45;
 }
 
+.status-fieldset {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 5px;
+}
+
+.status-fieldset legend {
+  padding: 0 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.status-option {
+  display: flex;
+  gap: 0.55rem;
+  align-items: flex-start;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.94);
+  cursor: pointer;
+}
+
+.status-option input {
+  width: auto;
+  margin: 0.15rem 0 0;
+}
+
+.form-error {
+  margin: 0;
+  padding: 0.55rem 0.7rem;
+  background: rgba(254, 226, 226, 0.95);
+  border-radius: 4px;
+  color: #991b1b;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
 .disclaimers {
   display: grid;
   gap: 0.5rem;
@@ -287,8 +336,13 @@ watch(
   margin-top: 0.15rem;
 }
 
-.cta:hover {
+.cta:hover:not(:disabled) {
   filter: brightness(1.04);
+}
+
+.cta:disabled {
+  opacity: 0.85;
+  cursor: wait;
 }
 
 .micro {

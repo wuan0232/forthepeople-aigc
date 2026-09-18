@@ -1,8 +1,15 @@
 export type LawyerProfile = { name: string; img: string }
 
+export type ClinicianProfile = {
+  name: string
+  specialty?: string
+  bio?: string
+  img: string
+}
+
 export type TextBlock = { title: string; text: string }
 
-export type IconCard = TextBlock & { icon: string }
+export type IconCard = TextBlock & { icon: string; href?: string }
 
 export type WaysPiCard = IconCard & {
   linkHref?: string
@@ -55,6 +62,16 @@ export type PracticeAreaMeetProps = {
   lawyers: LawyerProfile[]
   ariaLabel: string
   centered?: boolean
+}
+
+export type PracticeAreaMeetCliniciansProps = {
+  headingId?: string
+  title: string
+  intro: string
+  clinicians: ClinicianProfile[]
+  ariaLabel: string
+  centered?: boolean
+  disclaimer?: string
 }
 
 export type PracticeAreaFaqProps = {
