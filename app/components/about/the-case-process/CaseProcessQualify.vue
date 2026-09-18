@@ -2,9 +2,10 @@
   <section class="tcp-section tcp-qualify" aria-labelledby="tcp-qualify-heading">
     <div class="container">
       <header class="tcp-qualify__intro">
-        <h2 id="tcp-qualify-heading" class="ca-h2">Do I have a case?</h2>
+        <h2 id="tcp-qualify-heading" class="ca-h2">Do I need medical follow-up?</h2>
         <p>
-          Here's what we look for to see if an incident might qualify for a personal injury claim.
+          Here’s what we look for to decide whether urgent care or structured clinic follow-up should
+          come next.
         </p>
       </header>
 
@@ -25,7 +26,7 @@
           <div
             class="tcp-qualify__acc"
             role="region"
-            aria-label="Case qualification criteria"
+            aria-label="Medical follow-up criteria"
             tabindex="0"
           >
             <div v-for="(item, i) in tcpQualifyCriteria" :key="item.q" class="tcp-acc-item">

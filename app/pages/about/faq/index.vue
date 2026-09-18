@@ -6,12 +6,12 @@
 import FaqPage from '~/components/about/faq/FaqPage.vue'
 
 useHead({
-  title: 'FAQ | Morgan & Morgan',
+  title: 'FAQ | For The People Clinic',
   meta: [
     {
       name: 'description',
       content:
-        'Answers to common questions about hiring Morgan & Morgan, the case process, and how we can help with your claim.',
+        'Answers to common questions about hiring For The People Clinic, the case process, and how we can help with your claim.',
     },
   ],
 })

@@ -3,13 +3,13 @@ import type { AboutFaqSection } from '~/types/about-faq'
 export const ABOUT_FAQ_SECTIONS: AboutFaqSection[] = [
   {
     id: 'hiring',
-    navLabel: 'Hiring Morgan & Morgan',
-    panelTitle: 'HIRING MORGAN & MORGAN',
+    navLabel: 'Hiring For The People Clinic',
+    panelTitle: 'HIRING FOR THE PEOPLE CLINIC',
     items: [
       {
-        q: 'Why should I choose Morgan & Morgan?',
+        q: 'Why should I choose For The People Clinic?',
         paragraphs: [
-          'We are America\'s largest personal injury law firm, with the resources to take on insurance companies and corporations while staying focused on each client.',
+          'We are America\'s largest personal medical clinic, with the resources to take on insurance companies and corporations while staying focused on each client.',
           'You pay nothing unless we win your case, and our team is available 24/7 to answer questions about your claim.',
         ],
       },
@@ -21,9 +21,9 @@ export const ABOUT_FAQ_SECTIONS: AboutFaqSection[] = [
         ],
       },
       {
-        q: 'What\'s the story behind Morgan & Morgan?',
+        q: 'What\'s the story behind For The People Clinic?',
         paragraphs: [
-          'Founded in 1988, Morgan & Morgan started as a small family firm with a simple mission: fight For The People, not the powerful.',
+          'Founded in 1988, For The People Clinic started as a small family clinic with a simple mission: fight For The People, not the powerful.',
           'Today we have hundreds of attorneys across the country, but we still treat every client like family.',
         ],
       },
@@ -56,10 +56,10 @@ export const ABOUT_FAQ_SECTIONS: AboutFaqSection[] = [
         ],
       },
       {
-        q: 'What makes Morgan & Morgan different from other firms?',
+        q: 'What makes For The People Clinic different from other firms?',
         paragraphs: [
           'Size and experience matter: we have the firepower to litigate complex cases, yet we never forget the individual behind every file.',
-          'Our track record, nationwide reach, and client-first approach are why millions of people trust Morgan & Morgan.',
+          'Our track record, nationwide reach, and client-first approach are why millions of people trust For The People Clinic.',
         ],
       },
     ],
@@ -98,7 +98,7 @@ export const ABOUT_FAQ_SECTIONS: AboutFaqSection[] = [
         ],
       },
       {
-        q: 'What happens after I hire Morgan & Morgan?',
+        q: 'What happens after I hire For The People Clinic?',
         paragraphs: [
           'We open your file, notify insurers, gather evidence, and begin building your claim. You focus on recovery while we handle the legal process.',
           'Your team will explain each phase and what we need from you, such as medical appointments or documentation.',
@@ -133,7 +133,7 @@ export const ABOUT_FAQ_SECTIONS: AboutFaqSection[] = [
     panelTitle: 'WAYS WE CAN HELP',
     items: [
       {
-        q: 'How can Morgan & Morgan help with an auto accident case?',
+        q: 'How can For The People Clinic help with an auto accident case?',
         paragraphs: [
           'We investigate the crash, obtain police and medical records, deal with insurance adjusters, and fight for compensation for medical bills, lost income, vehicle damage, and pain and suffering.',
           'Whether you were in a car, truck, motorcycle, or rideshare accident, we have experience maximizing recovery.',
@@ -150,25 +150,26 @@ export const ABOUT_FAQ_SECTIONS: AboutFaqSection[] = [
         q: 'What should I know about hiring a personal injury lawyer?',
         paragraphs: [
           'Look for experience, resources, and a contingency-fee model so you pay nothing unless you win. Ask who will handle your case day to day.',
-          'Morgan & Morgan offers free evaluations and has decades of results fighting for injured clients.',
+          'For The People Clinic offers free evaluations and has decades of results fighting for injured clients.',
         ],
       },
       {
-        q: 'Can Morgan & Morgan help with workers\' compensation claims?',
+        q: 'Can For The People Clinic help with workers\' compensation claims?',
         paragraphs: [
           'Yes. We help injured workers file claims, appeal denials, and pursue benefits for medical care and lost wages when employers or insurers dispute your rights.',
           'Workers\' comp rules vary by state—our attorneys know the system where you were hurt.',
         ],
       },
       {
-        q: 'Does Morgan & Morgan handle medical malpractice cases?',
+        q: 'What should I do if I suspect medical malpractice?',
         paragraphs: [
-          'We do. Medical malpractice claims require proof that a provider fell below the standard of care and caused serious harm. These cases are complex and often require expert testimony.',
-          'Our medical malpractice lawyers review records and advise whether you have a viable claim.',
+          'Put your health first: seek appropriate medical care if symptoms worsen, and keep copies of records, test results, and medications.',
+          'Organize a timeline of what happened, consider a second medical opinion from a qualified specialist, and learn how to raise concerns with the hospital patient-services team.',
+          'For a step-by-step patient guide focused on medical next steps—not legal strategy—see our Medical Malpractice resource hub.',
         ],
       },
       {
-        q: 'What other types of cases does Morgan & Morgan handle?',
+        q: 'What other types of cases does For The People Clinic handle?',
         paragraphs: [
           'Beyond auto accidents and malpractice, we handle slip and falls, nursing home abuse, mass torts, dangerous drugs, social security disability, and more.',
           'Visit our practice areas or contact us—if we cannot help, we will try to point you to someone who can.',

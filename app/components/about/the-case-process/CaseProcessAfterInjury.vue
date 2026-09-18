@@ -3,17 +3,17 @@
     <div class="container">
       <header class="tcp-section__head">
         <h2 id="tcp-after-heading" class="ca-h2">After an Injury</h2>
-        <p>
-          I've been hurt. Now what? Facing an injury can be overwhelming. Here are the basics.
-        </p>
+          <p>
+            I've been hurt. Now what? Facing an injury can be overwhelming. Start with medical
+            priorities—urgent signs, documentation, and follow-up.
+          </p>
       </header>
       <div class="tcp-cards">
-        <a
+        <NuxtLink
           v-for="card in tcpAfterInjuryCards"
           :key="card.title"
-          href="#learn-more"
+          :to="card.href"
           class="tcp-card"
-          @click.prevent="onTopicClick"
         >
           <div class="tcp-card__art">
             <img
@@ -26,7 +26,7 @@
             <div v-else v-html="card.art" />
           </div>
           <h3 class="tcp-card__title">{{ card.title }}</h3>
-        </a>
+        </NuxtLink>
       </div>
     </div>
   </section>
@@ -34,11 +34,4 @@
 
 <script setup lang="ts">
 import { tcpAfterInjuryCards } from '~/constants/the-case-process'
-import { useTcpLearnMore } from '~/composables/about/the-case-process/useTcpLearnMore'
-
-const openLearnMore = useTcpLearnMore()
-
-function onTopicClick() {
-  openLearnMore?.()
-}
 </script>

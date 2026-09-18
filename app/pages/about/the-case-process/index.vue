@@ -11,7 +11,7 @@
       <PracticeAreaLearnMore
         heading-id="tcp-learn-heading"
         title="Learn More"
-        intro="Injured and not sure what to do next? We'll guide you through everything you need to know."
+        intro="Injured and not sure what to do next? Explore patient recovery guides, clinic resources, and practical medical checklists."
         :left-links="tcpLearnLeft"
         :right-links="tcpLearnRight"
         :initial-count="5"
@@ -27,12 +27,12 @@ import { nextTick, provide, ref } from 'vue'
 import { TCP_OPEN_LEARN_MORE, tcpLearnLeft, tcpLearnRight } from '~/constants/the-case-process'
 
 useHead({
-  title: 'The Case Process | Morgan & Morgan',
+  title: 'Recovery Process | For The People Clinic',
   meta: [
     {
       name: 'description',
       content:
-        'Injured and not sure what to do next? Morgan & Morgan guides you through the case process—from first steps to working with an attorney.',
+        'Injured and not sure what to do next? For The People Clinic guides you through medical recovery—from urgent warning signs to clinic follow-up and rehab planning.',
     },
   ],
 })

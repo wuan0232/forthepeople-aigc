@@ -1,22 +1,21 @@
 <template>
-  <section class="tcp-section" aria-labelledby="tcp-attorney-heading">
+  <section class="tcp-section" aria-labelledby="tcp-clinic-heading">
     <div class="container">
       <div class="tcp-attorney__grid">
         <div>
-          <h2 id="tcp-attorney-heading" class="ca-h2">Hiring An Attorney 101</h2>
-          <p class="tcp-attorney__sub">All law firms are not the same.</p>
+          <h2 id="tcp-clinic-heading" class="ca-h2">Working With Our Clinic</h2>
+          <p class="tcp-attorney__sub">Medical follow-up should feel clear, not confusing.</p>
         </div>
-        <nav class="tcp-attorney__list" aria-label="Hiring an attorney topics">
-          <a
-            v-for="link in tcpAttorneyLinks"
+        <nav class="tcp-attorney__list" aria-label="Clinic follow-up topics">
+          <NuxtLink
+            v-for="link in tcpClinicLinks"
             :key="link.label"
-            href="#learn-more"
+            :to="link.href"
             class="tcp-attorney__link"
-            @click.prevent="openLearnMore?.()"
           >
             {{ link.label }}
             <span class="tcp-attorney__arrow" aria-hidden="true">→</span>
-          </a>
+          </NuxtLink>
         </nav>
       </div>
     </div>
@@ -35,24 +34,24 @@
         />
       </div>
       <div class="tcp-worth__copy">
-        <h2 id="tcp-worth-heading">How much is my case worth?</h2>
-        <p>The estimated value of a claim is based on something called "damages."</p>
-        <a href="#learn-more" class="link-arrow" @click.prevent="openLearnMore?.()">
-          Here's how it works.
+        <h2 id="tcp-worth-heading">What does my recovery plan include?</h2>
+        <p>
+          A practical plan usually covers symptom monitoring, records, specialist timing, and when to
+          return for urgent reassessment.
+        </p>
+        <NuxtLink to="/medical/what-to-do" class="link-arrow">
+          Open the 5-step medical guide
           <span class="icon-box" aria-hidden="true">
             <svg viewBox="0 0 12 12" width="8" height="8">
               <path d="M2 10L10 2M10 2H4M10 2V8" />
             </svg>
           </span>
-        </a>
+        </NuxtLink>
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { TCP_WORTH_VISUAL_IMAGE, tcpAttorneyLinks } from '~/constants/the-case-process'
-import { useTcpLearnMore } from '~/composables/about/the-case-process/useTcpLearnMore'
-
-const openLearnMore = useTcpLearnMore()
+import { TCP_WORTH_VISUAL_IMAGE, tcpClinicLinks } from '~/constants/the-case-process'
 </script>

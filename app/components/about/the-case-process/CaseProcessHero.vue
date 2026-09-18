@@ -25,7 +25,7 @@
           <h1 id="tcp-hero-heading" class="visually-hidden">The Case Process</h1>
           <p class="tcp-hero__lead">
             Injured and not sure what to do next?<br />
-            Start here. We'll guide you through what you need to know.
+            Start with medical next steps. We'll guide you through what you need to know.
           </p>
         </div>
         <div class="tcp-hero__art" aria-hidden="true">

@@ -56,20 +56,20 @@ export type TcpGlossaryTerm = {
 
 export const tcpAfterInjuryCards: TcpTopicCard[] = [
   {
-    title: 'Next Steps: The Post-Injury Checklist',
-    href: '#learn-more',
+    title: 'Next Steps: The Post-Injury Medical Checklist',
+    href: '/medical/what-to-do',
     art: '',
     imageSrc: TCP_AFTER_INJURY_POST_CHECKLIST_IMAGE,
   },
   {
-    title: 'The Basics: What is a personal injury lawsuit?',
-    href: '#learn-more',
+    title: 'The Basics: What to monitor after an injury',
+    href: '/medical/what-to-do',
     art: '',
     imageSrc: TCP_AFTER_INJURY_BASICS_IMAGE,
   },
   {
-    title: "What Your Insurance Company Doesn't Want You to Know",
-    href: '#learn-more',
+    title: 'Why keeping records and timelines matters',
+    href: '/medical/what-to-do',
     art: '',
     imageSrc: TCP_AFTER_INJURY_INSURANCE_IMAGE,
   },
@@ -77,54 +77,57 @@ export const tcpAfterInjuryCards: TcpTopicCard[] = [
 
 export const tcpQualifyCriteria: FaqItem[] = [
   {
-    q: 'There were damages',
+    q: 'Symptoms that need urgent care',
     paragraphs: [
-      "Personal injury lawsuits are filed to recover 'damages.' These include costs like medical expenses, lost wages, and pain and suffering. An injury must have significant associated costs to qualify for a lawsuit, which vary by state.",
+      'Severe pain, breathing difficulty, neurological changes, uncontrolled bleeding, or rapidly worsening symptoms should be treated as emergencies—not as something to “wait and see.”',
     ],
   },
   {
-    q: 'Someone else was at fault',
+    q: 'Injuries that need structured follow-up',
     paragraphs: [
-      "To get compensation from someone else's insurance company, they must have acted negligently in a way that caused or contributed to your injuries.",
+      'Fractures, concussion signs, deep wounds, and multi-system trauma often need clinic reassessment even when the first visit felt reassuring.',
     ],
   },
   {
-    q: 'There is enough insurance coverage',
+    q: 'A clear medical timeline helps',
     paragraphs: [
-      'Personal injury lawsuits are usually filed against insurance companies, not individuals. Those responsible must have enough insurance coverage to cover the injured person\'s medical expenses or to fully compensate them for their injuries.',
+      'Saving discharge notes, imaging reports, medication lists, and a short symptom diary improves second opinions and safer recovery planning.',
     ],
   },
   {
-    q: 'Think you have a case? Not sure? Get in touch.',
+    q: 'Not sure what to do next? Contact the clinic.',
     paragraphs: [
-      'Share some details about what happened to you and our experienced support staff will review.',
+      'Share what happened, your current symptoms, and any visit records. Our team can help you map practical medical next steps.',
     ],
   },
 ]
 
-export const tcpAttorneyLinks: TcpNavLink[] = [
-  { label: 'Choosing the Right Attorney for You', href: '#learn-more' },
-  { label: 'Injury Attorney Fees: How It Works', href: '#learn-more' },
-  { label: 'Why Do Cases Get Turned Down?', href: '#learn-more' },
-  { label: 'The Morgan & Morgan Difference', href: '#learn-more' },
+export const tcpClinicLinks: TcpNavLink[] = [
+  { label: 'Choosing the Right Follow-up Path', href: '/medical/what-to-do' },
+  { label: 'How Clinic Visits Work After an Injury', href: '/about/meet-our-doctors' },
+  { label: 'When Recovery Needs Specialist Input', href: '/medical/what-to-do' },
+  { label: 'The For The People Clinic Difference', href: '/about/meet-our-doctors' },
 ]
+
+/** @deprecated Use tcpClinicLinks */
+export const tcpAttorneyLinks = tcpClinicLinks
 
 export const tcpWorkingCards: TcpTopicCard[] = [
   {
-    title: 'The Case Process: A Timeline',
-    href: '#learn-more',
+    title: 'Recovery Pathway: A Practical Timeline',
+    href: '/medical/what-to-do',
     art: '',
     imageSrc: TCP_WORKING_TIMELINE_IMAGE,
   },
   {
-    title: 'How Long Does It Take to Get Paid?',
-    href: '#learn-more',
+    title: 'How Long Does Healing Usually Take?',
+    href: '/medical/what-to-do',
     art: '',
     imageSrc: TCP_WORKING_PAID_IMAGE,
   },
   {
-    title: "Dos and Don'ts for Case Success",
-    href: '#learn-more',
+    title: "Dos and Don'ts for Safer Recovery",
+    href: '/medical/what-to-do',
     art: '',
     imageSrc: TCP_WORKING_DOS_DONTS_IMAGE,
   },
@@ -132,64 +135,61 @@ export const tcpWorkingCards: TcpTopicCard[] = [
 
 export const tcpGlossaryTerms: TcpGlossaryTerm[] = [
   {
-    title: 'Damages',
-    text: 'Financial compensation awarded for injury-related costs, including medical expenses, lost wages, and pain and suffering.',
+    title: 'Red Flags',
+    text: 'Urgent warning signs—such as worsening headache, chest pain, confusion, or new weakness—that mean you should seek emergency care right away.',
     icon: '✦',
   },
   {
-    title: 'Negligence',
-    text: 'Failure to exercise reasonable care, resulting in harm or injury to another person.',
+    title: 'Follow-up Visit',
+    text: 'A planned clinic reassessment after an ER or urgent-care visit to check healing, adjust the plan, and decide if specialty care is needed.',
     icon: '▲',
   },
   {
-    title: 'Settlement',
-    text: 'An agreement reached between parties to resolve a lawsuit without going to trial, often involving compensation.',
+    title: 'Imaging',
+    text: 'Tests such as X-ray, CT, or MRI used to evaluate fractures, internal injury, or other findings that a physical exam alone may miss.',
     icon: '☰',
   },
   {
-    title: 'Plaintiff',
-    text: 'The person who initiates a lawsuit seeking legal remedy for damages caused by the defendant.',
+    title: 'Informed Consent',
+    text: 'Clear explanation of a procedure’s purpose, risks, alternatives, and expected recovery before you agree to major treatment decisions.',
     icon: '⚖',
   },
   {
-    title: 'Defendant',
-    text: 'The person or party being sued or accused in a court of law.',
+    title: 'Second Opinion',
+    text: 'Asking another qualified clinician to review your diagnosis or plan—especially useful when recovery stalls or decisions feel unclear.',
     icon: '👤',
   },
   {
-    title: 'Deposition',
-    text: 'Sworn out-of-court testimony given by a witness, recorded for use in the legal process.',
+    title: 'Rehab Pathway',
+    text: 'A staged plan for mobility, pain management, and return-to-activity that matches your injury and daily function goals.',
     icon: '💬',
   },
 ]
 
 export const tcpLearnLeft: LearnLink[] = [
-  { title: 'How Do I Know If My Injury Warrants a Personal Injury Claim?', href: '#' },
-  {
-    title: 'Evidence: How It Makes or Breaks Your Case and How Morgan & Morgan Can Help You Get It',
-    href: '#',
-  },
-  { title: 'Average Settlement for Post-Concussion Syndrome', href: '#' },
-  { title: 'Large and Charged: How the Biggest Injury Law Firm is Easy to Hire', href: '#' },
-  { title: 'What Are "Damages" In Personal Injury?', href: '#' },
-  { title: "3 Reasons Why You Need America's Largest Injury Law Firm to Take on a Big Company", href: '#' },
-  { title: 'Everything You Need to Know About Fees', href: '#' },
-  { title: "Dos and Don'ts for Case Success", href: '#' },
-  { title: 'How Do Voir Dire and Peremptory Strikes Play a Role in Jury Selection?', href: '#' },
-  { title: 'How Long Does It Take to Get a Police Report?', href: '#' },
+  { title: '5-Step Medical Action Guide', href: '/medical/what-to-do' },
+  { title: 'Car Crash Recovery Guide', href: '/practice-areas/car-accident' },
+  { title: 'Slip and Fall Recovery Guide', href: '/practice-areas/slip-and-fall' },
+  { title: 'Truck Crash Recovery Guide', href: '/practice-areas/truck-accident' },
+  { title: 'Brain Injury Patient Guide', href: '/practice-areas/brain-injury' },
+  { title: 'Spinal Cord Injury Guide', href: '/practice-areas/spinal-cord-injury' },
+  { title: 'Meet Our Doctors', href: '/about/meet-our-doctors' },
+  { title: 'Why Preserve Medical Records', href: '/medical/what-to-do' },
+  { title: 'When to Seek Urgent Reassessment', href: '/medical/what-to-do' },
+  { title: 'Patient Blog Resources', href: '/blog/medical-malpractice' },
 ]
 
 export const tcpLearnRight: LearnLink[] = [
-  { title: '10 Things You Should Know Before Filing a Personal Injury Lawsuit', href: '#' },
-  { title: 'Five Questions You Should Ask Before Hiring a Lawyer', href: '#' },
-  { title: 'Hiring a Lawyer for Your Injury Claim: The Key Benefits You Should Know', href: '#' },
-  { title: 'Choosing the right attorney for you', href: '#' },
-  { title: 'How Much Does Hiring a Personal Injury Lawyer Cost?', href: '#' },
-  { title: 'How Much Does Personal Injury Insurance Cost?', href: '#' },
-  { title: 'Next Steps: The Post Injury Checklist', href: '#' },
-  { title: 'Understanding Unusual Legal Cases', href: '#' },
-  { title: "What Your Insurance Company Doesn't Want You to Know", href: '#' },
-  { title: 'How Long Do I Have to File a Claim?', href: '#' },
+  { title: 'Medical Harm Overview', href: '/practice-areas/medical-malpractice' },
+  { title: 'Medication Safety Hub', href: '/practice-areas/dangerous-drugs' },
+  { title: 'Motorcycle Injury Recovery', href: '/practice-areas/motorcycle-accident' },
+  { title: 'Burn Injury Recovery Guide', href: '/practice-areas/burn-injury' },
+  { title: 'Workplace Injury Medical Guide', href: '/practice-areas/workers-compensation' },
+  { title: 'Contact For The People Clinic', href: '/contact' },
+  { title: 'Next Steps After Injury', href: '/medical/what-to-do' },
+  { title: 'Light Rights Basics for Patients', href: '/practice-areas/medical-malpractice' },
+  { title: 'Clinic Services Overview', href: '/about/meet-our-doctors' },
+  { title: 'Personal Injury Recovery Guide', href: '/practice-areas/personal-injury' },
 ]
 
 export const tcpHeroBriefcaseArt = `<svg viewBox="0 0 320 280" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" aria-hidden="true">

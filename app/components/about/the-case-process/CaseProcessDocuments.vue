@@ -15,8 +15,8 @@
         <div class="tcp-docs__copy">
           <h2 id="tcp-docs-heading">Documents 101: A Checklist</h2>
           <p>
-            Piles of paperwork can get messy. If you're wondering how to approach the forms, receipts,
-            bills, and more related to your injury, look no further.
+            Piles of paperwork can get messy. If you're wondering how to organize discharge notes,
+            imaging reports, medication lists, and receipts related to your injury, start here.
           </p>
           <button type="button" class="tcp-docs__more" @click="onLearnMore">
             Learn More
@@ -29,8 +29,7 @@
         <aside class="tcp-glossary__aside">
           <h2 id="tcp-glossary-heading" class="ca-h2">Glossary</h2>
           <p>
-            From defense to depositions, view the complete guide for helpful explanations of common
-            legal terms.
+            From red flags to rehab pathways, view helpful explanations of common patient-care terms.
           </p>
         </aside>
         <div>
