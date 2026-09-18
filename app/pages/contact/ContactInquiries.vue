@@ -33,33 +33,19 @@ type InquiryLink = {
 const links: InquiryLink[] = [
   {
     title: 'Find a Location Near You',
-    description: "Need local support? We've got offices nationwide to help you wherever you are.",
+    description:
+      'Visit our New York City office at 42-65 Kissena Blvd, Flushing, NY, or Syracuse office at 475 Irving Ave, Suite 420. Call (929) 399-3134.',
     to: '/locations',
   },
   {
     title: 'Case Process',
     description: 'Curious about what happens next? Learn how we handle your case from start to finish.',
-    href: '#case-process',
+    to: '/about/the-case-process',
   },
   {
-    title: 'Practice Areas',
+    title: 'Injury Recovery Guides',
     description: 'Explore the cases we handle—from auto accidents to workplace injuries and beyond.',
-    to: '/practice-areas',
-  },
-  {
-    title: 'Careers',
-    description: 'Ready to make a difference? Join our team and fight for the people.',
-    href: '#careers',
-  },
-  {
-    title: 'Refer a Case',
-    description: 'Partner with Morgan & Morgan and help your client get the results they deserve.',
-    href: '#refer',
-  },
-  {
-    title: 'Media Inquiries',
-    description: 'For press and media inquiries, email us!',
-    href: 'mailto:press@forthepeople.com',
+    to: '/injury-recovery-guides',
   },
 ]
 </script>

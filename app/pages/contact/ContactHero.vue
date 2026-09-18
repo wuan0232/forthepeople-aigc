@@ -10,14 +10,14 @@
         <div class="contact-hero__main">
           <h1 id="contact-hero-heading" class="contact-hero__title">Contact Us Your Way</h1>
           <p class="contact-hero__lead">
-            No matter where an injury happens, getting help shouldn't be hard. Morgan &amp; Morgan makes it easy to
+            No matter where an injury happens, getting help shouldn't be hard. For The People Clinic makes it easy to
             fight for the compensation you deserve.
           </p>
 
           <div class="contact-hero__photo">
             <img
               :src="heroImage"
-              alt="Morgan & Morgan attorney meeting with a client"
+              alt="For The People Clinic attorney meeting with a client"
               width="640"
               height="360"
               loading="eager"
@@ -36,7 +36,7 @@
               <p class="contact-hero__callout-title">We're here 24/7.</p>
               <p class="contact-hero__callout-text">
                 Fill out the form, call us at
-                <a href="tel:+18442934275">844-293-4275</a>, or use the text button for your free case evaluation.
+                <a href="tel:+19293993134">(929) 399-3134</a>, or use the text button to start your recovery checklist.
               </p>
             </div>
           </div>

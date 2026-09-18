@@ -2,10 +2,10 @@
   <section class="contact-why" aria-labelledby="contact-why-heading">
     <div class="container contact-why__inner">
       <header class="contact-why__head">
-        <h2 id="contact-why-heading">Why Morgan &amp; Morgan?</h2>
+        <h2 id="contact-why-heading">Why For The People Clinic?</h2>
         <p>
-          Choosing Morgan &amp; Morgan means more than hiring a law firm—it's having a strong, supportive, and proven
-          team on your side.
+          Choosing For The People Clinic means more than booking an appointment—it's having a supportive care team
+          focused on clearer next steps after injury.
         </p>
       </header>
 
@@ -37,17 +37,17 @@ type WhyItem = {
 
 const items: WhyItem[] = [
   {
-    title: 'Fighting for More',
-    text: '35 years. 1,000 lawyers. $30 billion recovered. We have the power to take on any corporation.',
+    title: 'Clear Medical Next Steps',
+    text: 'We help patients organize timelines, spot urgent warning signs, and plan safer follow-up after injury or medical harm.',
   },
   {
-    title: 'The Fee Is Free, Unless We Win',
-    text: "It's easy to get started with a free case evaluation by phone, text or web - 24/7. The fee is always free unless we win.",
+    title: 'Practical Recovery Guidance',
+    text: 'Get structured checklists by phone, web, or in-office visits—focused on care planning, not legal sales pitches.',
   },
   {
-    title: 'Local Care + National Power',
-    text: 'Your attorney is from your community—backed by the strength of a national firm.',
-    link: { label: 'Find an office near you', to: '/locations' },
+    title: 'Local Care in New York',
+    text: 'Visit our New York City office (Flushing) or Syracuse office, or call (929) 399-3134.',
+    link: { label: 'View our NY offices', to: '/locations' },
   },
 ]
 </script>

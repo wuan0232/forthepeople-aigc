@@ -15,12 +15,12 @@ import ContactInquiries from './ContactInquiries.vue'
 import type { ClientTestimonial } from '~/types/practice-area'
 
 useHead({
-  title: 'Contact Us | Morgan & Morgan',
+  title: 'Contact Us | For The People Clinic',
   meta: [
     {
       name: 'description',
       content:
-        'Contact Morgan & Morgan 24/7 for a free case evaluation. Offices nationwide, no fee unless we win.',
+        'Contact our New York offices in Flushing and Syracuse. Call (929) 399-3134.',
     },
   ],
 })
@@ -36,7 +36,7 @@ const clients: ClientTestimonial[] = [
   {
     name: 'Ray',
     quote:
-      "They took care of me, and now we're doing okay. Thank God that I went to Morgan & Morgan.",
+      "They took care of me, and now we're doing okay. Thank God that I went to For The People Clinic.",
     thumbBg: 'linear-gradient(135deg,#cfe8fc,#8ec5f2)',
     thumb: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=80&fit=crop',
   },

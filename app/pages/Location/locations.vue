@@ -22,11 +22,18 @@
               <span aria-hidden="true">↓</span>
             </a>
           </div>
+        </div>
 
-          <aside class="loc-local" aria-label="Your local office">
-            <p class="loc-local__eyebrow">Your Local Office</p>
-            <article class="loc-local__card">
-              <h2>Morgan &amp; Morgan Los Angeles</h2>
+        <aside class="loc-local" id="office" aria-label="Our offices">
+          <p class="loc-local__eyebrow">Our Offices</p>
+          <div class="loc-local__cards">
+            <article
+              v-for="office in offices"
+              :id="office.id"
+              :key="office.id"
+              class="loc-local__card"
+            >
+              <h2>{{ office.name }}</h2>
               <hr />
               <p class="loc-local__row">
                 <span class="loc-local__icon" aria-hidden="true">
@@ -36,8 +43,9 @@
                   </svg>
                 </span>
                 <span>
-                  633 West Fifth Street, Suite 2200<br />
-                  Los Angeles, CA 90071
+                  <span v-for="(line, i) in office.addressLines" :key="i" class="loc-local__addr-line">
+                    {{ line }}
+                  </span>
                 </span>
               </p>
               <p class="loc-local__row">
@@ -46,21 +54,28 @@
                     <path d="M5 4h4l2 5-2 1a12 12 0 005 5l1-2 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" />
                   </svg>
                 </span>
-                <a href="tel:+13238253424">(323) 825-3424</a>
+                <a :href="`tel:${office.phoneTel}`">{{ office.phoneDisplay }}</a>
               </p>
-              <a href="#office" class="loc-local__cta">View Office</a>
+              <a
+                :href="office.mapsUrl"
+                class="loc-local__cta"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Office
+              </a>
             </article>
-          </aside>
-        </div>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <section class="loc-no-visit" aria-label="No office visit needed">
+    <section class="loc-no-visit" aria-label="How to get care at our clinics">
       <div class="container">
         <div class="loc-no-visit__top">
-          <h2 class="loc-no-visit__title">No office visit needed.</h2>
-          <NuxtLink to="/contact" class="loc-no-visit__link link-arrow">
-            Start your claim
+          <h2 class="loc-no-visit__title">Come in for care—or start your plan online.</h2>
+          <NuxtLink to="/medical/what-to-do" class="loc-no-visit__link link-arrow">
+            Start your medical action plan
             <span class="icon-box" aria-hidden="true">
               <svg viewBox="0 0 12 12" width="8" height="8">
                 <path d="M2 10L10 2M10 2H4M10 2V8" />
@@ -80,11 +95,11 @@
     <section id="all-offices" class="loc-all">
       <div class="container">
         <div class="loc-all__head">
-          <h2>With 140 offices nationwide, we're here to help.</h2>
+          <h2>Our New York clinics are here to help.</h2>
           <div class="loc-all__map">
             <img
               src="/locations-us-offices-map.svg"
-              alt="US map showing Morgan &amp; Morgan office locations nationwide"
+              alt="Map highlighting our New York office locations"
               width="353"
               height="204"
               loading="lazy"
@@ -97,8 +112,8 @@
           <div v-for="state in states" :key="state.name" class="loc-state">
             <h3>{{ state.name }}</h3>
             <ul>
-              <li v-for="(city, idx) in state.cities" :key="state.name + '-' + idx + '-' + city">
-                <a href="#office">{{ city }}</a>
+              <li v-for="office in offices" :key="office.id">
+                <a :href="`#${office.id}`">{{ office.name }}</a>
               </li>
             </ul>
           </div>
@@ -110,20 +125,21 @@
       <div class="container">
         <div class="loc-how__head">
           <h2 id="loc-how-heading">How It Works</h2>
-          <p>Explore these resources to help you make informed decisions after an accident.</p>
+          <p>Practical patient resources for what to do after an injury—before or after your clinic visit.</p>
         </div>
 
         <div class="loc-how__grid" role="list">
-          <article
+          <NuxtLink
             v-for="card in howItWorks"
             :key="card.title"
+            :to="card.href"
             class="loc-how__card"
             :class="{ 'loc-how__card--muted': card.muted }"
             role="listitem"
           >
             <div class="loc-how__art" v-html="card.art" />
             <h3 :class="{ 'loc-how__title--underline': card.muted }">{{ card.title }}</h3>
-          </article>
+          </NuxtLink>
         </div>
       </div>
     </section>
@@ -133,162 +149,51 @@
 </template>
 
 <script setup lang="ts">
+import { SITE_OFFICES } from '~/constants/offices'
+
 useHead({
-  title: 'Locations | Morgan & Morgan',
+  title: 'Locations | For The People Clinic New York Offices',
   meta: [
     {
       name: 'description',
       content:
-        'Find a Morgan & Morgan office near you. 140 offices nationwide, free consultations, and 24/7 support.',
+        'Visit For The People Clinic in Flushing or Syracuse for post-injury follow-up, recovery planning, and medical next steps. Call (929) 399-3134.',
     },
   ],
 })
 
-const benefits = ['Sign agreements digitally', 'Upload documents', 'Track case in real-time']
+const offices = SITE_OFFICES
+const benefits = [
+  'Book a clinic follow-up visit',
+  'Upload visit records securely',
+  'Get a clear recovery checklist',
+]
 
 type StateGroup = { name: string; cities: string[] }
 
-const states: StateGroup[] = [
-  { name: 'Alabama', cities: ['Birmingham', 'Huntsville', 'Mobile', 'Montgomery'] },
-  { name: 'Alaska', cities: ['Anchorage'] },
-  { name: 'Arizona', cities: ['Chandler', 'Mesa', 'Peoria', 'Phoenix', 'Tucson'] },
-  { name: 'Arkansas', cities: ['Little Rock'] },
-  {
-    name: 'California',
-    cities: [
-      'Fresno',
-      'Irvine',
-      'Los Angeles',
-      'Los Angeles',
-      'Los Angeles',
-      'Riverside',
-      'Sacramento',
-      'San Diego',
-      'San Francisco',
-    ],
-  },
-  { name: 'Colorado', cities: ['Denver'] },
-  { name: 'Connecticut', cities: ['Hamden', 'New Haven'] },
-  { name: 'Delaware', cities: ['Wilmington'] },
-  {
-    name: 'Florida',
-    cities: [
-      'Bradenton',
-      'Daytona Beach',
-      'DeLand',
-      'Fort Lauderdale',
-      'Fort Myers',
-      'Gainesville',
-      'Jacksonville',
-      'Key West',
-      'Kissimmee',
-      'Lakeland',
-      'Lakeland',
-      'Melbourne',
-      'Miami',
-      'Naples',
-      'Ocala',
-      'Orange Park',
-      'Orlando',
-      'Palm Harbor',
-      'Panama City',
-      'Pensacola',
-      'Port St. Lucie',
-      'Sarasota',
-      'Spring Hill',
-      'St. Augustine',
-      'St. Petersburg',
-      'Tallahassee',
-      'Tampa',
-      'Tavares',
-      'The Villages',
-      'Titusville',
-      'West Palm Beach',
-      'West Tampa',
-      'Winter Haven',
-      'Winter Park',
-    ],
-  },
-  {
-    name: 'Georgia',
-    cities: [
-      'Albany',
-      'Alpharetta',
-      'Alpharetta',
-      'Alpharetta',
-      'Atlanta',
-      'Augusta',
-      'Brunswick',
-      'Columbus, Georgia',
-      'Macon',
-      'Marietta',
-      'Savannah',
-    ],
-  },
-  { name: 'Hawaii', cities: ['Honolulu'] },
-  { name: 'Idaho', cities: ['Boise'] },
-  { name: 'Illinois', cities: ['Chicago'] },
-  { name: 'Indiana', cities: ['Indianapolis', 'New Albany'] },
-  { name: 'Iowa', cities: ['Des Moines'] },
-  { name: 'Kansas', cities: ['Wichita'] },
-  {
-    name: 'Kentucky',
-    cities: ['Bowling Green', 'Lexington', 'Louisville', 'Louisville', 'Owensboro', 'Paducah'],
-  },
-  { name: 'Louisiana', cities: ['New Orleans'] },
-  { name: 'Maine', cities: ['Portland Maine'] },
-  { name: 'Maryland', cities: ['Baltimore'] },
-  { name: 'Massachusetts', cities: ['Boston', 'Medford'] },
-  { name: 'Michigan', cities: ['Detroit', 'Grand Rapids'] },
-  { name: 'Minnesota', cities: ['Minneapolis'] },
-  { name: 'Mississippi', cities: ['Biloxi', 'Hattiesburg', 'Jackson'] },
-  { name: 'Missouri', cities: ['St. Louis'] },
-  { name: 'Montana', cities: ['Bozeman'] },
-  { name: 'Nebraska', cities: ['Lincoln'] },
-  { name: 'North Carolina', cities: ['Charlotte', 'Raleigh'] },
-  { name: 'North Dakota', cities: ['Fargo'] },
-  { name: 'Ohio', cities: ['Cincinnati', 'Columbus, Ohio', 'Dayton'] },
-  { name: 'Oklahoma', cities: ['Oklahoma City'] },
-  { name: 'Oregon', cities: ['Portland'] },
-  { name: 'Pennsylvania', cities: ['Philadelphia', 'Pittsburgh', 'Scranton'] },
-  { name: 'Rhode Island', cities: ['Providence'] },
-  {
-    name: 'South Carolina',
-    cities: ['Charleston, South Carolina', 'Columbia', 'Greenville', 'Hilton Head', 'Myrtle Beach'],
-  },
-  { name: 'South Dakota', cities: ['Sioux Falls'] },
-  {
-    name: 'Tennessee',
-    cities: ['Chattanooga', 'Knoxville', 'Memphis', 'Murfreesboro', 'Nashville'],
-  },
-  { name: 'Texas', cities: ['Dallas', 'Houston'] },
-  { name: 'Utah', cities: ['Salt Lake City'] },
-  { name: 'Vermont', cities: ['Burlington'] },
-  { name: 'Virginia', cities: ['Arlington', 'Richmond'] },
-  { name: 'Washington', cities: ['Seattle'] },
-  { name: 'Washington D.C.', cities: ['Washington, D.C.'] },
-  { name: 'West Virginia', cities: ['Charleston, West Virginia'] },
-  { name: 'Wisconsin', cities: ['Milwaukee'] },
-  { name: 'Wyoming', cities: ['Cheyenne'] },
-]
+const states: StateGroup[] = [{ name: 'New York', cities: SITE_OFFICES.map((o) => o.name) }]
 
-type HowCard = { title: string; art: string; muted?: boolean }
+type HowCard = { title: string; art: string; href: string; muted?: boolean }
 
 const howItWorks: HowCard[] = [
   {
-    title: 'The Basics: What is a personal injury lawsuit?',
+    title: '5-Step Medical Action Guide after an injury',
+    href: '/medical/what-to-do',
     art: `<img src="/images/locations/loc-how-basics-lawsuit.webp" alt="" width="400" height="400" loading="lazy" decoding="async" />`,
   },
   {
-    title: 'How Much is My Personal Injury Case Worth?',
+    title: 'What to monitor in the first 48 hours',
+    href: '/medical/what-to-do',
     art: `<img src="/images/locations/loc-how-case-worth.webp" alt="" width="400" height="400" loading="lazy" decoding="async" />`,
   },
   {
-    title: 'The Morgan & Morgan Difference',
+    title: 'Meet the clinicians at For The People Clinic',
+    href: '/about/meet-our-doctors',
     art: `<img src="/images/locations/loc-how-morgan-difference.webp" alt="" width="400" height="400" loading="lazy" decoding="async" />`,
   },
   {
-    title: 'Why Do Some Personal Injury Cases Get Turned Down ("Are Ineligible")?',
+    title: 'When symptoms need urgent reassessment',
+    href: '/medical/what-to-do',
     muted: true,
     art: `<img src="/images/locations/loc-how-cases-ineligible.webp" alt="" width="400" height="400" loading="lazy" decoding="async" />`,
   },
@@ -413,11 +318,29 @@ const howItWorks: HowCard[] = [
   color: #1f2933;
 }
 
+.loc-local {
+  margin-top: 2.25rem;
+}
+
+.loc-local__cards {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .loc-local__cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+}
+
 .loc-local__card {
   padding: 1.7rem 1.6rem;
   background: #fff;
   border-radius: 0.7rem;
   box-shadow: 0 1px 0 rgba(15, 23, 42, 0.05);
+  scroll-margin-top: calc(var(--header-offset) + 1rem);
 }
 
 .loc-local__card h2 {
@@ -431,6 +354,10 @@ const howItWorks: HowCard[] = [
   height: 1px;
   border: 0;
   background: #e5e7eb;
+}
+
+.loc-local__addr-line {
+  display: block;
 }
 
 .loc-local__row {
@@ -679,6 +606,13 @@ const howItWorks: HowCard[] = [
   max-width: 16.5rem;
   display: grid;
   gap: 0.85rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.loc-how__card:hover h3 {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 @media (max-width: 1024px) {
