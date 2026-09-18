@@ -1,10 +1,10 @@
 <template>
   <section class="insights-head section-pad">
     <div class="insights-align">
-      <h2 class="insights__title">Fighting for the People</h2>
+      <h2 class="insights__title">Recovery-Focused Medical Guidance</h2>
       <p class="insights__lead">
-        There's a reason we're America's largest injury law firm: our size means we can help more
-        people, in more places, and fight for the justice they deserve.
+        Our goal is practical, patient-first education: what to monitor, what to document, and when to
+        escalate care after injury or suspected medical harm.
       </p>
 
       <div class="stats" role="list">
@@ -20,29 +20,61 @@
         </div>
       </div>
 
-      <!-- 中间主视频区：填入 videoSrc 即渲染 <video>，否则为占位 -->
-      <div class="video-stage">
-        <div class="video-stage__ratio">
+      <div class="guide-stage">
+        <!-- Optional video when a source is provided -->
+        <div v-if="videoSrc" class="guide-stage__video">
           <video
-            v-if="videoSrc"
-            class="video-stage__media"
+            class="guide-stage__media"
             :src="videoSrc"
             :poster="videoPoster"
             controls
             playsinline
             preload="metadata"
           />
-          <div v-else class="video-stage__placeholder" aria-hidden="true" />
-          <div class="video-stage__overlay">
-            <strong class="video-stage__name">{{ videoOverlayName }}</strong>
-            <span class="video-stage__role">{{ videoOverlayRole }}</span>
+          <div class="guide-stage__video-label">
+            <strong>5-Step Action Guide</strong>
+            <span>Patient Recovery Workflow</span>
           </div>
         </div>
-        <p class="video-stage__disclaimer">
-          The attorney featured above is licensed in Florida. For a full list of attorneys in your
-          state please visit our
-          <a href="#attorneys">attorney page</a>. Results may vary depending on your particular facts
-          and legal circumstances.
+
+        <!-- Default: filled pathway panel (replaces empty video placeholder) -->
+        <div v-else class="guide-panel" aria-labelledby="guide-panel-heading">
+          <div class="guide-panel__glow" aria-hidden="true" />
+          <div class="guide-panel__grid" aria-hidden="true" />
+
+          <header class="guide-panel__head">
+            <div class="guide-panel__intro">
+              <p class="guide-panel__eyebrow">Patient Recovery Workflow</p>
+              <h3 id="guide-panel-heading" class="guide-panel__title">5-Step Action Guide</h3>
+              <p class="guide-panel__lead">
+                A clear path from urgent symptom checks to safer follow-up—so you know what to do next,
+                not just what went wrong.
+              </p>
+            </div>
+            <a href="/medical/what-to-do" class="guide-panel__cta">
+              Open the full guide
+              <svg viewBox="0 0 12 12" width="14" height="14" aria-hidden="true">
+                <path d="M2 10L10 2M10 2H4M10 2V8" fill="none" stroke="currentColor" stroke-width="1.8" />
+              </svg>
+            </a>
+          </header>
+
+          <ol class="guide-panel__steps">
+            <li v-for="(step, i) in guideSteps" :key="step.title" class="guide-step">
+              <a :href="step.href" class="guide-step__link">
+                <span class="guide-step__num">{{ i + 1 }}</span>
+                <span class="guide-step__body">
+                  <strong>{{ step.title }}</strong>
+                  <span>{{ step.hint }}</span>
+                </span>
+              </a>
+            </li>
+          </ol>
+        </div>
+
+        <p class="guide-stage__disclaimer">
+          This resource center is educational and not a substitute for emergency diagnosis or treatment.
+          If symptoms are severe or worsening, seek urgent care first.
         </p>
       </div>
     </div>
@@ -51,13 +83,13 @@
   <section class="resources section-pad" id="blog">
     <div class="resources-align">
       <div class="resources__head">
-        <h2 class="resources__title">Insights &amp; Resources</h2>
+        <h2 class="resources__title">Patient Action Resources</h2>
         <div class="resources__blurb">
           <p>
-            Explore articles and resources to guide you through your options and making informed
-            decisions after an accident.
+            Explore practical guides for post-accident care, medication safety, symptom tracking, and
+            specialist follow-up.
           </p>
-          <a href="#" class="link-arrow resources__more">
+          <a href="/blog/medical-malpractice" class="link-arrow resources__more">
             View more helpful articles
             <span class="icon-box">
               <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H4M10 2V8" /></svg>
@@ -96,19 +128,43 @@
 </template>
 
 <script setup lang="ts">
-/** 有值时主区域渲染原生 `<video>`（例如 `'/videos/insights-story.mp4'`） */
+/** Optional: set a path like `'/videos/insights-story.mp4'` to show video instead of the pathway panel */
 const videoSrc = ''
-/** 可选封面，对应 `<video poster>` */
 const videoPoster = ''
 
-const videoOverlayName = 'Howard'
-const videoOverlayRole = 'Actual Client'
-
 const stats = [
-  { big: '$30 BILLION', label: 'Recovered for clients nationwide' },
-  { big: '700,000+', label: 'Clients and families' },
-  { big: '50 STATES', label: 'With attorneys ready' },
-  { big: '1', label: 'Click may change your life' }
+  { big: '5', label: 'Core steps after suspected medical harm' },
+  { big: '48H', label: 'Critical window for organized documentation' },
+  { big: '1', label: 'Complete timeline for every follow-up visit' },
+  { big: '24/7', label: 'Urgent symptoms require immediate care' },
+]
+
+const guideSteps = [
+  {
+    title: 'Stabilize',
+    hint: 'Check red-flag symptoms first',
+    href: '/medical/what-to-do',
+  },
+  {
+    title: 'Document',
+    hint: 'Build a dated care timeline',
+    href: '/medical/what-to-do',
+  },
+  {
+    title: 'Second opinion',
+    hint: 'Bring records to a specialist',
+    href: '/medical/what-to-do',
+  },
+  {
+    title: 'Review channels',
+    hint: 'Know how to escalate concerns',
+    href: '/medical/what-to-do',
+  },
+  {
+    title: 'Recovery plan',
+    hint: 'Align follow-up and rehab',
+    href: '/medical/what-to-do',
+  },
 ]
 
 type ResourceCard = {
@@ -124,26 +180,34 @@ type ResourceCard = {
 
 const resourceCards: ResourceCard[] = [
   {
-    title: 'The Basics: What is a personal injury lawsuit?',
-    href: '#',
-    thumbMuted: false
+    title: 'Medical Malpractice vs Medical Dispute',
+    href: '/blog/posts/medical-malpractice-vs-medical-dispute',
+    imageSrc: '/images/locations/loc-how-basics-lawsuit.webp',
+    imageAlt: '',
+    thumbMuted: false,
   },
   {
-    title: 'How Much is My Personal Injury Case Worth?',
-    href: '#',
+    title: 'How to Build a Complete Medical Timeline',
+    href: '/blog/posts/coming-soon',
+    imageSrc: '/images/locations/loc-how-case-worth.webp',
+    imageAlt: '',
     titleUnderline: true,
-    thumbMuted: false
+    thumbMuted: false,
   },
   {
-    title: 'The Morgan & Morgan Difference',
-    href: '#',
-    thumbMuted: false
+    title: 'Second Medical Opinion: Patient Checklist',
+    href: '/blog/posts/coming-soon',
+    imageSrc: '/images/locations/loc-how-morgan-difference.webp',
+    imageAlt: '',
+    thumbMuted: false,
   },
   {
-    title: 'Why Do Some Personal Injury Cases Get Turned Down (or Ineligible)?',
-    href: '#',
-    thumbMuted: true
-  }
+    title: 'Informed Consent: What to Check Before You Sign',
+    href: '/blog/posts/coming-soon',
+    imageSrc: '/images/locations/loc-how-cases-ineligible.webp',
+    imageAlt: '',
+    thumbMuted: true,
+  },
 ]
 </script>
 
@@ -163,7 +227,7 @@ const resourceCards: ResourceCard[] = [
 }
 
 .insights__title {
-  margin: 1 0 1rem;
+  margin: 0 0 1rem;
   text-align: center;
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 800;
@@ -278,42 +342,31 @@ const resourceCards: ResourceCard[] = [
   }
 }
 
-.video-stage {
+.guide-stage {
   margin-top: 0.25rem;
 }
 
-.video-stage__ratio {
+.guide-stage__video {
   position: relative;
   width: 100%;
   border-radius: 20px;
   overflow: hidden;
   background: #0a1628;
   box-shadow: 0 12px 40px rgba(15, 23, 42, 0.12);
+  aspect-ratio: 16 / 9;
 }
 
-.video-stage__ratio::before {
-  content: '';
-  display: block;
-  width: 100%;
-  padding-bottom: 56.25%;
-}
-
-.video-stage__media,
-.video-stage__placeholder {
+.guide-stage__media {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
   border: 0;
+  display: block;
 }
 
-.video-stage__placeholder {
-  background: linear-gradient(145deg, #1a2d4a 0%, #0a1628 45%, #152238 100%);
-}
-
-.video-stage__overlay {
+.guide-stage__video-label {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -321,36 +374,197 @@ const resourceCards: ResourceCard[] = [
   padding: 1rem 1.25rem 1.1rem;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.35) 70%, transparent 100%);
   color: #fff;
-  text-align: left;
   pointer-events: none;
   border-radius: 0 10px 0 0;
 }
 
-.video-stage__name {
+.guide-stage__video-label strong {
   display: block;
   font-size: clamp(1.1rem, 2.2vw, 1.45rem);
   font-weight: 800;
   margin-bottom: 0.2rem;
 }
 
-.video-stage__role {
+.guide-stage__video-label span {
   font-size: clamp(0.8rem, 1.4vw, 0.95rem);
   opacity: 0.95;
 }
 
-.video-stage__disclaimer {
+.guide-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: clamp(1.5rem, 3.5vw, 2.35rem);
+  background:
+    radial-gradient(ellipse 70% 80% at 90% 10%, rgba(0, 102, 204, 0.35), transparent 55%),
+    radial-gradient(ellipse 50% 60% at 5% 90%, rgba(196, 18, 48, 0.12), transparent 50%),
+    linear-gradient(145deg, #132a4a 0%, #0a1f44 48%, #071633 100%);
+  color: #fff;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.14);
+}
+
+.guide-panel__glow {
+  position: absolute;
+  inset: -20% 40% auto -10%;
+  height: 70%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 65%);
+  pointer-events: none;
+}
+
+.guide-panel__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 85%);
+  pointer-events: none;
+}
+
+.guide-panel__head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.25rem 1.75rem;
+  margin-bottom: clamp(1.35rem, 3vw, 2rem);
+}
+
+.guide-panel__eyebrow {
+  margin: 0 0 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #93c5fd;
+}
+
+.guide-panel__title {
+  margin: 0 0 0.55rem;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.guide-panel__lead {
+  margin: 0;
+  max-width: 34rem;
+  font-size: clamp(0.92rem, 1.4vw, 1.02rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.guide-panel__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-shrink: 0;
+  padding: 0.85rem 1.25rem;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 0.92rem;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.guide-panel__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+.guide-panel__steps {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .guide-panel__steps {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+}
+
+.guide-step {
+  margin: 0;
+  min-width: 0;
+}
+
+.guide-step__link {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: start;
+  height: 100%;
+  padding: 0.95rem 0.9rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: inherit;
+  text-decoration: none;
+  backdrop-filter: blur(6px);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.guide-step__link:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(147, 197, 253, 0.45);
+  transform: translateY(-2px);
+}
+
+.guide-step__num {
+  display: inline-grid;
+  place-items: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 999px;
+  background: #0066cc;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.guide-step__body {
+  display: grid;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.guide-step__body strong {
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.guide-step__body span {
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.guide-stage__disclaimer {
   text-align: center;
   font-size: 0.68rem;
   line-height: 1.55;
   color: var(--gray-500);
   margin: 1rem auto 0;
   max-width: 48rem;
-}
-
-.video-stage__disclaimer a {
-  color: var(--blue);
-  text-decoration: underline;
-  text-underline-offset: 2px;
 }
 
 .resources {
@@ -446,8 +660,10 @@ const resourceCards: ResourceCard[] = [
 .rcard__img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
+  padding: 0.75rem;
+  box-sizing: border-box;
 }
 
 .rcard__placeholder {

@@ -3,34 +3,29 @@
     <div class="how-align">
       <h2 class="how__title">How It Works</h2>
       <p class="how__lead">
-        Unsure what to do next? With 35 years of experience, our personal injury lawyers will guide you
-        every step of the way.
+        Unsure what to do next? Our clinic team helps you organize medical next steps after an
+        injury—from first contact through safer follow-up planning.
       </p>
 
       <div class="steps">
-        <article v-for="s in steps" :key="s.n" class="step">
-          <div class="step__visual">
+        <article v-for="step in steps" :key="step.n" class="step">
+          <div class="step__visual" aria-hidden="true">
             <img
-              v-if="s.imageSrc"
-              class="step__img"
-              :src="s.imageSrc"
-              :alt="s.imageAlt ?? ''"
+              class="step__art"
+              :src="step.art"
+              alt=""
+              width="720"
+              height="480"
               loading="lazy"
               decoding="async"
             />
-            <div
-              v-else
-              class="step__visual-placeholder"
-              role="img"
-              :aria-label="s.placeholderLabel ?? 'Illustration'"
-            />
           </div>
           <div class="step__body">
-            <span class="step__num">{{ s.n }}</span>
-            <h3 class="step__heading">{{ s.title }}</h3>
-            <p class="step__text">{{ s.text }}</p>
-            <a :href="s.href" class="link-arrow step__cta">
-              {{ s.cta }}
+            <span class="step__num">{{ step.n }}</span>
+            <h3 class="step__heading">{{ step.title }}</h3>
+            <p class="step__text">{{ step.text }}</p>
+            <a :href="step.href" class="link-arrow step__cta">
+              {{ step.cta }}
               <span class="icon-box">
                 <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H4M10 2V8" /></svg>
               </span>
@@ -43,46 +38,31 @@
 </template>
 
 <script setup lang="ts">
-type Step = {
-  n: string
-  title: string
-  text: string
-  cta: string
-  href: string
-  /** 填入 `public/` 下路径即可显示图；留空则显示浅蓝占位区 */
-  imageSrc?: string
-  imageAlt?: string
-  placeholderLabel?: string
-}
-
-const steps: Step[] = [
+const steps = [
   {
     n: '1',
-    title: 'CONTACT US 24/7 - IT\'S FREE',
-    text:
-      'Start with a free, no-obligation case evaluation online, by phone, or via text. Tell us your story—we\'re here to listen.',
-    cta: 'Start your claim',
+    title: 'REACH OUT YOUR WAY',
+    text: 'Start with the recovery checklist form, call the clinic, or send a message. We help you sort urgent warning signs from routine follow-up needs.',
+    cta: 'Start a recovery checklist',
     href: '#contact',
-    placeholderLabel: 'Step 1 — contact channels illustration'
+    art: '/images/how-it-works/step-1-contact.png',
   },
   {
     n: '2',
-    title: 'MEET YOUR DEDICATED ATTORNEY',
-    text:
-      'Once your case qualifies, we\'ll pair you with a lawyer and a supportive team. They\'ll handle everything, keep you informed, and answer all your questions.',
-    cta: 'Meet the attorneys',
-    href: '#attorneys',
-    placeholderLabel: 'Step 2 — your legal team illustration'
+    title: 'MEET YOUR CARE SUPPORT',
+    text: 'Clinicians, care coordinators, and recovery planners help translate symptoms into a clear follow-up plan—records, referrals, and next appointments in one place.',
+    cta: 'Meet our doctors',
+    href: '/about/meet-our-doctors',
+    art: '/images/how-it-works/step-2-care-team.png',
   },
   {
     n: '3',
-    title: 'WE FIGHT FOR MORE',
-    text:
-      'Your legal team will build a strong case, negotiate with insurance companies, and pursue the maximum results you deserve.',
-    cta: 'Learn more about the case process',
-    href: '#results',
-    placeholderLabel: 'Step 3 — case building illustration'
-  }
+    title: 'BUILD A CLEAR RECOVERY PLAN',
+    text: 'Document what changed, organize visit records, and use a structured checklist so follow-up decisions are clearer and safer.',
+    cta: 'Open the 5-step guide',
+    href: '/medical/what-to-do',
+    art: '/images/how-it-works/step-3-recovery-plan.png',
+  },
 ]
 </script>
 
@@ -98,7 +78,7 @@ const steps: Step[] = [
 }
 
 .how__title {
-  margin: 1 0 1rem;
+  margin: 0 0 1rem;
   text-align: center;
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 800;
@@ -131,29 +111,25 @@ const steps: Step[] = [
 
 @media (min-width: 900px) {
   .step {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.05fr 0.95fr;
   }
 }
 
 .step__visual {
   position: relative;
-  background: #f3f8ff;
+  display: grid;
+  place-items: center;
   min-height: clamp(14rem, 28vw, 22rem);
+  padding: clamp(1rem, 2.5vw, 1.75rem);
+  background: linear-gradient(180deg, #eef5fb 0%, #f7fbff 100%);
 }
 
-.step__img {
-  width: 100%;
-  height: 100%;
-  min-height: clamp(14rem, 28vw, 22rem);
-  object-fit: cover;
+.step__art {
   display: block;
-}
-
-.step__visual-placeholder {
   width: 100%;
-  min-height: clamp(14rem, 28vw, 22rem);
-  height: 100%;
-  background: #f3f8ff;
+  max-width: 34rem;
+  height: auto;
+  object-fit: contain;
 }
 
 .step__body {

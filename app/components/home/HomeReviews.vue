@@ -2,7 +2,7 @@
   <section class="reviews" id="testimonials">
     <div class="container">
       <h2 class="section-title center light">150,000+ Five Star Reviews</h2>
-      <p class="sub center light">The reasons why clients trust Morgan &amp; Morgan.</p>
+      <p class="sub center light">The reasons why clients trust For The People Clinic.</p>
       <div class="row">
         <article v-for="(item, i) in slides" :key="i" class="tile" :class="item.type">
           <template v-if="item.type === 'video'">
@@ -24,8 +24,7 @@
       </div>
       <div class="dots" aria-hidden="true"><span class="on" /><span /><span /><span /><span /></div>
       <p class="legal">
-        Results may vary depending on your particular facts and legal circumstances. Based on select
-        nationwide reviews.
+        Individual experiences vary. Based on select patient reviews.
       </p>
     </div>
   </section>
