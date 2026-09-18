@@ -38,6 +38,8 @@ export default defineNuxtConfig({
   routeRules: {
     '/about/blog': { redirect: { to: '/blog', statusCode: 301 } },
     '/blog/posts': { redirect: { to: '/blog#blog-latest-posts', statusCode: 301 } },
+    '/our-results': { redirect: { to: '/recovery-stories', statusCode: 301 } },
+    '/practice-areas': { redirect: { to: '/injury-recovery-guides', statusCode: 301 } },
   },
   app: {
     head: {
@@ -62,11 +64,6 @@ export default defineNuxtConfig({
         name: 'locations',
         path: '/locations',
         file: '~/pages/Location/locations.vue',
-      })
-      pages.push({
-        name: 'our-results',
-        path: '/our-results',
-        file: '~/pages/ourResult/our-results.vue',
       })
       pages.push({
         name: 'blog',
