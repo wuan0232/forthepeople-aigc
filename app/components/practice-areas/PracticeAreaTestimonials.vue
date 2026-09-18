@@ -63,7 +63,7 @@ const props = withDefaults(
   }>(),
   {
     disclaimer:
-      'Results may vary depending on your particular facts and legal circumstances. Based on select nationwide reviews.',
+      'Individual experiences vary. Based on select patient reviews.',
   },
 )
 

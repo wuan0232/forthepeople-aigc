@@ -2,31 +2,20 @@
   <PracticeAreaPage class="ca-dangerous-drugs-page">
     <PracticeAreaHero
       breadcrumb-label="Weight Loss Drug"
-      title="Weight Loss Drug Lawyers"
-      lead="If you took a weight loss medication and suffered serious side effects, our attorneys can help you understand your legal options at no upfront cost."
+      title="GLP-1 & Weight Loss Medications: Patient Safety Guide"
+      lead="If you took a GLP-1 or weight loss medication and developed severe gastrointestinal or neurological symptoms, this guide helps you respond safely, document exposure, and plan clinical follow-up."
       :breadcrumb-items="breadcrumbItems"
     />
 
-    <PracticeAreaMeetLawyers
-      title="Meet Our Weight Loss and Diabetes Drug Attorneys"
-      intro="From investigation to resolution, our attorneys handle every aspect of weight loss drug claims. You focus on your health, we'll fight to hold the responsible parties accountable."
-      :lawyers="lawyers"
-      ariaLabel="Weight loss and diabetes drug attorneys"
-      centered
-    />
+    <PracticeAreaTakeaways title="Medication Safety Priorities" :blocks="takeaways" />
 
-    <PracticeAreaDifference
-      heading-id="wld-diff-heading"
-      title="Morgan & Morgan's Weight-Loss Drug Lawyers Make the Difference"
-      :blocks="differenceBlocks"
-    />
+    <PracticeAreaWaysHelp title="Common Adverse-Effect Patterns" :items="adversePatterns" />
 
-    <PracticeAreaCardGrid heading-id="wld-case-heading" title="Do I Have a Case?" :items="caseCriteria">
+    <PracticeAreaCardGrid heading-id="wld-meds-heading" title="Frequently Discussed Medications" :items="medicationCards">
       <template #after-grid>
-        <div id="complaint" class="wl-med-panel">
+        <div class="wl-med-panel">
           <div class="wl-med-panel__head">
-            <p class="wl-med-panel__title">Popular Weight Loss Medications:</p>
-            <a href="#complaint" class="wl-med-panel__link">Read complaint ›</a>
+            <p class="wl-med-panel__title">GLP-1 and related weight management drugs often discussed in patient safety reviews:</p>
           </div>
           <div class="wl-med-panel__grid">
             <p v-for="med in popularMeds" :key="med" class="wl-med-panel__item">
@@ -38,338 +27,220 @@
       </template>
     </PracticeAreaCardGrid>
 
-    <PracticeAreaTestimonials
-      :clients="clients"
-      disclaimer="Results may vary depending on your particular facts and legal circumstances. Based on select nationwide reviews."
+    <PracticeAreaClaimCopy
+      heading-id="wld-next-steps-heading"
+      title="What should I do after severe medication side effects?"
+      :paragraphs="nextStepParagraphs"
     />
 
     <PracticeAreaGuidePromo
       heading-id="wld-guide-heading"
-      title="Worried about your medication side effects?"
-      description="Take our short quiz to see if you may qualify for a weight loss drug injury claim. It only takes a few minutes and could help you better understand your options."
-      link-label="Get Started"
-      link-href="#contact"
+      title="Use the 5-Step Medical Action Guide"
+      description="When symptoms exceed expected mild side effects, use a structured process to stabilize, document medication history, and seek appropriate specialist review."
+      link-label="Open the guide"
+      link-href="/medical/what-to-do"
     />
-
-    <PracticeAreaFight :stats="stats" :partners="partners" />
-
-    <SiteLeadFeeSection preset-case-type="Weight Loss Drug" />
 
     <PracticeAreaInjuryTypes
       heading-id="wld-injuries-heading"
-      title="Common Injuries Reported"
-      :items="injuryItems"
+      title="Symptoms That May Need Urgent Reassessment"
+      :items="urgentSymptoms"
     />
 
     <PracticeAreaLearnMore
-      title="Learn More"
-      intro="Injured and not sure what to do next? We'll guide you through everything you need to know."
+      title="Related Reading"
+      intro="Continue with patient-focused medication safety and medical review resources."
       :left-links="learnLeft"
       :right-links="learnRight"
-      :initial-count="5"
     />
 
     <PracticeAreaFaq
       layout="46"
       :aside-questions="faqAside"
       :items="faqItems"
-      region-label="Weight loss drug frequently asked questions"
-      :reviewed-by="{ name: 'Michael Goetz', date: 'March 4, 2025' }"
+      region-label="Weight loss medication patient safety FAQs"
+      :reviewed-by="{ name: 'Medical Education Editorial Team', date: 'July 2026' }"
     />
   </PracticeAreaPage>
 </template>
 
 <script setup lang="ts">
-import type {
-  ClientTestimonial,
-  FaqItem,
-  IconCard,
-  LearnLink,
-  PartnerSlide,
-  PracticeAreaBreadcrumbItem,
-  StatItem,
-  TextBlock,
-} from '~/types/practice-area'
-// @ts-ignore - large data URI constants are exported from this file
-import { TESTIMONIAL_THUMB_2, TESTIMONIAL_THUMB_3 } from '~/constants/testimonial-thumbs'
+import type { FaqItem, IconCard, LearnLink, PracticeAreaBreadcrumbItem, TextBlock } from '~/types/practice-area'
 
 useHead({
-  title: 'Weight Loss Drug Lawyers | Morgan & Morgan',
+  title: 'GLP-1 & Weight Loss Drug Safety Guide | Patient Next Steps',
   meta: [
     {
       name: 'description',
       content:
-        'Meet our weight loss drug attorneys, learn if you may qualify for a claim, and explore your legal options after medication injuries. Free case evaluation.',
+        'Patient-focused guidance for GLP-1 and weight loss medications, including gastroparesis warning signs, vision changes, medication timeline documentation, and specialist follow-up.',
     },
   ],
 })
 
 const breadcrumbItems: PracticeAreaBreadcrumbItem[] = [
   { label: 'Home', to: '/' },
-  { label: 'Practice Areas', to: '/practice-areas' },
+  { label: 'Injury Recovery Guides', to: '/injury-recovery-guides' },
   { label: 'Dangerous Drugs', to: '/practice-areas/dangerous-drugs' },
   { label: 'Weight Loss Drug', strong: true },
 ]
 
-const lawyers = [
-  // { name: 'Mike Morgan', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80&fit=crop' },
-  { name: 'Paul Pennock', img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80&fit=crop' },
-  { name: 'Jonathan M. Sedgh', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80&fit=crop' },
-]
-
-const differenceBlocks: TextBlock[] = [
+const takeaways: TextBlock[] = [
   {
-    title: 'Hold Manufacturers Accountable for Harmful Drugs',
-    text: 'Manufacturers may downplay or omit serious side effects. We review medical records, warnings, and evidence to demand full compensation when drug use harms you.',
+    title: 'Do not dismiss severe GI symptoms',
+    text: 'Persistent vomiting, inability to keep fluids down, or worsening abdominal pain may signal complications beyond typical nausea.',
   },
   {
-    title: 'Covering All Types of Weight Loss Drugs Cases',
-    text: 'Gastrointestinal injuries, vision loss, blindness, gastroparesis, bowel obstruction, or other side effects tied to weight loss drugs—if the medication caused harm, we fight to hold negligent parties accountable.',
+    title: 'Track dose changes carefully',
+    text: 'Record start date, dose escalation steps, co-medications, and exact timing when symptoms began relative to each change.',
   },
   {
-    title: 'Proven Experience, Powerful Results',
-    text: 'With 35+ years, billions recovered, and a nationwide team of attorneys, we bring the trial strength and dedication needed to take on complex drug injury cases.',
+    title: 'Vision changes need prompt review',
+    text: 'Sudden or progressive vision loss after starting or increasing GLP-1 therapy should be evaluated without delay.',
   },
   {
-    title: 'Legal Help with No Upfront Costs',
-    text: 'With Morgan & Morgan, you get attorneys, drug safety experts, and investigators working for you. Free case review, 24/7 support, and The Fee Is Free®: you pay nothing unless we win.',
+    title: 'Bring complete medication evidence to follow-up',
+    text: 'Prescription labels, pharmacy records, and patient portal messages help clinicians perform accurate medication reconciliation.',
   },
 ]
 
-const caseCriteria: IconCard[] = [
+const adversePatterns: IconCard[] = [
   {
-    title: 'Used a weight loss or diabetes medication',
-    text: 'If you took a weight loss medication, you may be eligible to file a claim.',
+    title: 'Gastrointestinal complications',
+    text: 'Nausea is common early on, but persistent vomiting, severe abdominal pain, or inability to eat may suggest gastroparesis or obstruction concerns.',
     icon: `<svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="#cfe5fb"/><path d="M22 10v16M18 14h8M16 26h8" stroke="#0a1f44" fill="none" stroke-width="2" stroke-linecap="round"/></svg>`,
   },
   {
-    title: 'Stopped using the medication',
-    text: 'Individuals who are no longer taking the drug, due to side effects or medical guidance, may meet criteria for pursuing legal action.',
+    title: 'Vision-related symptoms',
+    text: 'Blurred vision, field loss, or sudden vision changes after medication use should trigger urgent ophthalmology or emergency review.',
     icon: `<svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="#cfe5fb"/><circle cx="20" cy="20" r="6" fill="#0a1f44"/></svg>`,
   },
   {
-    title: 'Suffered a serious injury',
-    text: 'If you developed gastroparesis, intestinal blockage, persistent vomiting, gallbladder issues, vision loss, blindness, or another related condition, your injuries may be linked to the medication.',
+    title: 'Neurological warning signs',
+    text: 'Confusion, coordination problems, or memory changes—especially with prolonged vomiting—may indicate serious metabolic or neurological complications.',
     icon: `<svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="#cfe5fb"/><path d="M14 22h12v8H14v-8zM20 14v8M17 17h6" stroke="#0a1f44" fill="none" stroke-width="2" stroke-linecap="round"/><path d="M24 12l4-2v6h-4v-4z" stroke="#0a1f44" fill="none" stroke-width="1.8" stroke-linejoin="round"/></svg>`,
   },
 ]
 
-/** Four-column grid order: row then column per design */
+const medicationCards: IconCard[] = [
+  {
+    title: 'Document what you took',
+    text: 'Record brand name, generic name, dose, route, and prescribing clinician for every GLP-1 or weight management drug.',
+    icon: `<svg viewBox="0 0 40 40" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2"><rect x="12" y="8" width="16" height="24" rx="2"/><path d="M16 16h8M16 22h8"/></svg>`,
+  },
+  {
+    title: 'Note when you stopped',
+    text: 'Stopping date and reason (side effects, clinician advice, or supply issues) are important for timeline reconstruction.',
+    icon: `<svg viewBox="0 0 40 40" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2"><circle cx="20" cy="20" r="12"/><path d="M14 20h12"/></svg>`,
+  },
+  {
+    title: 'List co-medications',
+    text: 'Other diabetes drugs, supplements, and recent antibiotics can affect symptom interpretation and interaction risk.',
+    icon: `<svg viewBox="0 0 40 40" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 20h20M20 10v20"/><circle cx="20" cy="20" r="14"/></svg>`,
+  },
+]
+
 const popularMeds = ['Ozempic', 'Wegovy', 'Mounjaro', 'Trulicity', 'Rybelsus', 'Saxenda', 'Victoza', 'Zepbound']
 
-const stats: StatItem[] = [
-  { k: '$30 BILLION', v: 'Recovered for clients nationwide' },
-  { k: '700,000+', v: 'Clients and families served' },
-  { k: '1,000+', v: 'Attorneys across the country' },
-  { k: '1', v: 'Click may change your life' },
+const nextStepParagraphs = [
+  'Seek emergency care for persistent vomiting with dehydration, severe abdominal pain, chest pain, breathing difficulty, confusion, or sudden vision loss.',
+  'Stop self-adjusting doses without clinician guidance, but do tell your provider immediately about severe or worsening symptoms.',
+  'Bring prescription history, dose changes, hospital visits, imaging, and a symptom timeline to gastroenterology, endocrinology, or ophthalmology follow-up as recommended.',
 ]
 
-const partners: PartnerSlide[] = [
-  {
-    name: 'Mike Morgan',
-    role: 'Managing Partner, Morgan & Morgan',
-    quote:
-      "These drugs were sold as life-changing—but for many, they've caused real and lasting harm. If you've suffered because of a weight loss drug, we're here to listen, and to fight to make things right.",
-    img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&q=85&fit=crop',
-  },
-  {
-    name: 'Matt Morgan',
-    role: 'Managing Partner, Morgan & Morgan',
-    quote:
-      'Weight loss drug litigation requires detailed medical analysis and relentless advocacy—we bring both to every client we represent.',
-    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=85&fit=crop',
-  },
-]
-
-const injuryItems: TextBlock[] = [
+const urgentSymptoms: TextBlock[] = [
   {
     title: 'Gastroparesis',
-    text: "A condition where the stomach can't empty properly, leading to chronic nausea, vomiting, and malnutrition.",
+    text: 'Chronic nausea, early satiety, bloating, and vomiting may indicate delayed gastric emptying requiring medical evaluation.',
   },
   {
-    title: 'Intestinal Blockage',
-    text: 'Obstructions in the intestines can cause life-threatening complications and often require emergency surgery.',
+    title: 'Intestinal obstruction concerns',
+    text: 'Severe abdominal pain, distension, or inability to pass gas or stool may represent obstruction and need emergency assessment.',
   },
   {
-    title: 'Blindness',
-    text: 'Some patients have reported sudden or permanent vision loss following extended medication use.',
+    title: 'Persistent vomiting',
+    text: 'Continuous vomiting leading to dehydration, electrolyte imbalance, or emergency department visits should not be managed at home alone.',
   },
   {
-    title: 'Gallbladder Removal (Pre-2022)',
-    text: 'Patients who underwent gallbladder removal may not have been warned about this possible drug-related complication.',
+    title: 'Vision loss or blurring',
+    text: 'Sudden or progressive vision changes after GLP-1 use warrant prompt ophthalmologic and medical review.',
   },
   {
-    title: 'Persistent Vomiting',
-    text: 'Continuous vomiting, treated at a hospital or emergency room, has led to severe dehydration, hospitalization, and long-term digestive issues.',
+    title: 'Gallbladder-related pain',
+    text: 'Right upper abdominal pain, fever, or jaundice after medication use may signal biliary complications needing imaging.',
   },
   {
-    title: "Wernicke's Encephalopathy",
-    text: 'A neurological disorder caused by severe vitamin B1 deficiency, leading to confusion, vision issues, and loss of coordination.',
-  },
-  {
-    title: 'Death',
-    text: 'In the most tragic cases, complications from undiagnosed or untreated injuries have resulted in loss of life.',
-  },
-]
-
-const clients: ClientTestimonial[] = [
-  {
-    name: 'Lashondra',
-    quote:
-      "When it came to negotiating, they didn't just settle for anything. They definitely went to the bat for me.",
-    thumbBg: 'linear-gradient(135deg,#b8d4f0,#7eb3e8)',
-    thumb: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&q=80&fit=crop',
-  },
-  {
-    name: 'Ray',
-    quote:
-      'They answered every question and kept me updated. I felt like someone was actually fighting for me—not just checking boxes.',
-    thumbBg: 'linear-gradient(135deg,#cfe8fc,#8ec5f2)',
-    thumb: TESTIMONIAL_THUMB_2,
-  },
-  {
-    name: 'Sean',
-    quote:
-      'After complications from my medication, I needed a firm that understood complex drug cases. My attorney explained every step clearly.',
-    thumbBg: 'linear-gradient(135deg,#dceefc,#9ec9ef)',
-    thumb: TESTIMONIAL_THUMB_3,
+    title: 'Neurological changes',
+    text: 'Confusion, gait instability, or coordination loss—especially with prolonged vomiting—may indicate serious metabolic complications.',
   },
 ]
 
 const learnLeft: LearnLink[] = [
-  { title: 'Victoza Lawsuits: You Should Have Been Warned', href: '#blog' },
-  { title: 'Wegovy Side Effects: What You Need to Know', href: '#blog' },
-  {
-    title: 'Rybelsus Lawsuits: Side Effects, Injury Claims, and Your Legal Options',
-    href: '#blog',
-  },
-  { title: 'Weight Loss Drug Lawsuits: What Every Consumer Should Know', href: '#blog' },
-  { title: 'Morgan & Morgan Sues Ozempic® and Mounjaro™ Manufacturers', href: '#blog' },
-  {
-    title:
-      'Weight Loss Medications and Vision Loss: What Patients Need to Know About a Potential Link to Blindness',
-    href: '#blog',
-  },
-  { title: 'Mounjaro Lawsuits: Side Effects and Legal Options', href: '#blog' },
-  {
-    title: 'Ozempic Lawsuits: FDA Warnings, Legal Actions, and What Patients Need to Know',
-    href: '#blog',
-  },
-  { title: 'What You Need to Know About Saxenda and Stomach Paralysis', href: '#blog' },
-  { title: 'Diabetes Drug for Weight Loss', href: '#blog' },
+  { title: 'Medication Error vs Side Effect: How to Tell', href: '/blog/medical-malpractice' },
+  { title: 'How to Build a Complete Medical Timeline', href: '/blog/posts/how-to-build-a-complete-medical-timeline' },
 ]
 
 const learnRight: LearnLink[] = [
-  { title: 'Saxenda Lawsuits: Side Effects, Legal Options, and Filing a Claim', href: '#blog' },
-  {
-    title: 'Zepbound Lawsuits: Side Effects, Legal Risks, and How to Get Justice',
-    href: '#blog',
-  },
-  { title: 'Research Shows Weight Loss Drugs Like Ozempic Have Unannounced Risks', href: '#blog' },
-  { title: 'Wegovy Lawsuits: Side Effects, Legal Action & Compensation', href: '#blog' },
-  {
-    title: 'Trulicity Lawsuits: What You Need to Know About Dulaglutide Injuries',
-    href: '#blog',
-  },
-  { title: "What They Didn't Tell You About Rybelsus", href: '#blog' },
-  { title: 'Why Ozempic May Be Riskier Than You Think', href: '#blog' },
-  { title: 'Mounjaro Side Effects: What You Need to Know', href: '#blog' },
-  { title: "Trulicity and Gastroparesis: A Risk You Can't Ignore", href: '#blog' },
-  { title: 'Weight Loss Drugs Linked to Stomach Paralysis', href: '#blog' },
+  { title: 'Second Medical Opinion: Patient Checklist', href: '/blog/posts/second-medical-opinion-patient-checklist' },
+  { title: 'Medication Safety Resource Guide', href: '/practice-areas/dangerous-drugs' },
 ]
 
 const faqAside = [
-  'What Is Ozempic?',
-  'What Is Wegovy?',
-  'What Is Saxenda?',
-  'What Is Rybelsus?',
-  'Is there a cure for gastroparesis?',
-  'How does Ozempic affect the body?',
+  'What are GLP-1 medications?',
+  'What symptoms are emergencies?',
+  'What is gastroparesis?',
+  'Can vision problems be linked to these drugs?',
+  'What records should I preserve?',
+  'When should I request specialist review?',
 ]
 
 const faqItems: FaqItem[] = [
   {
-    q: 'What Is Ozempic?',
+    q: 'What are GLP-1 and related weight loss medications?',
     paragraphs: [
-      'Ozempic® is an FDA-approved prescription medication (semaglutide) used to improve blood sugar in adults with type 2 diabetes. It has also been widely prescribed off-label for weight loss and is linked in litigation to serious gastrointestinal and other complications in some patients.',
+      'These drugs mimic incretin hormones to slow digestion, reduce appetite, and help regulate blood sugar. Examples include semaglutide (Ozempic, Wegovy, Rybelsus), liraglutide (Saxenda, Victoza), dulaglutide (Trulicity), and tirzepatide (Mounjaro, Zepbound).',
     ],
   },
   {
-    q: 'What Is Wegovy?',
+    q: 'What symptoms require emergency medical care?',
     paragraphs: [
-      'Wegovy® is a higher-dose semaglutide injection FDA-approved for chronic weight management in certain adults and adolescents. Lawsuits allege some patients were not adequately warned about severe side effects.',
+      'Persistent vomiting with dehydration, severe abdominal pain, inability to keep fluids down, chest pain, breathing difficulty, confusion, seizures, or sudden vision loss require urgent evaluation.',
     ],
   },
   {
-    q: 'What Is Saxenda?',
+    q: 'What is gastroparesis and how might it present?',
     paragraphs: [
-      'Saxenda® (liraglutide) is an injectable prescription medicine used for weight loss in adults with obesity or excess weight with weight-related conditions. Plaintiffs in some cases claim complications such as stomach paralysis or other injuries.',
+      'Gastroparesis is delayed stomach emptying. Symptoms may include chronic nausea, vomiting, bloating, early fullness, and weight loss. It requires medical diagnosis and management—do not rely on online self-diagnosis alone.',
     ],
   },
   {
-    q: 'What Is Rybelsus?',
+    q: 'Can these medications affect vision?',
     paragraphs: [
-      'Rybelsus® is an oral form of semaglutide used alongside diet and exercise to improve blood sugar in adults with type 2 diabetes. Like other GLP-1 drugs, it may carry risks that patients discuss with their doctors and that may be raised in litigation.',
+      'Some patients report vision changes after starting or increasing therapy. Sudden or progressive vision loss should be evaluated promptly by medical and eye specialists.',
     ],
   },
   {
-    q: 'Is there a cure for gastroparesis?',
+    q: 'What medication records should I preserve?',
     paragraphs: [
-      'There is no simple cure for gastroparesis; treatment focuses on diet changes, medications, procedures, and managing complications under medical care. Legal claims seek compensation for harm alleged to result from unsafe drugs or inadequate warnings—not medical treatment advice.',
+      'Keep prescription labels, pharmacy printouts, dose change history, co-medications, hospital records, imaging, and a dated symptom log.',
     ],
   },
   {
-    q: 'How does Ozempic affect the body?',
+    q: 'When should I request specialist reassessment?',
     paragraphs: [
-      'Ozempic mimics GLP-1 hormones to slow digestion, reduce appetite, and help regulate blood sugar. Some patients report severe gastrointestinal symptoms; whether Ozempic caused a specific injury depends on medical facts reviewed by your physicians and, in litigation, experts.',
+      'Request specialist input when symptoms are severe, persistent, atypical, or inconsistent with expected mild side effects—especially after dose increases or polypharmacy.',
     ],
   },
   {
-    q: 'What should I do if harmed by ozempic or other weight loss drugs? How do I file an Ozempic lawsuit?',
+    q: 'Should I stop the medication on my own?',
     paragraphs: [
-      'Seek medical care for urgent symptoms, document your prescription history and diagnoses, and avoid signing releases from insurers or manufacturers without legal advice. Contact Morgan & Morgan for a free case evaluation—we can explain deadlines, potential defendants, and next steps if you may have a claim.',
+      'Do not change or stop prescribed medications without clinician guidance, except when emergency symptoms require immediate care. Contact your prescriber as soon as possible about severe reactions.',
     ],
   },
   {
-    q: 'What Is Trulicity?',
+    q: 'Can adverse effects appear after I stop the drug?',
     paragraphs: [
-      'Trulicity® (dulaglutide) is a once-weekly injectable GLP-1 receptor agonist for type 2 diabetes; it has been associated in reports and litigation with serious digestive complications in some users.',
-    ],
-  },
-  {
-    q: 'What Is Zepbound™?',
-    paragraphs: [
-      'Zepbound™ (tirzepatide) is FDA-approved for chronic weight management in certain adults. Like other incretin drugs, it may carry risks that should be discussed with a healthcare provider and may be relevant to injury-related legal claims.',
-    ],
-  },
-  {
-    q: 'Why should I hire a weight loss drug lawyer at Morgan & Morgan?',
-    paragraphs: [
-      'Drug injury cases involve complex science, federal warnings, and well-funded manufacturers. Morgan & Morgan has the resources to retain experts, investigate labeling and marketing, and pursue fair compensation while you focus on recovery.',
-    ],
-  },
-  {
-    q: 'Do I have to pay for a consultation? Does Morgan & Morgan offer free consultations?',
-    paragraphs: [
-      'Yes—we offer free, confidential case evaluations for weight loss drug injuries. There is no upfront fee to speak with our team about whether you may have a claim.',
-    ],
-  },
-  {
-    q: 'How much does it cost to hire a weight loss drug attorney at a law firm like Morgan & Morgan?',
-    paragraphs: [
-      'Our Fee Is Free® means you pay nothing upfront and owe no attorney fees unless we win your case, subject to your written agreement and applicable law.',
-    ],
-  },
-  {
-    q: 'Who will be on my case team for my weight loss drug lawsuit?',
-    paragraphs: [
-      'Your team may include trial attorneys, paralegals, investigators, and medical or pharmaceutical experts who analyze records and develop your claim.',
-    ],
-  },
-  {
-    q: 'When do I meet with my weight loss and diabetes drug attorney?',
-    paragraphs: [
-      'After you reach out, we schedule time to review your medication history, injuries, and options. You will have ongoing access to your legal team as your case moves forward.',
+      'Some complications may persist or become apparent after discontinuation. Continue documenting symptoms and follow-up care regardless of current medication status.',
     ],
   },
 ]

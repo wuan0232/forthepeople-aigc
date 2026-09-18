@@ -16,10 +16,9 @@
           </a>
         </div>
         <p class="ca-bigwins__tiny">
-          Results may vary depending on your particular facts and legal circumstances. The attorneys
-          shown in these photos may not be licensed in your state. To find an attorney licensed in
-          your area, please visit our
-          <a href="#attorneys">attorney page</a>.
+          Individual recovery timelines vary. Stories are educational and not a substitute for personalized medical
+          care. Meet our clinicians on the
+          <a href="/about/meet-our-doctors">Meet Our Doctors</a> page.
         </p>
       </div>
       <div class="ca-bigwins__visual">
@@ -118,7 +117,7 @@ const props = withDefaults(
       },
       {
         img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1100&q=80',
-        imgAlt: 'Law firm team portrait',
+        imgAlt: 'clinic team portrait',
         headline: 'Verdict exceeded initial offer',
         offer: '$95,000',
         verdict: '$410,000',

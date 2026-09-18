@@ -27,7 +27,7 @@
         </div>
       </MediaCarousel>
       <p class="ca-disclaimer ca-disclaimer--center">
-        Results may vary depending on your particular facts and legal circumstances.
+        Individual situations vary. This information is educational and not a substitute for personalized medical care.
       </p>
     </div>
   </section>

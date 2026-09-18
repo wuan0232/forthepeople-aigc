@@ -2,11 +2,11 @@
   <div class="pa-view-all">
     <section class="pa-view-all__hero">
       <div class="container">
-        <SiteBreadcrumb class="pa-view-all__breadcrumb" :items="[{ label: 'Home', to: '/' }, { label: 'Practice Areas' }]" />
+        <SiteBreadcrumb class="pa-view-all__breadcrumb" :items="[{ label: 'Home', to: '/' }, { label: 'Recovery Guides' }]" />
 
         <div class="pa-view-all__intro">
-          <h1>FIGHTING FOR YOU, WHEREVER LIFE STRIKES</h1>
-          <p>We fight for the compensation you deserve. With over 50 case types, we're here to guide your next steps.</p>
+          <h1>RECOVERY GUIDANCE, WHEN YOU NEED IT MOST</h1>
+          <p>Use clear, medical-first guides to recognize urgent symptoms, prepare for follow-up, and plan safer recovery after an injury or health concern.</p>
         </div>
 
         <div class="pa-view-all__featured" aria-label="Featured practice areas">
@@ -30,7 +30,7 @@
     <section class="pa-view-all__support">
       <div class="container pa-view-all__support-grid">
         <div>
-          <h2>Other Ways We Can Help</h2>
+          <h2>Other Recovery Pathways</h2>
           <div class="pa-other-grid">
             <NuxtLink v-for="item in otherWays" :key="item.title" :to="item.href" class="pa-other-link">
               {{ item.title }}
@@ -38,25 +38,25 @@
             </NuxtLink>
           </div>
           <NuxtLink to="#contact" class="pa-view-all__get-started">
-            Get Started
+            Start a recovery checklist
             <span aria-hidden="true">↓</span>
           </NuxtLink>
         </div>
 
         <div class="pa-corporate" aria-labelledby="corporate-heading">
-          <h2 id="corporate-heading">Cases Fighting Corporate Negligence</h2>
+          <h2 id="corporate-heading">Medication &amp; Health Safety Updates</h2>
           <MediaCarousel
             :count="corporateCases.length"
             mode="paged"
-            region-label="Corporate negligence cases"
-            dots-label="Corporate negligence carousel position"
+            region-label="Medication and health safety updates"
+            dots-label="Medication safety carousel position"
             strip-class="pa-corporate__strip"
             dots-class="pa-corporate__dots"
             dot-class="pa-corporate__dot"
             active-dot-class="pa-corporate__dot--on"
             dragging-class="pa-corporate__strip--dragging"
-            dot-label-prefix="Corporate case slide"
-            dot-key-prefix="corporate-dot"
+            dot-label-prefix="Medication safety slide"
+            dot-key-prefix="safety-dot"
           >
             <article v-for="item in corporateCases" :key="item.title" class="pa-corporate__card">
               <h3>{{ item.title }}</h3>
@@ -68,18 +68,58 @@
       </div>
     </section>
 
+    <section class="pa-view-all__rights" aria-labelledby="rights-heading">
+      <div class="container">
+        <header class="pa-view-all__rights-head">
+          <p>LIGHT RIGHTS EDUCATION</p>
+          <h2 id="rights-heading">Practical rights &amp; records after an injury</h2>
+          <span>
+            Understanding your care records and everyday documentation can support clearer medical
+            follow-up and help you prepare informed questions if you later seek independent advice.
+          </span>
+        </header>
+        <div class="pa-rights-grid">
+          <article>
+            <h3>Request your care records</h3>
+            <p>
+              Keep visit summaries, imaging reports, medication lists, and discharge instructions
+              together so each clinician can see the full recovery timeline.
+            </p>
+          </article>
+          <article>
+            <h3>Document functional changes</h3>
+            <p>
+              A dated symptom and activity log can make follow-up conversations clearer—especially
+              when pain, sleep, mobility, or work tasks change over time.
+            </p>
+          </article>
+          <article>
+            <h3>Ask before signing or deciding</h3>
+            <p>
+              If an insurance, workplace, or other document affects your medical care, ask
+              questions and consider independent professional advice before making decisions.
+            </p>
+          </article>
+        </div>
+        <p class="pa-view-all__rights-note">
+          Educational information only. This is not legal advice and does not replace medical care
+          or emergency services.
+        </p>
+      </div>
+    </section>
+
     <section class="pa-view-all__banner" aria-labelledby="more-heading">
       <div class="container">
         <div class="pa-view-all__banner-card">
-          <h2 id="more-heading">More of What We Do</h2>
-          <p>Whatever the practice area, every case gets our strength, focus, and care.</p>
+          <h2 id="more-heading">More Recovery Guidance</h2>
+          <p>Explore medical guidance for injury recovery, symptom monitoring, and safer follow-up conversations.</p>
         </div>
       </div>
     </section>
 
     <section class="pa-view-all__list" aria-labelledby="all-practice-heading">
       <div class="container">
-        <h2 id="all-practice-heading" class="sr-only">All Practice Areas</h2>
+        <h2 id="all-practice-heading" class="sr-only">All Recovery Guides</h2>
         <div class="pa-practice-list">
           <NuxtLink v-for="item in practiceLinks" :key="item.title" :to="item.href">
             {{ item.title }}
@@ -107,24 +147,24 @@ type CorporateCase = PracticeLink & {
 
 const corporateCases: CorporateCase[] = [
   {
-    title: 'Ultra-Processed Foods:',
-    href: '#practice',
-    text: 'Food giants sued for marketing addictive foods',
+    title: 'Medication safety:',
+    href: '/practice-areas/dangerous-drugs',
+    text: 'Understand warning signs, prescriber questions, and safer follow-up after a medication concern.',
   },
   {
-    title: 'Hair Color Products:',
-    href: '#practice',
-    text: 'Hair stylists concerned over cancer-causing ingredients',
+    title: 'Brain injury follow-up:',
+    href: '/practice-areas/brain-injury',
+    text: 'Learn which delayed neurological symptoms need urgent reassessment after an injury.',
   },
   {
     title: 'Weight Loss Drugs:',
     href: '/practice-areas/dangerous-drugs/weight-loss-drug',
-    text: 'Main stream media meds may have dangerous side effects',
+    text: 'Review abdominal-pain, dehydration, and other urgent warning signs with a medical-first guide.',
   },
   {
     title: 'Depo-Provera:',
     href: '/practice-areas/dangerous-drugs/depo-provera',
-    text: 'Popular birth control may lead to brain tumors',
+    text: 'Review symptoms that need prompt medical evaluation and prepare questions for your clinician.',
   },
 ]
 
@@ -132,98 +172,49 @@ const featuredCards: FeatureCard[] = [
   {
     title: 'Car Accidents',
     href: '/practice-areas/car-accident',
-    text: "We've helped thousands recover medical bills, lost wages, and more after crashes caused by negligence.",
+    text: 'Recognize delayed symptoms, organize records, and prepare for timely medical follow-up after a crash.',
     icon: `<svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 19h22M8 16l2-6h12l2 6"/><circle cx="11" cy="21" r="2"/><circle cx="23" cy="21" r="2"/></svg>`,
   },
   {
     title: 'Slip and Fall',
     href: '/practice-areas/slip-and-fall',
-    text: 'From wet floors to unsafe conditions, we fight to hold property owners accountable for your injuries.',
+    text: 'Learn warning signs after a fall, protect mobility, and plan a safe clinical reassessment.',
     icon: `<svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="16" cy="7" r="3"/><path d="M16 10v7l-5 10M16 17l6 10M11 18h11"/></svg>`,
   },
   {
-    title: "Workers' Compensation",
-    href: '#practice',
-    text: 'We guide workers through the claims process to secure the benefits they deserve for workplace injuries.',
+    title: 'Workplace Injury',
+    href: '/practice-areas/workers-compensation',
+    text: 'Track work-related symptoms, discuss medical restrictions, and plan a safer return to activity.',
     icon: `<svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="11" width="16" height="14" rx="2"/><path d="M12 11V8h8v3M12 17h8"/></svg>`,
   },
 ]
 
 const otherWays: PracticeLink[] = [
-  { title: 'Medical Malpractice', href: '/practice-areas/medical-malpractice' },
-  { title: 'Nursing Home Abuse', href: '#practice' },
-  { title: 'Dangerous Drugs', href: '/practice-areas/dangerous-drugs' },
-  { title: 'Defective Products', href: '#practice' },
-  { title: 'Social Security Disability', href: '#practice' },
-  { title: 'Labor & Employment', href: '#practice' },
+  { title: 'Medical Harm Recovery', href: '/practice-areas/medical-malpractice' },
+  { title: 'Brain Injury Follow-Up', href: '/practice-areas/brain-injury' },
+  { title: 'Spinal Cord Injury Follow-Up', href: '/practice-areas/spinal-cord-injury' },
+  { title: 'Medication Safety', href: '/practice-areas/dangerous-drugs' },
+  { title: 'Burn Injury Recovery', href: '/practice-areas/burn-injury' },
+  { title: 'Mesothelioma Care Pathway', href: '/practice-areas/mesothelioma' },
 ]
 
 const practiceLinks: PracticeLink[] = [
-  { title: 'Admiralty and Maritime Law', href: '#practice' },
-  { title: 'Americans with Disabilities Act', href: '#practice' },
-  { title: 'Aviation Accident', href: '/practice-areas/aviation-accident' },
-  { title: 'Birth Injury', href: '#practice' },
-  { title: 'Boating Accident', href: '/practice-areas/boating-accident' },
-  { title: 'Brain Injury', href: '/practice-areas/brain-injury' },
-  { title: 'Breach of Contract', href: '#practice' },
-  { title: 'Burn Injury', href: '/practice-areas/burn-injury' },
-  { title: 'California Wildfire', href: '#practice' },
-  { title: 'Car Accident', href: '/practice-areas/car-accident' },
-  { title: 'Carbon Monoxide Exposure', href: '#practice' },
-  { title: 'Catastrophic Events', href: '#practice' },
-  { title: 'Child Sexual Abuse', href: '#practice' },
-  { title: 'Class Action', href: '#practice' },
-  { title: 'Construction Accident', href: '#practice' },
-  { title: 'Construction Defect', href: '#practice' },
-  { title: 'Dangerous Drugs', href: '/practice-areas/dangerous-drugs' },
-  { title: 'Data Privacy', href: '#practice' },
-  { title: 'Defective Airbag', href: '#practice' },
-  { title: 'Depo-Provera', href: '/practice-areas/dangerous-drugs/depo-provera' },
-  { title: 'Discrimination', href: '#practice' },
-  { title: 'Dog Bite', href: '#practice' },
-  { title: 'Dram Shop Liability', href: '#practice' },
-  { title: 'Drowning Accident', href: '#practice' },
-  { title: 'Elder Abuse', href: '#practice' },
-  { title: 'Employee Misclassification', href: '#practice' },
-  { title: 'Explosion', href: '#practice' },
-  { title: 'Family and Medical Leave Act', href: '#practice' },
-  { title: 'GM Transmission Issue', href: '#practice' },
-  { title: 'Grok AI Lawsuit', href: '#practice' },
-  { title: 'Hair Dye Lawsuit', href: '#practice' },
-  { title: 'Insurance Claim', href: '#practice' },
-  { title: 'Labor and Employment', href: '#practice' },
-  { title: 'Mass Arbitration', href: '#practice' },
-  { title: 'Mass Tort', href: '#practice' },
-  { title: 'Medical Malpractice', href: '/practice-areas/medical-malpractice' },
-  { title: 'Mesothelioma', href: '/practice-areas/mesothelioma' },
-  { title: 'Motorcycle Accident', href: '/practice-areas/motorcycle-accident' },
-  { title: 'Negligent Security', href: '#practice' },
-  { title: 'Nursing Home Abuse', href: '#practice' },
-  { title: 'Offshore Injury', href: '#practice' },
-  { title: 'Personal Injury', href: '/practice-areas/personal-injury' },
-  { title: 'Premises Liability', href: '#practice' },
-  { title: 'Product Liability', href: '#practice' },
-  { title: 'Professional Liability', href: '#practice' },
-  { title: 'Slip & Fall', href: '/practice-areas/slip-and-fall' },
-  { title: 'Social Media Harm', href: '#practice' },
-  { title: 'Social Security Disability', href: '#practice' },
-  { title: 'Spine Injury', href: '/practice-areas/spinal-cord-injury' },
-  { title: 'Talcum Powder Lawsuit', href: '#practice' },
-  { title: 'Toxic Air Lawsuit', href: '#practice' },
-  { title: 'Toxic and Environmental', href: '#practice' },
-  { title: 'Truck Accident', href: '/practice-areas/truck-accident' },
-  { title: 'TruDi Navigation System Lawsuit', href: '#practice' },
-  { title: 'Ultra-Processed Foods', href: '#practice' },
-  { title: 'Under Armour Data Breach', href: '#practice' },
-  { title: 'Unpaid Overtime', href: '#practice' },
-  { title: 'Veterans Benefits', href: '#practice' },
-  { title: 'Wage & Hour', href: '#practice' },
-  { title: 'Weight Loss Drug', href: '#practice' },
-  { title: 'Whistleblower & Qui Tam', href: '#practice' },
-  { title: 'Wildfire', href: '#practice' },
-  { title: "Workers' Compensation", href: '#practice' },
-  { title: 'Wrongful Death', href: '#practice' },
-  { title: 'Wrongful Termination', href: '#practice' },
+  { title: 'Aviation Trauma Recovery', href: '/practice-areas/aviation-accident' },
+  { title: 'Boating Injury Recovery', href: '/practice-areas/boating-accident' },
+  { title: 'Brain Injury Follow-Up', href: '/practice-areas/brain-injury' },
+  { title: 'Burn Injury Recovery', href: '/practice-areas/burn-injury' },
+  { title: 'Car Crash Recovery', href: '/practice-areas/car-accident' },
+  { title: 'Dangerous Drugs Safety', href: '/practice-areas/dangerous-drugs' },
+  { title: 'Depo-Provera Safety Guide', href: '/practice-areas/dangerous-drugs/depo-provera' },
+  { title: 'Fall Injury Recovery', href: '/practice-areas/slip-and-fall' },
+  { title: 'GLP-1 & Weight Loss Drug Guide', href: '/practice-areas/dangerous-drugs/weight-loss-drug' },
+  { title: 'General Injury Recovery', href: '/practice-areas/personal-injury' },
+  { title: 'Medical Harm Recovery', href: '/practice-areas/medical-malpractice' },
+  { title: 'Mesothelioma Care Pathway', href: '/practice-areas/mesothelioma' },
+  { title: 'Motorcycle Injury Recovery', href: '/practice-areas/motorcycle-accident' },
+  { title: 'Spinal Cord Injury Follow-Up', href: '/practice-areas/spinal-cord-injury' },
+  { title: 'Truck Crash Recovery', href: '/practice-areas/truck-accident' },
+  { title: 'Workplace Injury Recovery', href: '/practice-areas/workers-compensation' },
 ]
 </script>
 
@@ -478,6 +469,70 @@ const practiceLinks: PracticeLink[] = [
 
 .pa-view-all__banner {
   padding: 3.5rem 0 2rem;
+}
+
+.pa-view-all__rights {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  background: #f8fafc;
+}
+
+.pa-view-all__rights-head {
+  max-width: 46rem;
+  margin-bottom: 2rem;
+}
+
+.pa-view-all__rights-head > p {
+  margin: 0 0 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  color: var(--mm-red, #c41230);
+}
+
+.pa-view-all__rights-head h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.65rem, 3vw, 2.25rem);
+  color: #1f2933;
+}
+
+.pa-view-all__rights-head span,
+.pa-view-all__rights-note {
+  color: #475569;
+  line-height: 1.6;
+}
+
+.pa-rights-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 800px) {
+  .pa-rights-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pa-rights-grid article {
+  padding: 1.4rem;
+  background: #fff;
+  border-top: 3px solid var(--blue, #1f6dde);
+}
+
+.pa-rights-grid h3 {
+  margin: 0 0 0.55rem;
+  font-size: 1.05rem;
+  color: #1f2933;
+}
+
+.pa-rights-grid p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.55;
+}
+
+.pa-view-all__rights-note {
+  margin: 1.25rem 0 0;
+  font-size: 0.82rem;
 }
 
 .pa-view-all__banner-card {

@@ -1,4 +1,4 @@
-﻿/* Practice area landing pages — shared layout */
+/* Practice area landing pages — shared layout */
 .ca {
   padding-bottom: 4rem;
 }
@@ -319,6 +319,25 @@
   font-size: 0.88rem;
   line-height: 1.55;
   color: #374151;
+}
+
+a.ca-way-card--link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+a.ca-way-card--link:hover {
+  box-shadow: 0 4px 16px rgba(10, 31, 68, 0.12);
+  transform: translateY(-2px);
+}
+
+.ca-way-card__more {
+  display: inline-flex;
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
 .ca-ways-view-more {

@@ -3,7 +3,7 @@
     <div class="container">
       <header class="ca-fight__head">
         <h2 id="fight-heading" class="ca-h2 ca-center">Fighting For the People</h2>
-        <p class="ca-fight__sub">Backed by America's Largest Injury Law Firm.</p>
+        <p class="ca-fight__sub">Backed by Patient Care & Medical Guidance.</p>
       </header>
 
       <div class="ca-stats">
@@ -74,7 +74,7 @@ withDefaults(
   {
     partnerPhotoSrc: '/practice-area-partner-photo.avif',
     footerDisclaimer:
-      'The attorney featured above is licensed in Florida. For a full list of attorneys in your state please visit our attorney page. Results may vary depending on your particular facts and legal circumstances.',
+      'Clinician profiles are for educational introduction. Care plans always depend on your individual medical evaluation. Individual situations vary and this information is not a substitute for personalized medical care.',
   },
 )
 

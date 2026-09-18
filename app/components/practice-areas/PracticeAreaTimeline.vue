@@ -32,7 +32,7 @@
       <div class="ca-after__copy">
         <h2 :id="headingId" class="ca-h2">{{ title }}</h2>
         <p>{{ description }}</p>
-        <a href="tel:+18448278082" class="link-arrow">
+        <a href="tel:+19293993134" class="link-arrow">
           {{ linkLabel }}
           <span class="icon-box" aria-hidden="true">
             <svg viewBox="0 0 12 12" width="8" height="8">
