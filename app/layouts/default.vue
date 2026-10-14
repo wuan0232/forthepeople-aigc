@@ -9,6 +9,7 @@
 </template>
 
 <script setup lang="ts">
+useSiteAnalytics()
 </script>
 
 <style scoped>
