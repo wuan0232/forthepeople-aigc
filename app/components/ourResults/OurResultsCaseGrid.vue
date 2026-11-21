@@ -2,7 +2,7 @@
   <section class="or-hero" aria-labelledby="or-hero-heading">
     <div class="container">
       <div class="or-hero__head">
-        <h1 id="or-hero-heading">RECOVERY STORIES<br />FOCUSED ON CARE</h1>
+        <h1 id="or-hero-heading">RECOVERY EXAMPLES<br />FOCUSED ON CARE</h1>
         <p>Real patient pathways after injury—stabilization, follow-up, and getting daily life back on track.</p>
         <a href="/medical/what-to-do" class="or-hero__cta">Start your medical action plan</a>
       </div>

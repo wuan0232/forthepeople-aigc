@@ -10,12 +10,12 @@
 
 <script setup lang="ts">
 useHead({
-  title: 'Recovery Stories | For The People Clinic',
+  title: 'Recovery Examples | For The People Clinic',
   meta: [
     {
       name: 'description',
       content:
-        'Patient-focused recovery stories from For The People Clinic: post-injury follow-up, symptom monitoring, rehab pathways, and practical medical next steps.',
+        'Illustrative recovery scenarios and educational resources for medical follow-up after injury. These examples are not verified patient testimonials.',
     },
   ],
 })

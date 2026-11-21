@@ -1,3 +1,5 @@
 <template>
-  <AboutPageShell title="Attorney Careers" description="Litigation and trial opportunities for attorneys at For The People Clinic." />
+  <AboutPageShell title="Legal Resources" description="Our clinic focuses on medical care. Visit our legal resources page for independent legal information.">
+    <NuxtLink to="/legal-resources">View legal resources</NuxtLink>
+  </AboutPageShell>
 </template>

@@ -8,12 +8,9 @@
         </div>
         <p class="footer__lead">
           For The People Clinic provides patient-focused injury recovery guidance and practical medical next steps
-          for families across New York.
+          with offices in Syracuse, Dallas, and Flushing.
         </p>
-        <div class="footer__stars">
-          <span class="stars" aria-hidden="true">★★★★★</span>
-          <a href="#testimonials">100k+ 5-Star Reviews</a>
-        </div>
+
       </div>
 
       <nav class="footer__col" aria-label="Clinic">
@@ -21,9 +18,9 @@
         <ul>
           <li><NuxtLink to="/locations">Locations</NuxtLink></li>
           <li><NuxtLink to="/injury-recovery-guides">Injury Recovery Guides</NuxtLink></li>
-          <li><NuxtLink to="/recovery-stories">Recovery Stories</NuxtLink></li>
-          <li><NuxtLink to="/about/the-case-process">How It Works</NuxtLink></li>
-          <li><a href="#careers">Careers</a></li>
+          <li><NuxtLink to="/recovery-stories">Recovery Examples</NuxtLink></li>
+          <li><NuxtLink to="/medical/what-to-do">Medical Next Steps</NuxtLink></li>
+          <li><NuxtLink to="/about/meet-our-doctors">Our Doctor</NuxtLink></li>
           <li><NuxtLink to="/contact">Contact Us</NuxtLink></li>
         </ul>
       </nav>
@@ -32,23 +29,20 @@
         <h3 class="footer__heading">About</h3>
         <ul>
           <li><NuxtLink to="/about">Our Story</NuxtLink></li>
-          <li><a href="#contact">Medical Action Plan</a></li>
+          <li><NuxtLink to="/medical/what-to-do">Medical Action Guide</NuxtLink></li>
           <li><NuxtLink to="/blog">Blog</NuxtLink></li>
           <li><NuxtLink to="/about/faq">FAQ</NuxtLink></li>
-          <li><a href="#media">Resources</a></li>
-          <li><NuxtLink to="/about/testimonials">Testimonials</NuxtLink></li>
+          <li><NuxtLink to="/injury-recovery-guides">Patient Resources</NuxtLink></li>
+          <li><NuxtLink to="/contact">Contact Our Offices</NuxtLink></li>
         </ul>
       </nav>
 
       <nav class="footer__col" aria-label="Quick links">
         <h3 class="footer__heading">Quick Links</h3>
         <ul>
-          <li><a href="#a11y">Accessibility</a></li>
-          <li><a href="#complaints">Complaints</a></li>
-          <li><a href="#pound">Pound Law</a></li>
-          <li><a href="#optout">Opt Out</a></li>
-          <li><a href="#cocounsel">Co-counsel</a></li>
-          <li><a href="#editorial">Editorial Policy</a></li>
+          <li><NuxtLink to="/contact">Website Assistance</NuxtLink></li>
+          <li><NuxtLink to="/contact">Questions &amp; Feedback</NuxtLink></li>
+          <li><NuxtLink to="/legal-resources">Legal Resources</NuxtLink></li>
         </ul>
       </nav>
 
@@ -70,27 +64,6 @@
               </svg>
             </button>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer__partners-wrap container">
-      <div class="footer__partner-rail" role="list">
-        <div class="partner partner--outlined" role="listitem">
-          <span class="partner__line">For The People Clinic</span>
-          <span class="partner__sub">Patient Care Network</span>
-        </div>
-        <div class="partner partner--bold" role="listitem">
-          For The People Clinic<br />Recovery Care Team
-        </div>
-        <div class="partner partner--tilt" role="listitem">Medical Guidance Desk</div>
-        <div class="partner partner--abogados" role="listitem">
-          <span class="partner__ab">Patient Resources</span>
-          <span class="partner__mm">For The People Clinic</span>
-        </div>
-        <div class="partner partner--class" role="listitem">
-          <span class="partner__flag" aria-hidden="true" />
-          <span>Injury Recovery Guides</span>
         </div>
       </div>
     </div>
@@ -118,21 +91,13 @@
           This website provides educational medical guidance and does not replace emergency care.
           Results and recommendations may vary depending on individual medical circumstances.
         </p>
-        <button type="button" class="privacy-btn">
-          <span class="privacy-btn__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="18" height="18">
-              <rect x="3" y="5" width="18" height="14" rx="2" fill="#fff" stroke="#2563eb" stroke-width="1.5" />
-              <path d="M7 12l3 3 7-7" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" />
-            </svg>
-          </span>
-          Your privacy choices.
-        </button>
+
       </div>
       <div class="copyright-row">
         <span>© {{ year }} For The People Clinic All rights reserved</span>
         <span class="copyright-links">
-          <a href="#privacy">Privacy Policy</a>
-          <a href="#terms">Disclaimers and Terms of Use</a>
+          <NuxtLink to="/contact">Privacy Questions</NuxtLink>
+          <NuxtLink to="/medical/what-to-do">About Medical Guidance</NuxtLink>
         </span>
       </div>
     </div>

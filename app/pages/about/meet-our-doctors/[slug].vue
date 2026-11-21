@@ -210,7 +210,7 @@ useHead({
   margin: 0 0 1rem;
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--mm-red, #c41230);
+  color: var(--blue, #0066cc);
 }
 
 .doctor-detail__lead {
@@ -255,7 +255,7 @@ useHead({
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--mm-red, #c41230);
+  color: var(--blue, #0066cc);
 }
 
 .doctor-detail__content ul {
@@ -308,7 +308,7 @@ useHead({
 }
 
 .doctor-detail__distinction {
-  border-top: 3px solid var(--mm-red, #c41230);
+  border-top: 3px solid var(--blue, #0066cc);
   background: #f6f9fc;
 }
 
@@ -334,7 +334,7 @@ useHead({
 }
 
 .doctor-detail__achievement {
-  border-left: 3px solid var(--mm-red, #c41230);
+  border-left: 3px solid var(--blue, #0066cc);
   background: #f6f9fc;
 }
 
@@ -386,7 +386,7 @@ useHead({
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--mm-red, #c41230);
+  color: var(--blue, #0066cc);
 }
 
 .doctor-detail__achievement > p:last-child {

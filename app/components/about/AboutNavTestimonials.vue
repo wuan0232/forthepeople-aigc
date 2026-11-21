@@ -1,3 +1,3 @@
 <template>
-  <AboutNavRow to="/about/testimonials" label="Testimonials" />
+  <AboutNavRow to="/injury-recovery-guides" label="Patient Resources" />
 </template>

@@ -2,6 +2,7 @@ export type ClinicDoctor = {
   slug: string
   name: string
   specialty: string
+  homeBio?: string
   bio: string
   detail: string
   focus: string[]
@@ -25,6 +26,7 @@ export const CLINIC_DOCTORS: ClinicDoctor[] = [
     slug: 'y-michael-li',
     name: 'Dr. Y. Michael Li, M.D., Ph.D.',
     specialty: 'Neurosurgeon',
+    homeBio: 'Dr. Li focuses on complex spine conditions and brain and spine tumors. View his clinical interests and background to prepare questions for your visit.',
     bio: 'Award-winning, fellowship-trained neurosurgeon specializing in complex spine disease and brain and spine tumors.',
     detail:
       'Dr. Yan Michael Li is a fellowship-trained spine and tumor neurosurgeon with a clinical focus on complex spine disease and brain and spine tumors. He develops individualized treatment plans using minimally invasive, computer-assisted, and robotic techniques when appropriate for each patient’s anatomy and goals.',

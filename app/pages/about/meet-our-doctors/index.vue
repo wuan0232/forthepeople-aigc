@@ -180,7 +180,7 @@ useHead({
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--mm-red, #c41230);
+  color: var(--blue, #0066cc);
 }
 
 .doctors-page__intro h2 {
@@ -264,7 +264,7 @@ useHead({
 }
 
 .doctors-page__distinction {
-  border-top: 3px solid var(--mm-red, #c41230);
+  border-top: 3px solid var(--blue, #0066cc);
   background: #f6f9fc;
 }
 
@@ -290,7 +290,7 @@ useHead({
 }
 
 .doctors-page__scholarship {
-  border-left: 3px solid var(--mm-red, #c41230);
+  border-left: 3px solid var(--blue, #0066cc);
   background: #f6f9fc;
 }
 
@@ -407,7 +407,7 @@ useHead({
   margin: 0.45rem 0 1rem;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--mm-red, #c41230);
+  color: var(--blue, #0066cc);
 }
 
 .doctors-page__bio {

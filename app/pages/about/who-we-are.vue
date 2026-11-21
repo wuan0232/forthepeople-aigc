@@ -1,3 +1,3 @@
 <template>
-  <AboutPageShell title="Who We Are" description="Patient Care & Medical Guidance, dedicated to representing the people, not the powerful." />
+  <AboutPageShell title="Who We Are" description="Medical guidance after injury, with offices in Syracuse, Dallas, and Flushing. Contact the clinic to discuss your reason for visiting." />
 </template>
