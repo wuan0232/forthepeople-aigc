@@ -1,12 +1,4 @@
-export type BlogTagLabel =
-  | 'In The Community'
-  | 'Premises Liability'
-  | 'In The Media'
-  | 'Product Recalls'
-  | 'Recent Data Breaches'
-  | 'Social Media Harm'
-  | 'Maritime & Admiralty'
-  | 'Medical Malpractice'
+export type BlogTagLabel = 'Visit Preparation' | 'After an Accident' | 'Spine Care' | 'Follow-Up' | 'Clinic Visits'
 
 export type BlogPost = {
   slug: string

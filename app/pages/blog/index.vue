@@ -19,12 +19,12 @@ definePageMeta({
 useBlogScrollCache()
 
 useHead({
-  title: 'Law School | For The People Clinic Blog',
+  title: 'Injury & Recovery | For The People Clinic Blog',
   meta: [
     {
       name: 'description',
       content:
-        'Resources, guides, and insights on injury law, safety, and the latest cases from For The People Clinic.',
+        'Practical articles about injury care, spine consultations, and preparing for your medical visit.',
     },
   ],
 })

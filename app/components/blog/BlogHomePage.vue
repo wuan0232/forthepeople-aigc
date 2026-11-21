@@ -1,11 +1,11 @@
 <template>
-  <!-- 1. 页头 LAW SCHOOL + 标语 + 社交链接 -->
+  <!-- 1. 页头 INJURY &amp; RECOVERY + 标语 + 社交链接 -->
   <header class="blog-hero">
     <div class="container blog-hero__row">
-      <h1 class="blog-hero__brand">LAW SCHOOL</h1>
+      <h1 class="blog-hero__brand">INJURY &amp; RECOVERY</h1>
       <p class="blog-hero__tagline">
-        Resources, guides, and insights for<br />
-        all things injury.
+        Practical information on injury care,<br />
+        spine health, and preparing for your visit.
       </p>
       <nav class="blog-hero__social" aria-label="Social media">
         <a
@@ -44,13 +44,12 @@
       <BlogSectionHead
         heading-id="blog-filing-heading"
         title="Medical Next Steps"
-        description="Start with practical recovery guidance after a crash, fall, workplace injury, or medication concern."
+        description="Prepare for a medical visit, organize existing records, and write down questions for your doctor."
       />
       <div class="blog-filing__grid">
-        <NuxtLink
+        <article
           v-for="card in blogFilingCards"
           :key="card.title"
-          :to="card.href"
           class="blog-filing-card"
         >
           <div class="blog-filing-card__art">
@@ -70,125 +69,76 @@
             {{ card.title }}
           </h3>
           <p class="blog-filing-card__text">{{ card.text }}</p>
-        </NuxtLink>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- 4. Medication Safety Updates -->
+  <!-- 4. Common Questions After an Injury -->
   <section class="blog-block blog-block--soft-blue" aria-labelledby="blog-cases-heading">
     <div class="container">
-      <h2 id="blog-cases-heading" class="blog-head__title">Medication Safety Updates</h2>
+      <h2 id="blog-cases-heading" class="blog-head__title">Common Questions After an Injury</h2>
       <div class="blog-cases__grid">
-        <NuxtLink
+        <article
           v-for="item in blogLatestCases"
           :key="item.title"
-          :to="item.href"
           class="blog-case-card"
         >
           <h3 class="blog-case-card__title">{{ item.title }}</h3>
           <p class="blog-case-card__text">{{ item.text }}</p>
-        </NuxtLink>
+          <p class="blog-content-note">{{ item.note }}</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- 5. After an Accident -->
   <section class="blog-block blog-block--white" aria-labelledby="blog-accident-heading">
     <div class="container">
-      <BlogSectionHead
-        heading-id="blog-accident-heading"
-        title="After an Accident"
-        description="Practical guidance for the moments that matter most after an injury."
-      />
+      <BlogSectionHead heading-id="blog-accident-heading" title="After an Accident" description="Practical guidance for the moments that matter most after an injury." />
       <div class="blog-img-grid blog-img-grid--4">
-        <NuxtLink
-          v-for="post in blogAfterAccidentPosts"
-          :key="post.slug"
-          :to="post.href"
-          class="blog-img-card"
-        >
-          <div
-            class="blog-img-card__thumb"
-            :class="{ 'blog-img-card__thumb--muted': post.thumbMuted }"
-          >
-            <img
-              v-if="post.imageSrc && !post.thumbMuted"
-              class="blog-img-card__img"
-              :src="post.imageSrc"
-              :alt="post.imageAlt ?? ''"
-              loading="lazy"
-            />
+        <article v-for="(card, index) in BLOG_TOPIC_SECTIONS[0]!.cards" :key="card.title" class="blog-img-card">
+          <div class="blog-img-card__thumb" :class="{ 'blog-img-card__thumb--muted': index === 3 }">
+            <img v-if="accidentImages[index]" :src="accidentImages[index]" alt="" class="blog-img-card__img" loading="lazy" />
           </div>
-          <h3
-            class="blog-img-card__title"
-            :class="{ 'blog-img-card__title--underline': post.titleUnderline }"
-          >
-            {{ post.title }}
-          </h3>
-        </NuxtLink>
-      </div>
-      <div class="blog-foot">
-        <BlogSeeAllLink :href="BLOG_ACCIDENTS_INCIDENTS_PATH" />
+          <h3 class="blog-img-card__title">{{ card.title }}</h3>
+          <p class="blog-content-copy">{{ card.text }}</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- 6. Being Prepared -->
   <section class="blog-block blog-block--gray" aria-labelledby="blog-prepared-heading">
     <div class="container blog-prepared">
       <div class="blog-prepared__intro">
-        <BlogSectionHead
-          heading-id="blog-prepared-heading"
-          title="Being Prepared"
-          description="Stay informed with tips to protect yourself and your family before problems arise."
-        />
+        <BlogSectionHead heading-id="blog-prepared-heading" title="Preparing for Your Visit" description="Bring the information and questions that matter for your next appointment." />
       </div>
       <div>
-        <NuxtLink
-          v-for="item in blogBeingPrepared"
-          :key="item.title"
-          :to="item.href"
-          class="blog-list__item"
-        >
+        <article v-for="item in blogBeingPrepared" :key="item.title" class="blog-list__item blog-prepared-item">
           <h3 class="blog-list__title">{{ item.title }}</h3>
-          <span class="blog-list__chev" aria-hidden="true">›</span>
-        </NuxtLink>
-        <div class="blog-foot">
-          <BlogSeeAllLink :href="BLOG_ACCIDENTS_INCIDENTS_PATH" />
-        </div>
+          <p class="blog-content-copy">{{ item.text }}</p>
+          <p class="blog-content-note">{{ item.note }}</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- 7. Newsroom -->
   <section class="blog-block blog-block--white" aria-labelledby="blog-news-heading">
     <div class="container">
-      <h2 id="blog-news-heading" class="blog-head__title">Newsroom</h2>
-      <div class="blog-news__grid">
-        <NuxtLink
-          v-for="post in blogNewsroomPosts"
-          :key="post.slug"
-          :to="post.href"
-          class="blog-news-card"
-        >
-          <div class="blog-news-card__thumb">
-            <svg class="blog-news-card__badge" viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="4" y="3" width="16" height="18" rx="1" fill="rgba(255,255,255,0.9)" />
-              <path d="M8 8h8M8 12h8M8 16h5" stroke="#1f6dde" stroke-width="1.5" />
-            </svg>
-            <p class="blog-news-card__label">In The<br />News</p>
+      <h2 id="blog-news-heading" class="blog-head__title">Understanding Injury Care</h2>
+      <div class="blog-care-grid">
+        <article v-for="card in BLOG_INJURY_CARE_CARDS" :key="card.title" class="blog-care-card">
+          <h3>{{ card.title }}</h3>
+          <p class="blog-content-copy">{{ card.text }}</p>
+          <div class="blog-care-card__questions">
+            <h4>For your visit</h4>
+            <ul><li v-for="point in card.points" :key="point">{{ point }}</li></ul>
           </div>
-          <h3 class="blog-news-card__title">{{ post.title }}</h3>
-        </NuxtLink>
-      </div>
-      <div class="blog-foot">
-        <BlogSeeAllLink />
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- 8. We've got your back 订阅 -->
+  <!-- 8. Find Your Nearest Office 订阅 -->
   <section class="blog-subscribe" aria-labelledby="blog-subscribe-heading">
     <div class="container">
       <div class="blog-subscribe__inner">
@@ -203,19 +153,20 @@
           />
         </div>
         <div>
-          <h2 id="blog-subscribe-heading" class="blog-subscribe__title">We've got your back</h2>
+          <h2 id="blog-subscribe-heading" class="blog-subscribe__title">Find Your Nearest Office</h2>
           <p class="blog-subscribe__lead">
-            Get the latest safety tips, news and case updates delivered to your inbox!
+            Visit us in Syracuse, Dallas, or Flushing. Choose an office to call or get directions.
           </p>
-          <form class="blog-subscribe__form" @submit.prevent="onSubscribe">
-            <input type="text" name="firstName" placeholder="First Name" autocomplete="given-name" />
-            <input type="text" name="lastName" placeholder="Last Name" autocomplete="family-name" />
-            <input type="email" name="email" placeholder="Email" autocomplete="email" required />
-            <button type="submit" class="blog-subscribe__btn">Subscribe</button>
-          </form>
+          <div class="blog-subscribe__form">
+            <select v-model="selectedOfficeId" class="blog-office-field" aria-label="Choose your office">
+              <option v-for="office in SITE_OFFICES" :key="office.id" :value="office.id">{{ office.name }}</option>
+            </select>
+            <a class="blog-office-field" :href="`tel:${selectedOffice.phoneTel}`">{{ selectedOffice.phoneDisplay }}</a>
+            <address class="blog-office-field blog-office-address" aria-live="polite">{{ selectedOffice.addressLines.join(', ') }}</address>
+            <a :href="selectedOffice.mapsUrl" class="blog-subscribe__btn" target="_blank" rel="noopener noreferrer">Get Directions</a>
+          </div>
           <p class="blog-subscribe__fine">
-            By subscribing, you agree to receive marketing emails. You can unsubscribe at any
-            time. See our Privacy Policy for details.
+            Please call to confirm appointment availability and office hours.
           </p>
         </div>
       </div>
@@ -226,9 +177,9 @@
   <div id="blog-latest-posts" class="blog-latest-posts">
     <header class="blog-posts-hero">
       <div class="container blog-posts-hero__grid">
-        <h2 class="blog-posts-hero__title">Your right to safety is simple.</h2>
+        <h2 class="blog-posts-hero__title">Helpful Reading for Your Next Visit.</h2>
         <p class="blog-posts-hero__lead">
-          We're here to keep it that way. Here's what you need to know.
+          Explore practical articles about preparing for care and discussing your next steps.
         </p>
       </div>
     </header>
@@ -236,7 +187,7 @@
       <div class="container">
         <ul class="blog-posts-nav__list">
           <li>
-            <NuxtLink to="#blog-latest-posts" class="blog-posts-nav__search" aria-label="Search posts">
+            <NuxtLink to="/search" class="blog-posts-nav__search" aria-label="Search posts">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" />
                 <path d="M20 20l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
@@ -251,52 +202,61 @@
     </nav>
     <section class="blog-posts-list" aria-labelledby="blog-latest-heading">
       <div class="container">
-        <h2 id="blog-latest-heading" class="blog-posts-list__heading">Latest Posts</h2>
-        <NuxtLink
-          v-for="post in blogLatestListPosts"
-          :key="post.slug"
-          :to="post.href"
-          class="blog-post-row"
-        >
-          <div
-            v-if="post.thumbNews"
-            class="blog-post-row__thumb blog-post-row__thumb--news"
-            aria-hidden="true"
-          >
-            <span>In The News</span>
-          </div>
-          <div v-else-if="post.imageSrc" class="blog-post-row__thumb">
-            <img :src="post.imageSrc" :alt="post.imageAlt ?? ''" loading="lazy" />
-          </div>
-          <h3 class="blog-post-row__title">{{ post.title }}</h3>
-          <div class="blog-post-row__meta">
-            <BlogTag :label="post.tag" />
-            <BlogReadTime :minutes="post.readMinutes" />
-          </div>
-        </NuxtLink>
+        <div class="blog-latest-head">
+          <h2 id="blog-latest-heading" class="blog-posts-list__heading">Latest Posts</h2>
+          <BlogSeeAllLink href="/blog/posts" label="See All Posts" />
+        </div>
+        <BlogFeed latest />
       </div>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed, ref } from 'vue'
+import { SITE_OFFICES } from '~/constants/offices'
 import {
-  BLOG_ACCIDENTS_INCIDENTS_PATH,
   BLOG_SOCIAL,
-  blogAfterAccidentPosts,
+  BLOG_TOPIC_SECTIONS,
   blogBeingPrepared,
+  BLOG_INJURY_CARE_CARDS,
   blogFeaturedPosts,
   blogFilingCards,
   blogLatestCases,
-  blogLatestListPosts,
-  blogNewsroomPosts,
   blogPostFilters,
 } from '~/constants/blog'
+
+const accidentImages = [
+  'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&q=85&fit=crop',
+  'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=85&fit=crop',
+  'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=85&fit=crop',
+  '',
+]
+
 
 const featuredPost = blogFeaturedPosts[0]
 const featuredSide = blogFeaturedPosts.slice(1)
 
-function onSubscribe() {
-  /* placeholder — wire to API when available */
-}
+const selectedOfficeId = ref('syracuse')
+const selectedOffice = computed(() => SITE_OFFICES.find(office => office.id === selectedOfficeId.value) ?? SITE_OFFICES[0]!)
 </script>
+
+<style scoped>
+.blog-office-field { flex: 1 1 8rem; box-sizing: border-box; border: 1px solid #d1d5db; background: #fff; color: #1f2937; padding: .65rem .85rem; font: inherit; font-size: .9rem; border-radius: var(--radius); min-width: 0; }
+.blog-office-address { flex: 1 1 100%; font-style: normal; margin: 0; }
+.blog-subscribe__btn { text-align: center; text-decoration: none; }
+.blog-latest-head { display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #e5e7eb; }
+.blog-latest-head h2 { border: 0; margin: 0; padding: 0; }
+.blog-content-copy { margin: .85rem 0 0; color: #475569; font-size: .95rem; line-height: 1.75; }
+.blog-content-note { margin: 1rem 0 0; padding-top: .85rem; border-top: 1px solid #dce6ef; color: #475569; font-size: .875rem; line-height: 1.65; }
+.blog-prepared-item { display: block; padding-block: 1.4rem; }
+.blog-case-card__text { line-height: 1.75; }
+.blog-care-grid { margin-top: 1.5rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+.blog-care-card { padding: clamp(1.25rem, 3vw, 2rem); background: #f5f9fd; border: 1px solid #dce6ef; border-top: 3px solid var(--blue); }
+.blog-care-card h3 { margin: 0; color: var(--navy); font-size: 1.25rem; line-height: 1.4; }
+.blog-care-card__questions { margin-top: 1.25rem; padding: 1rem 1.1rem; background: #fff; }
+.blog-care-card__questions h4 { margin: 0 0 .6rem; color: var(--blue); font-size: .9rem; }
+.blog-care-card__questions ul { margin: 0; padding-left: 1.15rem; color: #475569; line-height: 1.65; font-size: .9rem; }
+.blog-care-card__questions li + li { margin-top: .4rem; }
+@media (max-width: 640px) { .blog-care-grid { grid-template-columns: 1fr; } }
+</style>

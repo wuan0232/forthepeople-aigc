@@ -1,543 +1,367 @@
-import type {
-  BlogArticle,
-  BlogCaseCard,
-  BlogCategoryArchiveMeta,
-  BlogCategoryCard,
-  BlogIllustrationCard,
-  BlogListItem,
-  BlogPost,
-} from '~/types/blog'
+import type { BlogArticle, BlogPost, BlogTagLabel, BlogCategoryCard, BlogCategoryArchiveMeta } from '~/types/blog'
 
-export const BLOG_SOCIAL = [
-  {
-    label: 'Facebook',
-    href: 'https://www.facebook.com/forthepeople',
-    icon: 'facebook',
-  },
-  {
-    label: 'X',
-    href: 'https://x.com/forthepeople',
-    icon: 'x',
-  },
-  {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/morgan-&-morgan-llc',
-    icon: 'linkedin',
-  },
-  {
-    label: 'Email',
-    href: 'mailto:NY@spineandneurosurgery.com',
-    icon: 'email',
-  },
-] as const
-
-export const blogFeaturedPosts: BlogPost[] = [
-  {
-    slug: 'morgan-origin-story',
-    title: 'Why We Fight: The For The People Clinic Origin Story',
-    href: '/blog/posts',
-    readMinutes: 5,
-    tag: 'In The Community',
-    imageSrc: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=1200&q=85&fit=crop',
-    imageAlt: 'For The People Clinic origin story video',
-    featured: true,
-  },
-  {
-    slug: 'summer-event-safety',
-    title:
-      'Summer Event Safety: What You Need to Know Before Your Next Concert, Festival, or Game',
-    href: '/blog/posts',
-    readMinutes: 5,
-    tag: 'Premises Liability',
-    imageSrc: 'https://images.unsplash.com/photo-1459749411177-04bfcd4e879a?w=800&q=85&fit=crop',
-    imageAlt: 'Concert crowd',
-  },
-  {
-    slug: 'ultra-processed-foods-lawsuit',
-    title:
-      'For The People Clinic Files Lawsuit over Allegedly Harmful, Addictive Ultra-Processed Foods',
-    href: '/blog/posts',
-    readMinutes: 5,
-    tag: 'In The Media',
-    imageSrc: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=85&fit=crop',
-    imageAlt: 'Health monitoring',
-  },
-]
-
-export const blogFilingCards: BlogIllustrationCard[] = [
-  {
-    title: 'Your Injury Recovery Checklist',
-    text: 'Start with a no-personal-information checklist for urgent warning signs, early actions, and follow-up planning.',
-    href: '/contact',
-    imageSrc: '/images/blog/filing-case-process.webp',
-    imageAlt: 'Injury recovery checklist',
-  },
-  {
-    title: 'Workplace Injury Recovery',
-    text: 'Learn how to document symptoms, discuss medical restrictions, and plan a safer return to activity.',
-    href: '/practice-areas/workers-compensation',
-    accent: true,
-    imageSrc: '/images/blog/filing-workers-comp.webp',
-    imageAlt: 'Workplace injury recovery',
-  },
-  {
-    title: 'Medication Safety Guide',
-    text: 'Review warning signs, questions for your prescriber, and safer follow-up steps for medication concerns.',
-    href: '/practice-areas/dangerous-drugs',
-    imageSrc: '/images/blog/filing-ssdi.webp',
-    imageAlt: 'Medication safety guide',
-  },
-]
-
-export const blogLatestCases: BlogCaseCard[] = [
-  {
-    title: 'Depo-Provera',
-    text: 'Popular birth control may lead to brain tumors',
-    href: '/practice-areas/dangerous-drugs/depo-provera',
-  },
-  {
-    title: 'Ultra-Processed Foods',
-    text: 'Practical guidance for discussing nutrition and health concerns with your care team',
-    href: '/medical/what-to-do',
-  },
-  {
-    title: 'Weight Loss Drugs',
-    text: 'Mainstream media meds may have dangerous side effects',
-    href: '/practice-areas/dangerous-drugs/weight-loss-drug',
-  },
-]
-
-export const blogAfterAccidentPosts: BlogPost[] = [
-  {
-    slug: 'car-accident-help',
-    title: 'What to Do After a Car Accident: How a Lawyer Can Help',
-    href: '/practice-areas/car-accident',
-    readMinutes: 4,
-    tag: 'In The Media',
-    imageSrc: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&q=85&fit=crop',
-  },
-  {
-    slug: 'slip-and-fall',
-    title: 'I Had a Slip and Fall Accident — Now What?',
-    href: '/practice-areas/slip-and-fall',
-    readMinutes: 4,
-    tag: 'Premises Liability',
-    imageSrc: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=85&fit=crop',
-    titleUnderline: true,
-  },
-  {
-    slug: 'ssdi-guide',
-    title: 'Social Security Disability Benefits: A Complete Guide',
-    href: '#',
-    readMinutes: 5,
-    tag: 'In The Community',
-    imageSrc: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=85&fit=crop',
-  },
-  {
-    slug: 'workers-comp-myths',
-    title: "Debunking Workers' Compensation Myths",
-    href: '#',
-    readMinutes: 3,
-    tag: 'In The Community',
-    imageSrc: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f6e?w=600&q=85&fit=crop',
-    thumbMuted: true,
-  },
-]
-
-export const blogBeingPrepared: BlogListItem[] = [
-  {
-    title: "Scrolling Smart: For The People Clinic's Guide to Social Media Safety",
-    href: '/blog/posts',
-  },
-  {
-    title: 'Protecting Yourself from Tax Refund Scams',
-    href: '/blog/posts',
-  },
-  {
-    title:
-      'Summer Event Safety: What You Need to Know Before Your Next Concert, Festival, or Game',
-    href: '/blog/posts',
-  },
-]
-
-export const blogNewsroomPosts: BlogPost[] = [
-  {
-    slug: 'miami-boat-explosion',
-    title: 'For The People Clinic investigating Miami boat explosion',
-    href: '/blog/posts',
-    readMinutes: 4,
-    tag: 'In The Media',
-  },
-  {
-    slug: 'fsu-fire',
-    title: 'Joint lawsuit filed over deadly fire at FSU off-campus housing',
-    href: '/blog/posts',
-    readMinutes: 3,
-    tag: 'In The Media',
-  },
-  {
-    slug: 'political-party-contest',
-    title: 'John Morgan officially launches $100,000 contest to name new political party',
-    href: '/blog/posts',
-    readMinutes: 3,
-    tag: 'In The Media',
-  },
-  {
-    slug: 'barnes-noble-stabbing',
-    title: 'Lawsuit filed in Fatal Palm Beach Gardens Barnes & Noble stabbing',
-    href: '/blog/posts',
-    readMinutes: 5,
-    tag: 'In The Media',
-  },
-]
-
-export const blogLatestListPosts: BlogPost[] = [
-  {
-    slug: 'medical-malpractice-vs-medical-dispute',
-    title: 'Medical Malpractice vs. Medical Dispute: What Is the Difference?',
-    href: '/blog/posts/medical-malpractice-vs-medical-dispute',
-    readMinutes: 6,
-    tag: 'Medical Malpractice',
-    imageSrc: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=160&q=85&fit=crop',
-    imageAlt: 'Doctor and patient reviewing records',
-  },
-  {
-    slug: 'how-to-build-a-complete-medical-timeline',
-    title: 'How to Build a Complete Medical Timeline After a Suspected Error',
-    href: '/blog/posts/how-to-build-a-complete-medical-timeline',
-    readMinutes: 7,
-    tag: 'Medical Malpractice',
-    imageSrc: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=160&q=85&fit=crop',
-    imageAlt: 'Checklist and medical documents on desk',
-  },
-  {
-    slug: 'second-medical-opinion-patient-checklist',
-    title: 'Second Medical Opinion: A Patient Checklist That Actually Helps',
-    href: '/blog/posts/second-medical-opinion-patient-checklist',
-    readMinutes: 6,
-    tag: 'Medical Malpractice',
-    imageSrc: 'https://images.unsplash.com/photo-1551076805-e1869033e561?w=160&q=85&fit=crop',
-    imageAlt: 'Two clinicians discussing patient chart',
-  },
-  {
-    slug: 'informed-consent-what-to-check-before-you-sign',
-    title: 'Informed Consent: What to Check Before You Sign',
-    href: '/blog/posts/informed-consent-what-to-check-before-you-sign',
-    readMinutes: 5,
-    tag: 'Medical Malpractice',
-    imageSrc: 'https://images.unsplash.com/photo-1584515933487-779824d29309?w=160&q=85&fit=crop',
-    imageAlt: 'Patient reading consent document in clinic',
-  },
-  {
-    slug: 'youtube-super-thanks',
-    title:
-      'Did You Buy or Receive YouTube “Super Thanks”? You May Be Surprised by How Much YouTube Kept, and You May Have Legal Options',
-    href: '#',
-    readMinutes: 4,
-    tag: 'Social Media Harm',
-    imageSrc: 'https://images.unsplash.com/photo-1611162617474-5b21e039e986?w=160&q=85&fit=crop',
-    imageAlt: 'YouTube Super Thanks',
-  },
-  {
-    slug: 'cruise-injury',
-    title: 'What to Do if You Get Injured While on a Cruise',
-    href: '#',
-    readMinutes: 4,
-    tag: 'Maritime & Admiralty',
-    imageSrc: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=160&q=85&fit=crop',
-    imageAlt: 'Cruise ship deck',
-  },
-  {
-    slug: 'recalls-may-22',
-    title: 'The Week in Recalls: Week of May 22nd, 2026',
-    href: '#',
-    readMinutes: 3,
-    tag: 'Product Recalls',
-    imageSrc: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=160&q=85&fit=crop',
-  },
-  {
-    slug: 'miami-boat-explosion',
-    title: 'For The People Clinic investigating Miami boat explosion',
-    href: '#',
-    readMinutes: 4,
-    tag: 'In The Media',
-    thumbNews: true,
-  },
-  {
-    slug: 'fsu-fire',
-    title: 'Joint lawsuit filed over deadly fire at FSU off-campus housing',
-    href: '#',
-    readMinutes: 3,
-    tag: 'In The Media',
-    thumbNews: true,
-  },
-  {
-    slug: 'political-party-contest',
-    title: 'John Morgan officially launches $100,000 contest to name new political party',
-    href: '#',
-    readMinutes: 3,
-    tag: 'In The Media',
-    thumbNews: true,
-  },
-]
-
+// Platform-neutral local content. A future CMS adapter should return BlogArticle[].
+export const BLOG_SOCIAL: { label: string; href: string; icon: 'facebook' | 'x' | 'linkedin' | 'email' }[] = []
 export const BLOG_ACCIDENTS_INCIDENTS_PATH = '/blog/accidents-and-incidents'
-
-export const blogAccidentsIncidentsCategory: BlogCategoryArchiveMeta = {
-  slug: 'accidents-and-incidents',
-  title: 'Accidents & Incidents',
-  path: BLOG_ACCIDENTS_INCIDENTS_PATH,
-  postsPerPage: 9,
-  totalPages: 4,
-}
-
-const accidentsArchiveTitles: string[] = [
-  'Accidents Involving Special Vehicles: Legal Rights, Risks, and Remedies',
-  'Helicopter Crashes: Causes, Survival Tips, and Legal Rights',
-  'Gym Injury Lawsuits: We Can Do the Heavy Lifting',
-  'Electric Scooter Accident Lawyers',
-  'How Much Will I Receive in My Auto Airbags Settlement?',
-  'How to Claim Compensation After a Cargo Truck Accident',
-  'How Can I Find a Good Personal Injury Lawyer?',
-  'Injured at an Amusement Park? Our lawyers are here to help.',
-  'Sanitation Truck Accident Lawyers: What to Do if You Get Injured',
-  'Bicycle Accidents: How a Lawyer Can Help You Seek Justice and Compensation',
-  'Forklift Accidents: The Most Common Causes and Risks',
-  'Road Hazard Accidents and Your Legal Options',
-  'Drunk Driving Accidents: What Victims Need to Know',
-  'Single Vehicle Accidents: When You Still Have a Claim',
-  'School Accidents Are More Common Than You Think—Know Your Rights',
-  'Slip and Fall Accidents on Stairs: Liability Basics',
-  'Accidents Caused by Poor Lighting – Who Is Liable and How to Get Justice',
-  'Madison Square Garden Accidents: Venue Liability Explained',
-  'Multi-Vehicle Accidents: Determining Fault and Damages',
-  'Hit-and-Run Accidents: Steps to Protect Your Rights',
-  'T-bone Accidents: Common Injuries and Compensation',
-  'Boating Accidents – Understanding Your Rights',
-  'Jet Ski Accidents: What to Do After You Are Hurt',
-  'Motor Vehicle Accidents and Spinal Cord Injury Claims',
-  'Sports and Recreation Accidents: When Negligence Applies',
-  'Workplace and Industrial Accidents: Workers Comp vs. Third-Party Claims',
-  'Car Accidents: Documenting Evidence for Your Case',
-  'Workplace Accidents: Filing Beyond Workers Compensation',
-  'Slip and Fall Accidents: Proving Property Owner Negligence',
-  'Plane and Aviation Crash Accidents: Legal Options for Victims',
-  'Common Causes of Aviation Accidents Explained',
-  'Millions Are Injured in Car Accidents Every Year',
-  'Operator Negligence Causes Most Boating Accidents',
-  'Coast Guard Boat Accidents: Government Liability Issues',
-  'Fireboat Accidents and Maritime Injury Claims',
-  'Sailboat Accidents: Recreational Boating Injury Law',
-]
-
-const accidentsArchiveSummaries: (string | undefined)[] = [
-  'Learn how crashes involving e-bikes, scooters, and other special vehicles can lead to complex liability questions—and what to document after an incident.',
-  `Consider this: you've had low back pain for three years. You've tried physical therapy twice, anti-inflammatories, a new mattress. Your primary care doctor ordered an MRI, which showed "degenerative disc disease and facet arthritis at L4-L5" — findings so common in adults over 50 that they're nearly universal — and you were told this is normal aging. But buried halfway through the radiologist's report, a half-sentence mentioned "mild anterolisthesis of L4 on L5." Nobody explained what it meant.`,
-  'Gym memberships come with risks. When equipment fails or staff fail to supervise, injured members may have claims beyond a standard waiver.',
-  'Rental scooters are convenient until someone gets hurt. We explain insurer disputes, city rules, and when to call a lawyer.',
-  'Defective airbags can cause injuries beyond the crash itself. Settlement values depend on medical proof and recall status.',
-  undefined,
-  'Choosing counsel after a truck crash means looking past ads—here is what actually matters for your case.',
-  'Theme parks owe guests a duty of care. Serious injuries on rides or in queues can support negligence claims.',
-  'Municipal and private haulers operate heavy vehicles in tight neighborhoods. Victims should know reporting deadlines.',
-  'Cyclists face bias from insurers. Documenting the scene and injuries early strengthens your claim.',
-  undefined,
-  'Potholes, debris, and poor signage cause thousands of crashes. Government immunity rules vary by state.',
-  'Impaired drivers remain a leading cause of fatalities. Civil claims may run parallel to criminal cases.',
-  'Even solo crashes sometimes involve defective parts, bad repairs, or unsafe road design.',
-  'Schools must supervise students reasonably. Sports and playground injuries are more common than many parents assume.',
-  undefined,
-  'Stairwell lighting, handrails, and maintenance logs often decide slip-and-fall outcomes.',
-  'Property owners must illuminate walkways. Dark parking lots and lots are frequent accident sites.',
-  'Large venues host crowds but must still control known hazards and security risks.',
-  'Multi-car pileups require reconstruction experts to sort fault among several drivers.',
-  'Unidentified hit-and-run drivers do not end your options—uninsured motorist coverage may apply.',
-  'Side-impact collisions often cause rib, hip, and head injuries even at moderate speeds.',
-  'Open water, weather, and operator training all factor into boating injury claims.',
-  undefined,
-  'Jet ski rentals involve high speeds and minimal protection for riders and passengers.',
-  'Spinal injuries from crashes can require lifetime care—future medical costs belong in any demand.',
-  'Organized sports injuries may implicate leagues, coaches, facilities, or equipment makers.',
-  'Third-party claims sometimes exist even when workers compensation covers medical bills.',
-  'Photos, witness info, and police reports collected at the scene protect your claim later.',
-  undefined,
-  'Employers and contractors may share blame when safety rules are ignored on site.',
-  'Wet floors, uneven tiles, and missing mats are classic premises hazards in retail and offices.',
-  'Aviation disasters involve federal investigators—plaintiffs still need their own legal team.',
-  'Pilot error, maintenance lapses, and manufacturer defects each point to different defendants.',
-  'Rear-end collisions are common but rarely "simple" when injuries are serious or long-lasting.',
-  'Alcohol, fatigue, and weather are recurring factors in preventable boating deaths.',
-  undefined,
-  undefined,
-  undefined,
-]
-
-const accidentsArchiveDates = [
-  '2026-05-21',
-  '2026-05-20',
-  '2026-05-19',
-  '2026-05-18',
-  '2026-05-17',
-  '2026-05-16',
-  '2026-05-15',
-  '2026-05-14',
-  '2026-05-13',
-] as const
-
-function slugifyTitle(title: string, index: number) {
-  const base = title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '')
-    .slice(0, 60)
-  return `${base}-${index}`
-}
-
-function formatArchiveDate(iso: string) {
-  const date = new Date(`${iso}T12:00:00`)
-  return date
-    .toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-    .toUpperCase()
-}
-
-export const blogAccidentsIncidentsArchive: BlogCategoryCard[] = accidentsArchiveTitles.map(
-  (title, index) => {
-    const publishedIso =
-      accidentsArchiveDates[index % accidentsArchiveDates.length] ?? '2026-05-21'
-    return {
-      slug: slugifyTitle(title, index),
-      title,
-      href: '#',
-      publishedAt: formatArchiveDate(publishedIso),
-      publishedIso,
-      categoryLabel: 'Accidents & Incidents',
-      summary: accidentsArchiveSummaries[index],
-    }
-  },
-)
-
-export const blogPostFilters = [
-  { label: 'Accidents & Incidents', href: BLOG_ACCIDENTS_INCIDENTS_PATH },
-  { label: 'Medical Malpractice', href: '/blog/medical-malpractice' },
-  { label: 'Newsroom', href: '#blog-latest-posts' },
-  { label: 'The Case Process', href: '/about/the-case-process' },
-] as const
-
 export const BLOG_MEDICAL_MALPRACTICE_PATH = '/blog/medical-malpractice'
-export const BLOG_PLACEHOLDER_POST_PATH = '/blog/posts/coming-soon'
-
-export const blogMedicalMalpracticeCategory: BlogCategoryArchiveMeta = {
-  slug: 'medical-malpractice',
-  title: 'Medical Malpractice',
-  path: BLOG_MEDICAL_MALPRACTICE_PATH,
-  postsPerPage: 9,
-  totalPages: 1,
-}
-
 export const blogMedicalArticles: BlogArticle[] = [
   {
-    slug: 'medical-malpractice-vs-medical-dispute',
-    title: 'Medical Malpractice vs. Medical Dispute: What Is the Difference?',
-    summary:
-      'Not every bad experience in healthcare is malpractice. Learn the practical difference and when to seek deeper medical review.',
-    categoryLabel: 'Medical Malpractice',
-    readMinutes: 6,
-    publishedIso: '2026-07-07',
-    imageSrc: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=85&fit=crop',
-    imageAlt: 'Doctor and patient reviewing records',
-    sections: [
+    "slug": "first-visit-after-accident",
+    "title": "Your First Medical Visit After an Accident: What to Bring",
+    "summary": "Prepare your questions, records, and appointment details before you travel.",
+    "categoryLabel": "Visit Preparation",
+    "readMinutes": 1,
+    "publishedIso": "2026-11-18",
+    "imageSrc": "/images/visit-preparation.svg",
+    "imageAlt": "",
+    "sections": [
       {
-        heading: 'Why the distinction matters',
-        paragraphs: [
-          'Patients often use one phrase for many different issues: poor communication, billing frustration, treatment complications, or possible negligence. These are not the same thing clinically or procedurally.',
-          'A medical dispute can involve service and communication. Medical malpractice is narrower and typically concerns a deviation from accepted standards of care that contributes to avoidable harm.',
-        ],
+        "heading": "Confirm the appointment",
+        "paragraphs": [
+          "Call the office to confirm the location, time, and documents requested for your visit. Ask about fees, insurance information, and any referral requirements."
+        ]
       },
       {
-        heading: 'A practical three-part check',
-        paragraphs: [
-          'Start with three questions: Was there a possible care deviation? Did measurable harm occur? Is there a plausible clinical connection between the two?',
-          'A poor outcome alone is not enough. Complications can happen even when care is appropriate and timely.',
-        ],
+        "heading": "Bring your existing information",
+        "paragraphs": [
+          "Ask which discharge notes, test reports, and images the office needs. Bring a current medication list and the questions you want to discuss."
+        ]
       },
       {
-        heading: 'What patients should do first',
-        paragraphs: [
-          'Prioritize medical stability, collect complete records, and build a timeline. If uncertainty remains, get a second medical opinion from a qualified specialist in the same field.',
-        ],
-      },
-    ],
+        "heading": "Make time for your questions",
+        "paragraphs": [
+          "Write down your main concerns before the visit. Before leaving, ask what happens next and how to contact the office with follow-up questions."
+        ]
+      }
+    ]
   },
   {
-    slug: 'how-to-build-a-complete-medical-timeline',
-    title: 'How to Build a Complete Medical Timeline After a Suspected Error',
-    summary:
-      'Static placeholder article. This topic will later be replaced by API-published SEO content with richer sections and references.',
-    categoryLabel: 'Medical Malpractice',
-    readMinutes: 3,
-    publishedIso: '2026-07-08',
-    imageSrc: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=85&fit=crop',
-    imageAlt: 'Medical timeline placeholder',
-    sections: [
+    "slug": "discussing-neck-and-back-symptoms",
+    "title": "Talking to Your Doctor About Neck and Back Symptoms",
+    "summary": "Organize the details you want to share about your symptoms and daily activities.",
+    "categoryLabel": "After an Accident",
+    "readMinutes": 1,
+    "publishedIso": "2026-11-18",
+    "imageSrc": "/images/clinic-appointment.svg",
+    "imageAlt": "",
+    "sections": [
       {
-        heading: 'Placeholder: Timeline Structure',
-        paragraphs: [
-          'Use this temporary page as a static placeholder for the future SEO article.',
-          'Planned production content will include structured timeline templates, examples, and downloadable checklists.',
-        ],
+        "heading": "Describe what you notice",
+        "paragraphs": [
+          "Write down where you feel discomfort, when it began, and whether it has changed. Describe the experience in your own words rather than trying to name a diagnosis."
+        ]
       },
-    ],
+      {
+        "heading": "Explain the effect on daily life",
+        "paragraphs": [
+          "Make a note of tasks that have become difficult, such as sitting, sleeping, or working. Tell the doctor about care you have already received."
+        ]
+      },
+      {
+        "heading": "Ask for clarification",
+        "paragraphs": [
+          "If an explanation is unclear, ask the doctor to explain it again. This guide helps prepare a conversation; it does not diagnose a condition."
+        ]
+      }
+    ]
   },
   {
-    slug: 'second-medical-opinion-patient-checklist',
-    title: 'Second Medical Opinion: A Patient Checklist That Actually Helps',
-    summary:
-      'Static placeholder article. Final content will be automatically published via backend agent and API workflow.',
-    categoryLabel: 'Medical Malpractice',
-    readMinutes: 3,
-    publishedIso: '2026-07-08',
-    imageSrc: 'https://images.unsplash.com/photo-1551076805-e1869033e561?w=1200&q=85&fit=crop',
-    imageAlt: 'Second opinion placeholder',
-    sections: [
+    "slug": "existing-imaging-specialist-visit",
+    "title": "Already Had Imaging? Preparing for a Specialist Visit",
+    "summary": "Ask how to provide existing scans and reports before your appointment.",
+    "categoryLabel": "Visit Preparation",
+    "readMinutes": 1,
+    "publishedIso": "2026-11-18",
+    "imageSrc": "/images/visit-preparation.svg",
+    "imageAlt": "",
+    "sections": [
       {
-        heading: 'Placeholder: Second Opinion Workflow',
-        paragraphs: [
-          'This is a temporary static page reserved for automated publishing.',
-          'Future SEO content will cover preparation, question sets, record packaging, and follow-up comparison methods.',
-        ],
+        "heading": "Tell the office about prior tests",
+        "paragraphs": [
+          "When scheduling, mention where and when your imaging was performed. Ask whether the doctor needs the images, the written report, or both."
+        ]
       },
-    ],
+      {
+        "heading": "Confirm the transfer method",
+        "paragraphs": [
+          "Contact the imaging facility to ask how records can be shared. Confirm the receiving office and its accepted transfer method before sending information."
+        ]
+      },
+      {
+        "heading": "Bring your questions",
+        "paragraphs": [
+          "Write down any terms or findings you want explained. The doctor can discuss the report in the context of your symptoms and medical history."
+        ]
+      }
+    ]
   },
   {
-    slug: 'informed-consent-what-to-check-before-you-sign',
-    title: 'Informed Consent: What to Check Before You Sign',
-    summary:
-      'Static placeholder article. This slot remains intentionally lightweight until API-driven publishing is enabled.',
-    categoryLabel: 'Medical Malpractice',
-    readMinutes: 3,
-    publishedIso: '2026-07-08',
-    imageSrc: 'https://images.unsplash.com/photo-1584515933487-779824d29309?w=1200&q=85&fit=crop',
-    imageAlt: 'Informed consent placeholder',
-    sections: [
+    "slug": "organize-medical-records",
+    "title": "How to Organize Your Medical Records",
+    "summary": "Keep existing records easy to find for your next medical conversation.",
+    "categoryLabel": "Visit Preparation",
+    "readMinutes": 1,
+    "publishedIso": "2026-11-18",
+    "imageSrc": "/images/clinic-appointment.svg",
+    "imageAlt": "",
+    "sections": [
       {
-        heading: 'Placeholder: Consent Review Checklist',
-        paragraphs: [
-          'This page is kept as a minimal static placeholder for current navigation and SEO continuity.',
-          'It will be replaced by detailed, API-published content covering risk disclosure, alternatives, and post-procedure warning signs.',
-        ],
+        "heading": "Create a dated list",
+        "paragraphs": [
+          "List previous visits and tests with the date and facility. Keep discharge summaries and instructions together so you can find them easily."
+        ]
       },
-    ],
+      {
+        "heading": "Check what is needed",
+        "paragraphs": [
+          "Ask the receiving office which records it needs. Keep your own copies where possible and avoid sending sensitive records through unconfirmed channels."
+        ]
+      },
+      {
+        "heading": "Review the details",
+        "paragraphs": [
+          "Check that documents belong to you and that the dates are correct. Ask the record provider about missing pages or corrections."
+        ]
+      }
+    ]
   },
+  {
+    "slug": "questions-spine-consultation",
+    "title": "Questions to Ask at a Spine Consultation",
+    "summary": "Prepare a short list of questions about your concerns and possible next steps.",
+    "categoryLabel": "Spine Care",
+    "readMinutes": 1,
+    "publishedIso": "2026-11-18",
+    "imageSrc": "/images/visit-preparation.svg",
+    "imageAlt": "",
+    "sections": [
+      {
+        "heading": "Start with your goals",
+        "paragraphs": [
+          "Tell the doctor what matters most to you, including daily tasks or activities you want to discuss. Ask how the evaluation relates to those concerns."
+        ]
+      },
+      {
+        "heading": "Understand the options",
+        "paragraphs": [
+          "Ask what options are being considered and why. If a test or treatment is recommended, ask about its purpose, alternatives, and what to expect."
+        ]
+      },
+      {
+        "heading": "Clarify the follow-up",
+        "paragraphs": [
+          "Ask when to return and whom to contact with questions. Recommendations should come from your clinician after an individual evaluation."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "symptom-notes-between-visits",
+    "title": "Keeping Track of Symptoms Between Visits",
+    "summary": "A brief dated note can help you explain changes at your next appointment.",
+    "categoryLabel": "After an Accident",
+    "readMinutes": 1,
+    "publishedIso": "2026-11-18",
+    "imageSrc": "/images/clinic-appointment.svg",
+    "imageAlt": "",
+    "sections": [
+      {
+        "heading": "Keep the notes simple",
+        "paragraphs": [
+          "Record the date, what you noticed, and any activity you want to discuss. A short description is often easier to review than a long narrative."
+        ]
+      },
+      {
+        "heading": "Use your own words",
+        "paragraphs": [
+          "Describe changes and questions without assigning a diagnosis. Bring the notes to your appointment alongside any instructions you have received."
+        ]
+      },
+      {
+        "heading": "Know how to reach your care team",
+        "paragraphs": [
+          "Ask your clinician how to report concerns between visits. A personal log does not replace care or instructions from your medical team."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "understand-follow-up-instructions",
+    "title": "Understanding Your Follow-Up Instructions",
+    "summary": "Leave your appointment knowing what to do next and whom to contact.",
+    "categoryLabel": "Follow-Up",
+    "readMinutes": 1,
+    "publishedIso": "2026-11-18",
+    "imageSrc": "/images/visit-preparation.svg",
+    "imageAlt": "",
+    "sections": [
+      {
+        "heading": "Review instructions before leaving",
+        "paragraphs": [
+          "Ask for an explanation of any unfamiliar terms. Confirm whether you need another appointment, records, or a referral."
+        ]
+      },
+      {
+        "heading": "Keep contact details handy",
+        "paragraphs": [
+          "Save the appropriate office number and ask which team handles your questions. Confirm how any test results or updates will be communicated."
+        ]
+      },
+      {
+        "heading": "Ask about practical details",
+        "paragraphs": [
+          "If instructions do not fit your schedule or circumstances, discuss that with the team. Do not assume a general online guide replaces your individual instructions."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "contact-our-offices",
+    "title": "Contacting Our Syracuse, Dallas, and Flushing Offices",
+    "summary": "Choose an office and confirm the details of your visit by phone.",
+    "categoryLabel": "Clinic Visits",
+    "readMinutes": 1,
+    "publishedIso": "2026-11-18",
+    "imageSrc": "/images/clinic-appointment.svg",
+    "imageAlt": "",
+    "sections": [
+      {
+        "heading": "Choose your location",
+        "paragraphs": [
+          "Use the office selector below to find current addresses, phone numbers, and directions. Confirm your appointment before traveling."
+        ]
+      },
+      {
+        "heading": "Ask about your visit",
+        "paragraphs": [
+          "Tell the office why you want to be seen and ask about appointment availability. Ask which records and payment information to bring."
+        ]
+      },
+      {
+        "heading": "Get directions",
+        "paragraphs": [
+          "Open the map for your selected office. Check the suite or unit number and ask the office about building access if needed."
+        ]
+      }
+    ]
+  }
 ]
 
-export const blogMedicalMalpracticeArchive: BlogCategoryCard[] = blogMedicalArticles.map((article) => ({
-  slug: article.slug,
-  title: article.title,
-  href: `/blog/posts/${article.slug}`,
-  publishedAt: formatArchiveDate(article.publishedIso),
-  publishedIso: article.publishedIso,
-  categoryLabel: article.categoryLabel,
-  summary: article.summary,
-  imageSrc: article.imageSrc,
-  imageAlt: article.imageAlt,
-}))
+function toPost(article: BlogArticle): BlogPost {
+  return { slug: article.slug, title: article.title, href: `/blog/posts/${article.slug}`, readMinutes: article.readMinutes, tag: article.categoryLabel as BlogTagLabel, imageSrc: article.imageSrc, imageAlt: article.imageAlt }
+}
+const posts = blogMedicalArticles.map(toPost)
+const featuredCopy = [
+  { eyebrow: 'YOUR FIRST VISIT', description: 'A little preparation makes it easier to explain what happened and ask the questions that matter to you.', points: ['Bring existing reports and discharge instructions.', 'List your medicines, allergies, and main questions.', 'Call your preferred office to confirm visit details.'], note: 'Start with the information you already have.' },
+  { eyebrow: 'DESCRIBE YOUR SYMPTOMS', description: 'Note where you feel discomfort, when it began, and how it affects sleep, movement, or daily activities.', points: [], note: 'Share changes in your own words.' },
+  { eyebrow: 'ORGANIZE YOUR RECORDS', description: 'Keep existing imaging reports and visit notes together. Ask the office how to share images before your consultation.', points: [], note: 'Confirm which records the office needs.' },
+]
+export const blogFeaturedPosts = posts.slice(0, 3).map((post, index) => ({ ...post, imageSrc: undefined, ...featuredCopy[index]! }))
+export const blogFilingCards = [0, 2, 4].map((index, i) => ({ title: posts[index]!.title, text: blogMedicalArticles[index]!.summary, href: posts[index]!.href, imageSrc: ['/images/blog/filing-case-process.webp', '/images/blog/filing-workers-comp.webp', '/images/blog/filing-ssdi.webp'][i], imageAlt: '', accent: i === 1 }))
+export const blogLatestCases = [
+  {
+    "title": "What should I tell the office when I call?",
+    "text": "Explain why you want to be seen, when the accident happened, and whether you have already received care. You do not need to know the name of a condition to ask about a visit. The office can tell you what information is needed to discuss scheduling.",
+    "note": "Before ending the call, confirm the location, availability, and any records requested in advance."
+  },
+  {
+    "title": "What if I already have scans or test results?",
+    "text": "Let the office know where and when the tests were performed. Ask whether to provide the written reports, the images, or both, and confirm the accepted transfer method. Keeping a list of previous tests helps you explain what has already been done.",
+    "note": "Ask the original facility how to obtain copies, and check that the receiving office has what it needs."
+  },
+  {
+    "title": "How do I clarify my next steps?",
+    "text": "Write down questions about your appointment, records, and follow-up instructions. If something is unclear, ask the care team to explain it in everyday language. Confirm which office or team member you should contact for updates.",
+    "note": "Keep your instructions and contact details together so they are easy to find after the visit."
+  }
+]
+export const blogAfterAccidentPosts = [0, 1, 5, 6].map(index => posts[index]!)
+export const blogBeingPrepared = [
+  {
+    "title": "Gather Existing Reports and Images",
+    "text": "Ask the office which records will be useful, such as previous visit notes, discharge instructions, or imaging reports. Confirm how to provide them before sending anything, and keep your own copies available.",
+    "note": "Make a short list of the facilities you visited and the dates of your tests."
+  },
+  {
+    "title": "Prepare Your Health Information",
+    "text": "Bring an up-to-date medication list and information about allergies or previous care that you want the doctor to know. If you are unsure about a document or detail, write down the question rather than guessing.",
+    "note": "Check with the office about identification, insurance details, and any referral paperwork."
+  },
+  {
+    "title": "Choose Your Most Important Questions",
+    "text": "Think about what you want to understand by the end of the visit. Describe the activities that are difficult, what has changed, and what matters most to you. A short written list can help keep the conversation focused.",
+    "note": "Before traveling, confirm the address, suite number, appointment time, and arrival instructions."
+  }
+]
+export const blogNewsroomPosts = [2, 4, 6, 7].map(index => posts[index]!)
+export const blogLatestListPosts = [...posts].reverse()
+function toArchive(article: BlogArticle): BlogCategoryCard {
+  return { ...article, href: `/blog/posts/${article.slug}`, publishedAt: new Date(`${article.publishedIso}T12:00:00`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) }
+}
+export const blogAccidentsIncidentsArchive = blogMedicalArticles.filter(a => a.categoryLabel === 'After an Accident' || a.slug === 'first-visit-after-accident').map(toArchive)
+export const blogMedicalMalpracticeArchive = blogMedicalArticles.map(toArchive)
+export const blogAccidentsIncidentsCategory: BlogCategoryArchiveMeta = { slug: 'accidents-and-incidents', title: 'After an Accident', path: BLOG_ACCIDENTS_INCIDENTS_PATH, postsPerPage: 9, totalPages: Math.max(1, Math.ceil(blogAccidentsIncidentsArchive.length / 9)) }
+export const blogMedicalMalpracticeCategory: BlogCategoryArchiveMeta = { slug: 'medical-malpractice', title: 'Medical Visits & Follow-Up', path: BLOG_MEDICAL_MALPRACTICE_PATH, postsPerPage: 9, totalPages: Math.max(1, Math.ceil(blogMedicalMalpracticeArchive.length / 9)) }
+export const blogPostFilters = [
+  { label: 'After an Accident', href: BLOG_ACCIDENTS_INCIDENTS_PATH },
+  { label: 'Medical Visits & Follow-Up', href: BLOG_MEDICAL_MALPRACTICE_PATH },
+  { label: 'Latest Articles', href: '#blog-latest-posts' },
+  { label: 'Preparing for Your Visit', href: '/blog/posts/first-visit-after-accident' },
+]
+
+// Evergreen topic cards are independent of the article publishing feed.
+export const BLOG_TOPIC_SECTIONS = [
+  { id: 'blog-accident-heading', title: 'After an Accident', description: 'Organize the information you want to discuss with your care team.', cards: [
+    { title: 'Your First Contact', text: 'Call your preferred office and explain why you want to be seen. Mention when the accident happened and any care you have already received. Ask which services and appointment options are available for your concern, then confirm what the office needs before your visit.' },
+    { title: 'Previous Medical Care', text: 'Keep a list of the clinics, hospitals, or imaging facilities you have visited. Ask which reports and images to bring and how to share them with the receiving office. Having your discharge notes and instructions together makes it easier to explain your previous care.' },
+    { title: 'Changes You Have Noticed', text: 'Write down when you first noticed your symptoms, how they have changed, and which activities you want to discuss. Use your own words rather than trying to name a diagnosis. Bring your notes and questions to the appointment so important details are not forgotten.' },
+    { title: 'Your Next Appointment', text: 'Confirm your appointment time, office location, and suite or unit number before traveling. Ask about required documents, fees, and insurance information. Keep the office phone number handy if you need directions or need to discuss a change to your appointment.' },
+  ] },
+  { id: 'blog-prepared-heading', title: 'Preparing for Your Visit', description: 'Bring the information and questions that matter for your next appointment.', cards: [
+    { title: 'Medical Records', text: 'Ask which reports, images, and previous visit notes the doctor needs to review.' },
+    { title: 'Medication List', text: 'Prepare a list of your current medications and allergies to discuss during your visit.' },
+    { title: 'Questions for the Doctor', text: 'Write down your main concerns and the activities you want to discuss.' },
+    { title: 'Visit Details', text: 'Confirm fees, insurance information, directions, and documents with the office before traveling.' },
+  ] },
+  { id: 'blog-news-heading', title: 'Understanding Injury Care', description: 'Useful topics to discuss during your medical visit.', cards: [
+    { title: 'Your Medical History', text: 'Explain your concerns and previous care in your own words. Ask for clarification when needed.' },
+    { title: 'Existing Tests', text: 'Discuss how your previous reports relate to your symptoms and what further evaluation may be considered.' },
+    { title: 'Care Options', text: 'Ask about the purpose, alternatives, and practical details of any recommended next steps.' },
+    { title: 'Follow-Up', text: 'Confirm when to return, how to receive updates, and whom to contact with questions.' },
+  ] },
+]
+
+export const BLOG_INJURY_CARE_CARDS = [
+  {
+    "title": "Your History and Concerns",
+    "text": "A visit is a chance to explain what happened, what you have noticed, and the care you have already received. Describe your priorities and the everyday activities you want to discuss.",
+    "points": [
+      "Bring a dated summary of previous visits.",
+      "Ask for unfamiliar terms to be explained."
+    ]
+  },
+  {
+    "title": "Reports in Context",
+    "text": "Existing reports are part of the conversation. Ask the doctor to explain what they mean in relation to your history and concerns, and whether any additional information is needed.",
+    "points": [
+      "Confirm whether images and reports are both needed.",
+      "Write down questions about findings you do not understand."
+    ]
+  },
+  {
+    "title": "Understanding Your Options",
+    "text": "If a test, treatment, or referral is discussed, ask why it is being considered and what the alternatives are. Make space to talk about your goals, practical concerns, and questions before deciding on next steps.",
+    "points": [
+      "Ask about expected benefits, risks, and alternatives.",
+      "Discuss practical details such as timing and follow-up."
+    ]
+  },
+  {
+    "title": "A Clear Follow-Up Plan",
+    "text": "Before you leave, check that you understand the instructions you have received. Ask when to return, how updates will be communicated, and who can answer questions between appointments.",
+    "points": [
+      "Keep written instructions with your records.",
+      "Confirm the right contact for results and scheduling."
+    ]
+  }
+]

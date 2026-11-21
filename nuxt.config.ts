@@ -1,6 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   srcDir: 'app/',
+  runtimeConfig: {
+    blogApiBase: 'https://aihosthub.aihnet.com/api',
+    blogSite: 'accidentinjuryrecover',
+  },
   dir: {
     public: 'public',
   },
@@ -37,13 +41,12 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/about/blog': { redirect: { to: '/blog', statusCode: 301 } },
-    '/blog/posts': { redirect: { to: '/blog#blog-latest-posts', statusCode: 301 } },
     '/our-results': { redirect: { to: '/recovery-stories', statusCode: 301 } },
     '/practice-areas': { redirect: { to: '/injury-recovery-guides', statusCode: 301 } },
   },
   app: {
     head: {
-      title: 'Morgan & Morgan — Injury Law Firm',
+      title: 'For The People Clinic | Injury Care & Medical Guidance',
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -53,7 +56,7 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'America’s largest injury law firm. Free case evaluation. We fight for the people.'
+            'Explore injury recovery resources and contact our Syracuse, Dallas, or Flushing office for appointment information.'
         }
       ]
     }
