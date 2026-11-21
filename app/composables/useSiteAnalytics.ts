@@ -23,7 +23,7 @@ export function useSiteAnalytics() {
       return
     }
 
-    const pageLocation = window.location.href.split('#')[0]!
+    const pageLocation = `${window.location.origin}${window.location.pathname}`
     if (state.lastPage === pageLocation) return
 
     if (!state.initialized) {
@@ -58,9 +58,24 @@ export function useSiteAnalytics() {
       send_to: measurementId,
       page_location: pageLocation,
       page_title: document.title,
-      page_referrer: state.lastPage || document.referrer,
+      page_referrer: state.lastPage || (document.referrer ? new URL(document.referrer).origin + new URL(document.referrer).pathname : ''),
     })
     state.lastPage = pageLocation
+  }
+
+  function trackInteraction(event: MouseEvent) {
+    if (!state.initialized || router.currentRoute.value.path.startsWith('/blog')) return
+    const target = event.target instanceof Element ? event.target.closest('a, button') : null
+    if (!target) return
+    const href = target.getAttribute('href') || ''
+    const name = href.startsWith('tel:') ? 'clinic_phone_click'
+      : href.startsWith('https://www.google.com/maps/search/') ? 'clinic_directions_click'
+      : target.classList.contains('ca-faq-acc-trigger') ? 'clinic_faq_click' : null
+    if (!name) return
+    analyticsWindow.gtag?.('event', name, {
+      send_to: measurementId,
+      page_location: `${window.location.origin}${window.location.pathname}`,
+    })
   }
 
   function schedulePageView() {
@@ -72,9 +87,13 @@ export function useSiteAnalytics() {
   }
 
   const removeHook = nuxtApp.hook('page:finish', schedulePageView)
-  onMounted(schedulePageView)
+  onMounted(() => {
+    schedulePageView()
+    document.addEventListener('click', trackInteraction)
+  })
   onBeforeUnmount(() => {
     cancelAnimationFrame(frame)
     removeHook()
+    document.removeEventListener('click', trackInteraction)
   })
 }
