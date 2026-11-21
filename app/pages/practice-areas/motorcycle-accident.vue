@@ -1,7 +1,4 @@
-<template>
-  <PracticeAreaInjuryRecovery :data="motorcycleRecovery" slug="motorcycle" />
-</template>
-
+<template><PracticeAreaVisitGuide :data="motorcycleVisitGuide" /></template>
 <script setup lang="ts">
-import { motorcycleRecovery } from '~/constants/injury-recovery'
+import { motorcycleVisitGuide } from '~/constants/injury-recovery/visit-guides'
 </script>

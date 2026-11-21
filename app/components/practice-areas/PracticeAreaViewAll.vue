@@ -9,7 +9,7 @@
           <p>Use clear, medical-first guides to recognize urgent symptoms, prepare for follow-up, and plan safer recovery after an injury or health concern.</p>
         </div>
 
-        <div class="pa-view-all__featured" aria-label="Featured practice areas">
+        <div class="pa-view-all__featured" aria-label="Featured recovery guides">
           <NuxtLink
             v-for="card in featuredCards"
             :key="card.title"
@@ -30,7 +30,7 @@
     <section class="pa-view-all__support">
       <div class="container pa-view-all__support-grid">
         <div>
-          <h2>Other Recovery Pathways</h2>
+          <h2>Specialist Follow-Up &amp; Care Questions</h2>
           <div class="pa-other-grid">
             <NuxtLink v-for="item in otherWays" :key="item.title" :to="item.href" class="pa-other-link">
               {{ item.title }}
@@ -38,13 +38,13 @@
             </NuxtLink>
           </div>
           <NuxtLink to="#contact" class="pa-view-all__get-started">
-            Start a recovery checklist
+            Contact Your Preferred Office
             <span aria-hidden="true">↓</span>
           </NuxtLink>
         </div>
 
         <div class="pa-corporate" aria-labelledby="corporate-heading">
-          <h2 id="corporate-heading">Medication &amp; Health Safety Updates</h2>
+          <h2 id="corporate-heading">Medication &amp; Health Questions</h2>
           <MediaCarousel
             :count="corporateCases.length"
             mode="paged"
@@ -71,11 +71,10 @@
     <section class="pa-view-all__rights" aria-labelledby="rights-heading">
       <div class="container">
         <header class="pa-view-all__rights-head">
-          <p>LIGHT RIGHTS EDUCATION</p>
-          <h2 id="rights-heading">Practical rights &amp; records after an injury</h2>
+          <p>PREPARE FOR YOUR VISIT</p>
+          <h2 id="rights-heading">Bring Your Records &amp; Questions</h2>
           <span>
-            Understanding your care records and everyday documentation can support clearer medical
-            follow-up and help you prepare informed questions if you later seek independent advice.
+            Gather the records you already have, write down what has changed, and ask which clinician is appropriate for your next visit.
           </span>
         </header>
         <div class="pa-rights-grid">
@@ -94,16 +93,14 @@
             </p>
           </article>
           <article>
-            <h3>Ask before signing or deciding</h3>
+            <h3>Confirm your next appointment</h3>
             <p>
-              If an insurance, workplace, or other document affects your medical care, ask
-              questions and consider independent professional advice before making decisions.
+              Call your preferred office to confirm appointment availability, the location, referral requirements, and any payment or insurance questions before traveling.
             </p>
           </article>
         </div>
         <p class="pa-view-all__rights-note">
-          Educational information only. This is not legal advice and does not replace medical care
-          or emergency services.
+          These guides help you prepare for medical conversations. They do not replace an individual assessment or emergency care.
         </p>
       </div>
     </section>
@@ -119,12 +116,13 @@
 
     <section class="pa-view-all__list" aria-labelledby="all-practice-heading">
       <div class="container">
-        <h2 id="all-practice-heading" class="sr-only">All Recovery Guides</h2>
-        <div class="pa-practice-list">
-          <NuxtLink v-for="item in practiceLinks" :key="item.title" :to="item.href">
-            {{ item.title }}
-          </NuxtLink>
-        </div>
+        <h2 id="all-practice-heading">Find the Guide That Fits Your Question</h2>
+        <section v-for="group in guideGroups" :key="group.title" class="pa-guide-group">
+          <h3>{{ group.title }}</h3><p>{{ group.description }}</p>
+          <div class="pa-practice-list">
+            <NuxtLink v-for="item in group.items" :key="item.href" :to="item.href">{{ item.title }}</NuxtLink>
+          </div>
+        </section>
       </div>
     </section>
   </div>
@@ -159,12 +157,12 @@ const corporateCases: CorporateCase[] = [
   {
     title: 'Weight Loss Drugs:',
     href: '/practice-areas/dangerous-drugs/weight-loss-drug',
-    text: 'Review abdominal-pain, dehydration, and other urgent warning signs with a medical-first guide.',
+    text: 'Prepare product details and questions about instructions, monitoring, and follow-up with your prescriber.',
   },
   {
     title: 'Depo-Provera:',
     href: '/practice-areas/dangerous-drugs/depo-provera',
-    text: 'Review symptoms that need prompt medical evaluation and prepare questions for your clinician.',
+    text: 'Prepare your injection history and questions for the prescribing clinician.',
   },
 ]
 
@@ -190,12 +188,12 @@ const featuredCards: FeatureCard[] = [
 ]
 
 const otherWays: PracticeLink[] = [
-  { title: 'Medical Harm Recovery', href: '/practice-areas/medical-malpractice' },
+  { title: 'Questions About Medical Care', href: '/practice-areas/medical-malpractice' },
   { title: 'Brain Injury Follow-Up', href: '/practice-areas/brain-injury' },
   { title: 'Spinal Cord Injury Follow-Up', href: '/practice-areas/spinal-cord-injury' },
   { title: 'Medication Safety', href: '/practice-areas/dangerous-drugs' },
   { title: 'Burn Injury Recovery', href: '/practice-areas/burn-injury' },
-  { title: 'Mesothelioma Care Pathway', href: '/practice-areas/mesothelioma' },
+  { title: 'Mesothelioma Care Questions', href: '/practice-areas/mesothelioma' },
 ]
 
 const practiceLinks: PracticeLink[] = [
@@ -204,21 +202,32 @@ const practiceLinks: PracticeLink[] = [
   { title: 'Brain Injury Follow-Up', href: '/practice-areas/brain-injury' },
   { title: 'Burn Injury Recovery', href: '/practice-areas/burn-injury' },
   { title: 'Car Crash Recovery', href: '/practice-areas/car-accident' },
-  { title: 'Dangerous Drugs Safety', href: '/practice-areas/dangerous-drugs' },
-  { title: 'Depo-Provera Safety Guide', href: '/practice-areas/dangerous-drugs/depo-provera' },
+  { title: 'Medication Safety', href: '/practice-areas/dangerous-drugs' },
+  { title: 'Depo-Provera Questions', href: '/practice-areas/dangerous-drugs/depo-provera' },
   { title: 'Fall Injury Recovery', href: '/practice-areas/slip-and-fall' },
-  { title: 'GLP-1 & Weight Loss Drug Guide', href: '/practice-areas/dangerous-drugs/weight-loss-drug' },
+  { title: 'GLP-1 Medication Questions', href: '/practice-areas/dangerous-drugs/weight-loss-drug' },
   { title: 'General Injury Recovery', href: '/practice-areas/personal-injury' },
-  { title: 'Medical Harm Recovery', href: '/practice-areas/medical-malpractice' },
-  { title: 'Mesothelioma Care Pathway', href: '/practice-areas/mesothelioma' },
+  { title: 'Questions About Medical Care', href: '/practice-areas/medical-malpractice' },
+  { title: 'Mesothelioma Care Questions', href: '/practice-areas/mesothelioma' },
   { title: 'Motorcycle Injury Recovery', href: '/practice-areas/motorcycle-accident' },
   { title: 'Spinal Cord Injury Follow-Up', href: '/practice-areas/spinal-cord-injury' },
   { title: 'Truck Crash Recovery', href: '/practice-areas/truck-accident' },
   { title: 'Workplace Injury Recovery', href: '/practice-areas/workers-compensation' },
 ]
+const guideGroups = [
+  { title: 'After an Accident or Injury', description: 'Prepare for a visit after a crash, fall, or workplace injury.', slugs: ['car-accident', 'truck-accident', 'motorcycle-accident', 'slip-and-fall', 'personal-injury', 'workers-compensation'] },
+  { title: 'Brain & Spinal Cord Follow-Up', description: 'Organize specialist records and questions after initial medical assessment.', slugs: ['brain-injury', 'spinal-cord-injury'] },
+  { title: 'Other Care & Medication Questions', description: 'Educational resources for conversations with your treating team. Listing a topic does not mean our clinic provides that treatment.', slugs: ['aviation-accident', 'boating-accident', 'burn-injury', 'medical-malpractice', 'mesothelioma', 'dangerous-drugs', 'dangerous-drugs/depo-provera', 'dangerous-drugs/weight-loss-drug'] },
+].map(group => ({ ...group, items: group.slugs.map(slug => practiceLinks.find(item => item.href === `/practice-areas/${slug}`)!).filter(Boolean) }))
 </script>
 
 <style scoped>
+.pa-view-all__support-grid > * { min-width: 0; }
+.pa-other-link { overflow-wrap: anywhere; min-width: 0; }
+.pa-other-link span { flex-shrink: 0; }
+.pa-guide-group { padding: 1.5rem 0; border-top: 1px solid #d8e7f7; }
+.pa-guide-group h3 { color: var(--navy); margin: 0 0 .5rem; }
+.pa-guide-group > p { line-height: 1.65; margin-bottom: 1rem; }
 .pa-view-all {
   background: #fff;
 }
@@ -486,7 +495,7 @@ const practiceLinks: PracticeLink[] = [
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.09em;
-  color: var(--mm-red, #c41230);
+  color: var(--blue, #0066cc);
 }
 
 .pa-view-all__rights-head h2 {

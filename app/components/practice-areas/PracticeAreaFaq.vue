@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="container ca-faq__foot">
-      <p class="ca-faq__reviewed">
+      <p v-if="reviewedBy" class="ca-faq__reviewed">
         Reviewed by
         <a :href="reviewedBy.href ?? '#'">{{ reviewedBy.name }}</a>, Trial Attorney at For The People Clinic, on
         {{ reviewedBy.date }}.

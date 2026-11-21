@@ -1,7 +1,4 @@
-<template>
-  <PracticeAreaInjuryRecovery :data="mesotheliomaRecovery" slug="mesothelioma" />
-</template>
-
+<template><PracticeAreaVisitGuide :data="remainingGuides['mesothelioma']!" /></template>
 <script setup lang="ts">
-import { mesotheliomaRecovery } from '~/constants/injury-recovery'
+import { remainingGuides } from '~/constants/injury-recovery/remaining-guides'
 </script>

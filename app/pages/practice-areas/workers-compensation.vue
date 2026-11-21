@@ -1,7 +1,4 @@
-<template>
-  <PracticeAreaInjuryRecovery :data="workersCompRecovery" slug="workers-comp" />
-</template>
-
+<template><PracticeAreaVisitGuide :data="remainingGuides['workers-compensation']!" /></template>
 <script setup lang="ts">
-import { workersCompRecovery } from '~/constants/injury-recovery'
+import { remainingGuides } from '~/constants/injury-recovery/remaining-guides'
 </script>

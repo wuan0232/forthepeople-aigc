@@ -32,7 +32,8 @@ const recoveryGuides: SearchDocument[] = [
 ]
 
 const sitePages: SearchDocument[] = [
-  { title: 'Recovery Checklist', summary: 'A no-personal-information tool for urgent symptoms and follow-up planning.', href: '/contact', type: 'Page' },
+  { title: 'Contact Our Clinics', summary: 'Call Syracuse, Dallas, or Flushing for appointments, addresses, and directions.', href: '/contact', type: 'Page' },
+  { title: 'Medical Action Guide', summary: 'Educational reading to prepare questions and records for medical follow-up.', href: '/medical/what-to-do', type: 'Page' },
   { title: 'Meet Dr. Y. Michael Li', summary: 'Neurosurgery, complex spine care, and brain and spine tumor expertise.', href: '/about/meet-our-doctors', type: 'Page' },
   { title: 'Clinic Locations', summary: 'Find a clinic location and prepare for an in-person visit.', href: '/locations', type: 'Page' },
   { title: 'Practical Rights & Records', summary: 'Educational information on care records, symptom logs, and informed questions.', href: '/injury-recovery-guides', type: 'Page' },

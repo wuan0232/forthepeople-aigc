@@ -9,7 +9,7 @@
       </a>
 
       <nav class="header__nav" aria-label="Primary">
-        <NuxtLink to="/recovery-stories">Recovery Stories</NuxtLink>
+        <NuxtLink to="/about/meet-our-doctors">Our Doctors</NuxtLink>
         <NuxtLink to="/locations">Locations</NuxtLink>
         <div class="header__nav-item header__nav-item--mega">
           <a
@@ -20,7 +20,7 @@
           >
             Injury Recovery Guides
           </a>
-          <div class="practice-menu" aria-label="Practice areas">
+          <div class="practice-menu" aria-label="Injury recovery guides">
             <ul class="practice-menu__list">
               <li
                 v-for="item in practiceAreas"
@@ -85,6 +85,7 @@
       </nav>
 
       <div class="header__tools">
+        <NuxtLink to="/injury-recovery-guides" class="header__blog-mobile">Guides</NuxtLink>
         <NuxtLink to="/blog" class="header__blog-mobile">Blog</NuxtLink>
         <button type="button" class="icon-btn" aria-label="Search" aria-haspopup="dialog" :aria-expanded="isSearchOpen" @click="isSearchOpen = true">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
@@ -168,41 +169,27 @@ function isInternalRoute(href: string) {
 /** Order matches design reference: scrollable full list with chevrons where nested menus apply. */
 const practiceAreas: PracticeAreaItem[] = [
   { label: 'Car Crash Recovery', href: '/practice-areas/car-accident' },
-  { label: 'Fall Injury Recovery', href: '/practice-areas/slip-and-fall' },
-  // { label: "Workers' Compensation", href: '#practice' },
   { label: 'Truck Crash Recovery', href: '/practice-areas/truck-accident' },
   { label: 'Motorcycle Injury Recovery', href: '/practice-areas/motorcycle-accident' },
+  { label: 'Fall Injury Recovery', href: '/practice-areas/slip-and-fall' },
   { label: 'General Injury Recovery', href: '/practice-areas/personal-injury' },
-  // { label: 'General Liability', href: '#practice', hasSub: true },
-  { label: 'Medical Harm Recovery', href: '/practice-areas/medical-malpractice' },
-  // { label: 'Workplace', href: '#practice', hasSub: true },
+  { label: 'Brain Injury Follow-Up', href: '/practice-areas/brain-injury' },
+  { label: 'Spinal Cord Injury Follow-Up', href: '/practice-areas/spinal-cord-injury' },
+  { label: 'Workplace Injury Recovery', href: '/practice-areas/workers-compensation' },
   { label: 'Aviation Trauma Recovery', href: '/practice-areas/aviation-accident' },
   { label: 'Boating Injury Recovery', href: '/practice-areas/boating-accident' },
-  { label: 'Brain Injury Follow-Up', href: '/practice-areas/brain-injury' },
   { label: 'Burn Injury Recovery', href: '/practice-areas/burn-injury' },
-  // { label: 'Business Litigation', href: '#practice', hasSub: true },
-  // { label: 'Catastrophic Event', href: '#practice', hasSub: true },
-  // { label: 'Child Sexual Abuse', href: '#practice' },
-  // { label: 'Class Actions', href: '#practice' },
   {
     label: 'Medication Safety',
     hasSub: true,
     children: [
-      { label: 'Depo-Provera Safety Guide', href: '/practice-areas/dangerous-drugs/depo-provera' },
       { label: 'All Medication Safety Guides', href: '/practice-areas/dangerous-drugs' },
-      { label: 'GLP-1 & Weight Loss Drug Guide', href: '/practice-areas/dangerous-drugs/weight-loss-drug' },
+      { label: 'Depo-Provera Questions', href: '/practice-areas/dangerous-drugs/depo-provera' },
+      { label: 'GLP-1 Medication Questions', href: '/practice-areas/dangerous-drugs/weight-loss-drug' },
     ],
   },
-  // { label: 'Data Privacy', href: '#practice', hasSub: true },
-  // { label: 'Defective Products', href: '#practice', hasSub: true },
-  // { label: 'Dram Shop Liability', href: '#practice' },
-  // { label: 'Drowning', href: '#practice' },
-  // { label: 'Elder Abuse', href: '#practice' },
-  // { label: 'Insurance Disputes', href: '#practice', hasSub: true },
-  // { label: 'Mass Arbitration', href: '#practice' },
-  // { label: 'Mass Tort', href: '#practice', hasSub: true },
-  { label: 'Mesothelioma Care Pathway', href: '/practice-areas/mesothelioma' },
-  { label: 'Spinal Cord Injury Follow-Up', href: '/practice-areas/spinal-cord-injury' },
+  { label: 'Questions About Medical Care', href: '/practice-areas/medical-malpractice' },
+  { label: 'Mesothelioma Care Questions', href: '/practice-areas/mesothelioma' },
   { label: 'All Recovery Guides', href: '/injury-recovery-guides' },
 ]
 </script>

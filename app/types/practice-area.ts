@@ -77,7 +77,7 @@ export type PracticeAreaMeetCliniciansProps = {
 export type PracticeAreaFaqProps = {
   asideQuestions: string[]
   items: FaqItem[]
-  reviewedBy: { name: string; href?: string; date: string }
+  reviewedBy?: { name: string; href?: string; date: string }
   regionLabel: string
   /** `46` = 40% aside / 60% accordion (4:6). Default ≈ 34% / 66%. */
   layout?: 'default' | '46'
