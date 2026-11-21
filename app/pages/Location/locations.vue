@@ -6,15 +6,15 @@
 
         <div class="loc-hero__grid">
           <div>
-            <h1 class="loc-hero__title">We have an<br />office near you</h1>
-            <form class="loc-search" @submit.prevent>
+            <h1 class="loc-hero__title">Find your<br />clinic location</h1>
+            <form class="loc-search" @submit.prevent="searchOffices">
               <span class="loc-search__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                   <circle cx="11" cy="11" r="7" />
                   <path d="M20 20l-3-3" />
                 </svg>
               </span>
-              <input type="text" placeholder="Enter your city, state, or zip code" />
+              <input v-model="searchQuery" type="search" aria-label="Search clinic locations" placeholder="Enter your city, state, or zip code" />
               <button type="submit">Search</button>
             </form>
             <a href="#all-offices" class="loc-view-all">
@@ -26,9 +26,10 @@
 
         <aside class="loc-local" id="office" aria-label="Our offices">
           <p class="loc-local__eyebrow">Our Offices</p>
+          <p v-if="!filteredOffices.length" role="status">No offices match this search. Try Syracuse, Dallas, or Flushing, or clear your search.</p>
           <div class="loc-local__cards">
             <article
-              v-for="office in offices"
+              v-for="office in filteredOffices"
               :id="office.id"
               :key="office.id"
               class="loc-local__card"
@@ -95,24 +96,15 @@
     <section id="all-offices" class="loc-all">
       <div class="container">
         <div class="loc-all__head">
-          <h2>Our New York clinics are here to help.</h2>
-          <div class="loc-all__map">
-            <img
-              src="/locations-us-offices-map.svg"
-              alt="Map highlighting our New York office locations"
-              width="353"
-              height="204"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+          <h2>Our New York and Texas offices.</h2>
+
         </div>
 
         <div class="loc-states">
           <div v-for="state in states" :key="state.name" class="loc-state">
             <h3>{{ state.name }}</h3>
             <ul>
-              <li v-for="office in offices" :key="office.id">
+              <li v-for="office in offices.filter((office) => office.state === state.name)" :key="office.id">
                 <a :href="`#${office.id}`">{{ office.name }}</a>
               </li>
             </ul>
@@ -149,29 +141,37 @@
 </template>
 
 <script setup lang="ts">
+import { computed, ref } from 'vue'
 import { SITE_OFFICES } from '~/constants/offices'
 
 useHead({
-  title: 'Locations | For The People Clinic New York Offices',
+  title: 'Locations | For The People Clinic New York & Texas Offices',
   meta: [
     {
       name: 'description',
       content:
-        'Visit For The People Clinic in Flushing or Syracuse for post-injury follow-up, recovery planning, and medical next steps. Call (929) 399-3134.',
+        'Find addresses and phone numbers for our Syracuse, Dallas, and Flushing offices. Call your preferred office to discuss appointment availability.',
     },
   ],
 })
 
 const offices = SITE_OFFICES
+const searchQuery = ref('')
+const submittedQuery = ref('')
+function searchOffices() { submittedQuery.value = searchQuery.value.trim().toLowerCase() }
+const filteredOffices = computed(() => {
+  const query = searchQuery.value.trim() ? submittedQuery.value : ''
+  return offices.filter((office) => `${office.name} ${office.state} ${office.addressLines.join(' ')}`.toLowerCase().includes(query))
+})
 const benefits = [
   'Book a clinic follow-up visit',
-  'Upload visit records securely',
+  'Prepare your existing medical records',
   'Get a clear recovery checklist',
 ]
 
-type StateGroup = { name: string; cities: string[] }
 
-const states: StateGroup[] = [{ name: 'New York', cities: SITE_OFFICES.map((o) => o.name) }]
+
+const states = [...new Set(SITE_OFFICES.map((office) => office.state))].map((name) => ({ name }))
 
 type HowCard = { title: string; art: string; href: string; muted?: boolean }
 

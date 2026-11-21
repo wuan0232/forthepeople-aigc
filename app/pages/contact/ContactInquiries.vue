@@ -34,17 +34,17 @@ const links: InquiryLink[] = [
   {
     title: 'Find a Location Near You',
     description:
-      'Visit our New York City office at 42-65 Kissena Blvd, Flushing, NY, or Syracuse office at 475 Irving Ave, Suite 420. Call (929) 399-3134.',
+      'Find addresses, phone numbers, and directions for our Syracuse, Dallas, and New York City offices.',
     to: '/locations',
   },
   {
-    title: 'Case Process',
-    description: 'Curious about what happens next? Learn how we handle your case from start to finish.',
-    to: '/about/the-case-process',
+    title: 'Medical Next Steps',
+    description: 'Explore our educational guide to preparing for medical follow-up after an injury.',
+    to: '/medical/what-to-do',
   },
   {
     title: 'Injury Recovery Guides',
-    description: 'Explore the cases we handle—from auto accidents to workplace injuries and beyond.',
+    description: 'Explore patient resources for medical follow-up and recovery after an accident.',
     to: '/injury-recovery-guides',
   },
 ]

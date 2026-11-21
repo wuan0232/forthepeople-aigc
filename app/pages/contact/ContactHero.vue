@@ -8,16 +8,16 @@
 
       <div class="contact-hero__grid">
         <div class="contact-hero__main">
-          <h1 id="contact-hero-heading" class="contact-hero__title">Contact Us Your Way</h1>
+          <h1 id="contact-hero-heading" class="contact-hero__title">Let Us Help You Take the Next Step</h1>
           <p class="contact-hero__lead">
-            No matter where an injury happens, getting help shouldn't be hard. For The People Clinic makes it easy to
-            fight for the compensation you deserve.
+            Questions after an injury? Call Syracuse, Dallas, or Flushing. Tell the office why you want to be seen
+            and ask about the next available appointment.
           </p>
 
           <div class="contact-hero__photo">
             <img
               :src="heroImage"
-              alt="For The People Clinic attorney meeting with a client"
+              alt="Illustrative consultation image"
               width="640"
               height="360"
               loading="eager"
@@ -33,18 +33,20 @@
               </svg>
             </span>
             <div>
-              <p class="contact-hero__callout-title">We're here 24/7.</p>
+              <p class="contact-hero__callout-title">Call your preferred office.</p>
               <p class="contact-hero__callout-text">
-                Fill out the form, call us at
-                <a href="tel:+19293993134">(929) 399-3134</a>, or use the text button to start your recovery checklist.
+                <span v-for="office in SITE_OFFICES" :key="office.id">
+                  {{ office.name }}: <a :href="`tel:${office.phoneTel}`">{{ office.phoneDisplay }}</a><br />
+                  {{ office.addressLines.join(', ') }}<br />
+                </span>
+                <NuxtLink to="/locations">Find your office on the map</NuxtLink>
               </p>
             </div>
           </div>
 
           <p class="contact-hero__disclaimer">
-            The attorney shown above may not be licensed in your state. To find an attorney licensed in your area,
-            please visit our
-            <a href="#attorneys">attorney page</a>.
+            Choose an office to view its address and phone number. Call to discuss scheduling
+            and confirm your appointment before visiting.
           </p>
         </div>
 
@@ -55,6 +57,7 @@
 </template>
 
 <script setup lang="ts">
+import { SITE_OFFICES } from '~/constants/offices'
 import ContactLeadForm from './ContactLeadForm.vue'
 
 const heroImage =

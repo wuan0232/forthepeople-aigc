@@ -1,6 +1,7 @@
 export type OfficeLocation = {
   id: string
   name: string
+  state: string
   addressLines: string[]
   phoneDisplay: string
   phoneTel: string
@@ -15,8 +16,18 @@ function mapsSearchUrl(query: string) {
 /** Canonical office list used across header/footer/locations/contact. */
 export const SITE_OFFICES: OfficeLocation[] = [
   {
+    id: 'dallas',
+    name: 'Dallas Office',
+    state: 'Texas',
+    addressLines: ['1140 Empire Central Pl, Unit 105A', 'Dallas, TX 75247'],
+    phoneDisplay: '(214) 884-6963',
+    phoneTel: '+12148846963',
+    mapsUrl: mapsSearchUrl('1140 Empire Central Pl, Unit 105A, Dallas, TX 75247'),
+  },
+  {
     id: 'nyc-flushing',
     name: 'New York City Office',
+    state: 'New York',
     addressLines: ['42-65 Kissena Blvd', 'Flushing, NY'],
     phoneDisplay: '(929) 399-3134',
     phoneTel: '+19293993134',
@@ -25,6 +36,7 @@ export const SITE_OFFICES: OfficeLocation[] = [
   {
     id: 'syracuse',
     name: 'Syracuse Office',
+    state: 'New York',
     addressLines: ['475 Irving Ave, Suite 420', 'Syracuse, NY 13210'],
     phoneDisplay: '(929) 399-3134',
     phoneTel: '+19293993134',

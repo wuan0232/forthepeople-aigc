@@ -2,105 +2,16 @@
   <section class="fee" :id="sectionId">
     <div class="container fee__grid">
       <div class="fee__copy">
-        <h2 class="fee__title">START YOUR 5-STEP MEDICAL ACTION PLAN</h2>
-        <p class="fee__sub">Get a structured recovery checklist and safer follow-up guidance in minutes.</p>
+        <h2 class="fee__title">LET US HELP YOU TAKE THE NEXT STEP</h2>
+        <p class="fee__sub">Choose your preferred office. Call to discuss your visit, ask about availability, and find out what to bring.</p>
       </div>
-      <aside class="lead-form" aria-labelledby="fee-form-title">
-        <h2 id="fee-form-title" class="lead-form__title">Build Your Recovery Checklist</h2>
-        <p class="lead-form__sub">
-          Choose three non-identifying details to see a practical recovery checklist. Nothing is submitted or saved.
-        </p>
-        <form class="lead-form__form" @submit.prevent="onSubmit">
-          <div class="select-wrap">
-            <select v-model="caseType" class="select" aria-label="Injury or medication context">
-              <option value="">- Injury / Medication Context -</option>
-              <option v-for="opt in MEDICAL_INTAKE_OPTIONS" :key="opt.value" :value="opt.value">
-                {{ opt.label }}
-              </option>
-            </select>
-          </div>
-          <div class="select-wrap">
-            <select v-model="timing" class="select" aria-label="When the injury or symptoms began">
-              <option value="">- When did it happen? -</option>
-              <option v-for="opt in MEDICAL_TIMING_OPTIONS" :key="opt.value" :value="opt.value">
-                {{ opt.label }}
-              </option>
-            </select>
-          </div>
-          <fieldset class="status-fieldset">
-            <legend>Are symptoms worsening or changing?</legend>
-            <label v-for="opt in MEDICAL_WORSENING_OPTIONS" :key="opt.value" class="status-option">
-              <input v-model="worsening" type="radio" :name="`${sectionId}-worsening`" :value="opt.value" />
-              <span>{{ opt.label }}</span>
-            </label>
-          </fieldset>
-          <p v-if="formError" class="form-error" role="alert">{{ formError }}</p>
-          <div class="disclaimers">
-            <p>
-              This public tool provides educational recovery guidance and does not replace emergency care.
-              If symptoms are severe or rapidly worsening, seek urgent medical attention immediately.
-            </p>
-          </div>
-          <button type="submit" class="cta" :disabled="submitting">
-            {{ submitting ? 'Opening your checklist…' : 'Show My Recovery Checklist' }}
-          </button>
-          <p class="micro">
-            No name, phone number, email, or medical notes are collected by this tool. © {{ year }} For The People Clinic.
-          </p>
-        </form>
-      </aside>
+      <ClinicContactCard dark />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import {
-  MEDICAL_INTAKE_OPTIONS,
-  MEDICAL_TIMING_OPTIONS,
-  MEDICAL_WORSENING_OPTIONS,
-} from '~/constants/medical/intake'
-import { useMedicalIntake } from '~/composables/useMedicalIntake'
-
-const props = withDefaults(
-  defineProps<{
-    presetCaseType?: string
-    sectionId?: string
-  }>(),
-  { presetCaseType: '', sectionId: 'contact' },
-)
-
-const year = new Date().getFullYear()
-const { buildChecklist } = useMedicalIntake()
-
-const caseType = ref(props.presetCaseType || '')
-const timing = ref('')
-const worsening = ref('')
-const formError = ref('')
-const submitting = ref(false)
-
-watch(
-  () => props.presetCaseType,
-  (v) => {
-    if (v) caseType.value = v
-  },
-)
-
-function onSubmit() {
-  formError.value = ''
-  submitting.value = true
-
-  const result = buildChecklist({
-    caseType: caseType.value,
-    timing: timing.value,
-    worsening: worsening.value,
-  })
-
-  if (!result.ok) {
-    formError.value = result.error
-    submitting.value = false
-  }
-}
+withDefaults(defineProps<{ presetCaseType?: string; sectionId?: string }>(), { sectionId: 'contact' })
 </script>
 
 <style scoped>

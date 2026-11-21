@@ -42,12 +42,12 @@ const items: WhyItem[] = [
   },
   {
     title: 'Practical Recovery Guidance',
-    text: 'Get structured checklists by phone, web, or in-office visits—focused on care planning, not legal sales pitches.',
+    text: 'Use our online recovery checklists to prepare questions for your next medical visit.',
   },
   {
-    title: 'Local Care in New York',
-    text: 'Visit our New York City office (Flushing) or Syracuse office, or call (929) 399-3134.',
-    link: { label: 'View our NY offices', to: '/locations' },
+    title: 'Our Clinic Locations',
+    text: 'Contact our Syracuse, Dallas, or New York City office to discuss appointments and confirm availability.',
+    link: { label: 'View our offices', to: '/locations' },
   },
 ]
 </script>
