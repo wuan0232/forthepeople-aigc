@@ -3,109 +3,29 @@
     <div class="hero__bg" aria-hidden="true" />
     <div class="container hero__grid">
       <div class="hero__copy">
-        <h1 class="hero__title">ACCIDENT RECOVERY STARTS WITH A CLEAR MEDICAL PLAN</h1>
+        <h1 class="hero__title">HURT IN AN ACCIDENT? START HERE.</h1>
         <p class="hero__sub">
-          Use a practical <span class="ul">5-step medical action path</span> to stabilize symptoms,
-          document what happened, and plan safer follow-up.
+          Tell us what happened. Ask about a visit. Our Syracuse, Dallas, and Flushing offices can help you
+          find appointment information and prepare to speak with the doctor.
+        </p>
+        <p class="hero__sub"><NuxtLink to="/contact" class="ul">Call About a Visit</NuxtLink>
         </p>
 
-        <div class="hero__video">
-          <button type="button" class="video-card" aria-label="Play video">
-            <img
-              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80"
-              alt=""
-              width="640"
-              height="360"
-              loading="eager"
-            />
-            <span class="play" aria-hidden="true" />
-          </button>
-        </div>
-
-        <p class="seen-label">Common recovery priorities:</p>
+        <p class="seen-label">Your next steps:</p>
         <div class="seen-logos" role="list">
-          <span>URGENT RED FLAGS</span>
-          <span>48-HOUR CHECKLIST</span>
-          <span>SYMPTOM TIMELINE</span>
-          <span>SPECIALIST REVIEW</span>
-          <span>RECOVERY FOLLOW-UP</span>
+          <span>ASK ABOUT CARE</span>
+          <span>PREPARE YOUR RECORDS</span>
+          <span>WRITE DOWN QUESTIONS</span>
+          <span>MEET THE DOCTOR</span>
+          <span>PLAN YOUR FOLLOW-UP</span>
         </div>
       </div>
 
-      <aside class="lead-form" aria-labelledby="lead-form-title">
-        <h2 id="lead-form-title" class="lead-form__title">Build Your Recovery Checklist</h2>
-        <form class="lead-form__form" @submit.prevent="onSubmit">
-          <label class="sr-only" for="case">Injury or medication context</label>
-          <select id="case" v-model="caseType">
-            <option value="">- Injury / Medication Context -</option>
-            <option v-for="opt in MEDICAL_INTAKE_OPTIONS" :key="opt.value" :value="opt.value">
-              {{ opt.label }}
-            </option>
-          </select>
-          <label class="sr-only" for="timing">When did it happen?</label>
-          <select id="timing" v-model="timing">
-            <option value="">- When did it happen? -</option>
-            <option v-for="opt in MEDICAL_TIMING_OPTIONS" :key="opt.value" :value="opt.value">
-              {{ opt.label }}
-            </option>
-          </select>
-          <fieldset class="status-fieldset">
-            <legend>Are symptoms worsening or changing?</legend>
-            <label v-for="opt in MEDICAL_WORSENING_OPTIONS" :key="opt.value" class="status-option">
-              <input v-model="worsening" type="radio" name="hero-worsening" :value="opt.value" />
-              <span>{{ opt.label }}</span>
-            </label>
-          </fieldset>
-          <p v-if="formError" class="form-error" role="alert">{{ formError }}</p>
-          <p class="disclaimer">
-            This intake provides educational recovery guidance and does not replace emergency care.
-            If symptoms are severe or rapidly worsening, seek urgent medical attention immediately.
-          </p>
-          <button type="submit" class="cta" :disabled="submitting">
-            {{ submitting ? 'Opening your checklist…' : 'Show My Recovery Checklist' }}
-          </button>
-          <p class="micro">
-            No name, phone number, email, or medical notes are collected by this tool.
-          </p>
-        </form>
-      </aside>
+      <ClinicContactCard dark />
     </div>
   </section>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
-import {
-  MEDICAL_INTAKE_OPTIONS,
-  MEDICAL_TIMING_OPTIONS,
-  MEDICAL_WORSENING_OPTIONS,
-} from '~/constants/medical/intake'
-import { useMedicalIntake } from '~/composables/useMedicalIntake'
-
-const { buildChecklist } = useMedicalIntake()
-
-const caseType = ref('')
-const timing = ref('')
-const worsening = ref('')
-const formError = ref('')
-const submitting = ref(false)
-
-function onSubmit() {
-  formError.value = ''
-  submitting.value = true
-
-  const result = buildChecklist({
-    caseType: caseType.value,
-    timing: timing.value,
-    worsening: worsening.value,
-  })
-
-  if (!result.ok) {
-    formError.value = result.error
-    submitting.value = false
-  }
-}
-</script>
 
 <style scoped>
 .hero {
@@ -155,46 +75,6 @@ function onSubmit() {
   text-decoration: underline;
   text-underline-offset: 4px;
   font-weight: 700;
-}
-
-.video-card {
-  position: relative;
-  display: block;
-  width: 100%;
-  padding: 0;
-  border: 0;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-}
-
-.video-card img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
-
-.play {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 4rem;
-  height: 4rem;
-  border-radius: 10px;
-  background: var(--yellow);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-}
-
-.play::after {
-  content: '';
-  position: absolute;
-  left: 52%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-style: solid;
-  border-width: 10px 0 10px 16px;
-  border-color: transparent transparent transparent #111;
 }
 
 .seen-label {

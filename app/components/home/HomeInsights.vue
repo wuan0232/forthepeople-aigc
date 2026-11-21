@@ -1,96 +1,14 @@
 <template>
-  <section class="insights-head section-pad">
-    <div class="insights-align">
-      <h2 class="insights__title">Recovery-Focused Medical Guidance</h2>
-      <p class="insights__lead">
-        Our goal is practical, patient-first education: what to monitor, what to document, and when to
-        escalate care after injury or suspected medical harm.
-      </p>
-
-      <div class="stats" role="list">
-        <div
-          v-for="(b, i) in stats"
-          :key="b.label"
-          class="stat"
-          :class="{ dark: i === stats.length - 1, 'stat--first': i === 0 }"
-          role="listitem"
-        >
-          <strong :class="{ 'stat__big--xl': i === stats.length - 1 }">{{ b.big }}</strong>
-          <span>{{ b.label }}</span>
-        </div>
-      </div>
-
-      <div class="guide-stage">
-        <!-- Optional video when a source is provided -->
-        <div v-if="videoSrc" class="guide-stage__video">
-          <video
-            class="guide-stage__media"
-            :src="videoSrc"
-            :poster="videoPoster"
-            controls
-            playsinline
-            preload="metadata"
-          />
-          <div class="guide-stage__video-label">
-            <strong>5-Step Action Guide</strong>
-            <span>Patient Recovery Workflow</span>
-          </div>
-        </div>
-
-        <!-- Default: filled pathway panel (replaces empty video placeholder) -->
-        <div v-else class="guide-panel" aria-labelledby="guide-panel-heading">
-          <div class="guide-panel__glow" aria-hidden="true" />
-          <div class="guide-panel__grid" aria-hidden="true" />
-
-          <header class="guide-panel__head">
-            <div class="guide-panel__intro">
-              <p class="guide-panel__eyebrow">Patient Recovery Workflow</p>
-              <h3 id="guide-panel-heading" class="guide-panel__title">5-Step Action Guide</h3>
-              <p class="guide-panel__lead">
-                A clear path from urgent symptom checks to safer follow-up—so you know what to do next,
-                not just what went wrong.
-              </p>
-            </div>
-            <a href="/medical/what-to-do" class="guide-panel__cta">
-              Open the full guide
-              <svg viewBox="0 0 12 12" width="14" height="14" aria-hidden="true">
-                <path d="M2 10L10 2M10 2H4M10 2V8" fill="none" stroke="currentColor" stroke-width="1.8" />
-              </svg>
-            </a>
-          </header>
-
-          <ol class="guide-panel__steps">
-            <li v-for="(step, i) in guideSteps" :key="step.title" class="guide-step">
-              <a :href="step.href" class="guide-step__link">
-                <span class="guide-step__num">{{ i + 1 }}</span>
-                <span class="guide-step__body">
-                  <strong>{{ step.title }}</strong>
-                  <span>{{ step.hint }}</span>
-                </span>
-              </a>
-            </li>
-          </ol>
-        </div>
-
-        <p class="guide-stage__disclaimer">
-          This resource center is educational and not a substitute for emergency diagnosis or treatment.
-          If symptoms are severe or worsening, seek urgent care first.
-        </p>
-      </div>
-    </div>
-  </section>
-
   <section class="resources section-pad" id="blog">
     <div class="resources-align">
       <div class="resources__head">
-        <h2 class="resources__title">Patient Action Resources</h2>
+        <h2 class="resources__title">Prepare for Medical Follow-Up</h2>
         <div class="resources__blurb">
           <p>
-            Explore practical guides for post-accident care, medication safety, symptom tracking, and
-            specialist follow-up.
+            Not sure what to ask? These guides can help you prepare questions and organize your records.
           </p>
-          <a href="/blog/medical-malpractice" class="link-arrow resources__more">
-            View more helpful articles
+          <a href="/injury-recovery-guides" class="link-arrow resources__more">
+            View all recovery guides
             <span class="icon-box">
               <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H4M10 2V8" /></svg>
             </span>
@@ -128,45 +46,6 @@
 </template>
 
 <script setup lang="ts">
-/** Optional: set a path like `'/videos/insights-story.mp4'` to show video instead of the pathway panel */
-const videoSrc = ''
-const videoPoster = ''
-
-const stats = [
-  { big: '5', label: 'Core steps after suspected medical harm' },
-  { big: '48H', label: 'Critical window for organized documentation' },
-  { big: '1', label: 'Complete timeline for every follow-up visit' },
-  { big: '24/7', label: 'Urgent symptoms require immediate care' },
-]
-
-const guideSteps = [
-  {
-    title: 'Stabilize',
-    hint: 'Check red-flag symptoms first',
-    href: '/medical/what-to-do',
-  },
-  {
-    title: 'Document',
-    hint: 'Build a dated care timeline',
-    href: '/medical/what-to-do',
-  },
-  {
-    title: 'Second opinion',
-    hint: 'Bring records to a specialist',
-    href: '/medical/what-to-do',
-  },
-  {
-    title: 'Review channels',
-    hint: 'Know how to escalate concerns',
-    href: '/medical/what-to-do',
-  },
-  {
-    title: 'Recovery plan',
-    hint: 'Align follow-up and rehab',
-    href: '/medical/what-to-do',
-  },
-]
-
 type ResourceCard = {
   title: string
   href: string
@@ -179,36 +58,11 @@ type ResourceCard = {
 }
 
 const resourceCards: ResourceCard[] = [
-  {
-    title: 'Medical Malpractice vs Medical Dispute',
-    href: '/blog/posts/medical-malpractice-vs-medical-dispute',
-    imageSrc: '/images/locations/loc-how-basics-lawsuit.webp',
-    imageAlt: '',
-    thumbMuted: false,
-  },
-  {
-    title: 'How to Build a Complete Medical Timeline',
-    href: '/blog/posts/coming-soon',
-    imageSrc: '/images/locations/loc-how-case-worth.webp',
-    imageAlt: '',
-    titleUnderline: true,
-    thumbMuted: false,
-  },
-  {
-    title: 'Second Medical Opinion: Patient Checklist',
-    href: '/blog/posts/coming-soon',
-    imageSrc: '/images/locations/loc-how-morgan-difference.webp',
-    imageAlt: '',
-    thumbMuted: false,
-  },
-  {
-    title: 'Informed Consent: What to Check Before You Sign',
-    href: '/blog/posts/coming-soon',
-    imageSrc: '/images/locations/loc-how-cases-ineligible.webp',
-    imageAlt: '',
-    thumbMuted: true,
-  },
+  { title: 'Medical Next Steps After an Injury', href: '/medical/what-to-do', imageSrc: '/images/how-it-works/step-3-recovery-plan.png', imageAlt: '' },
+  { title: 'Car Accident Recovery Guide', href: '/practice-areas/car-accident', imageSrc: '/images/how-it-works/step-1-contact.png', imageAlt: '' },
+  { title: 'Prepare for Your First Visit', href: '#visit-preparation', imageSrc: '/images/visit-preparation.svg', imageAlt: 'Checklist and medical records for an appointment' },
 ]
+
 </script>
 
 <style scoped>

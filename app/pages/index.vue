@@ -4,18 +4,20 @@
     <HomeHowWorks />
     <HomeClinic />
     <HomeInsights />
-    <SiteLeadFeeSection />
+    <HomeVisitFaq />
+    <HomeVisit />
+    <ClinicOfficeMaps />
   </div>
 </template>
 
 <script setup lang="ts">
 useHead({
-  title: 'Injury Recovery Guides | Medical Next Steps After an Accident',
+  title: 'Medical Care After an Injury | For The People Clinic',
   meta: [
     {
       name: 'description',
       content:
-        'Patient-focused guidance after accidents and suspected medical harm: urgent symptom checks, timeline documentation, specialist reassessment, and recovery planning with For The People Clinic.',
+        'Meet our doctor, explore injury recovery resources, and contact our clinics in Syracuse, Dallas, and Flushing for appointment information.',
     },
   ],
 })

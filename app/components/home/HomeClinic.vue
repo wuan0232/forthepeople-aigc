@@ -2,7 +2,7 @@
   <section class="home-clinic section-pad" aria-labelledby="home-clinic-heading">
     <div class="home-clinic-align">
       <header class="home-clinic__head">
-        <h2 id="home-clinic-heading" class="home-clinic__title">Our Clinic &amp; Doctors</h2>
+        <h2 id="home-clinic-heading" class="home-clinic__title">Our Clinic &amp; Medical Care</h2>
         <p class="home-clinic__lead">{{ CLINIC_INTRO }}</p>
       </header>
 
@@ -22,7 +22,7 @@
             </div>
             <h3>{{ d.name }}</h3>
             <p class="home-clinic__specialty">{{ d.specialty }}</p>
-            <p class="home-clinic__bio">{{ d.bio }}</p>
+            <p class="home-clinic__bio">{{ d.homeBio ?? d.bio }}</p>
           </NuxtLink>
         </article>
       </div>
@@ -34,8 +34,8 @@
             <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H4M10 2V8" /></svg>
           </span>
         </a>
-        <a href="/medical/what-to-do" class="link-arrow">
-          Start the 5-Step Medical Action Guide
+        <a href="#visit-preparation" class="link-arrow">
+          Prepare for Your Visit
           <span class="icon-box" aria-hidden="true">
             <svg viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H4M10 2V8" /></svg>
           </span>
@@ -105,7 +105,7 @@ import { CLINIC_DOCTORS, CLINIC_INTRO, CLINIC_SERVICES } from '~/constants/clini
 
 .home-clinic__service {
   padding: 1rem 0;
-  border-top: 2px solid var(--mm-red, #c41230);
+  border-top: 2px solid var(--blue, #0066cc);
 }
 
 .home-clinic__service h3 {
@@ -188,7 +188,7 @@ import { CLINIC_DOCTORS, CLINIC_INTRO, CLINIC_SERVICES } from '~/constants/clini
   margin: 0.25rem 0 0.4rem;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--mm-red, #c41230);
+  color: var(--blue, #0066cc);
 }
 
 .home-clinic__bio {

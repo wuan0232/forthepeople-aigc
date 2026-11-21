@@ -1,10 +1,9 @@
 <template>
   <section class="how section-pad" id="how">
     <div class="how-align">
-      <h2 class="how__title">How It Works</h2>
+      <h2 class="how__title">Three Steps to Your Next Visit</h2>
       <p class="how__lead">
-        Unsure what to do next? Our clinic team helps you organize medical next steps after an
-        injury—from first contact through safer follow-up planning.
+        A phone call is the first step. Here is what to expect before, during, and after your visit.
       </p>
 
       <div class="steps">
@@ -40,27 +39,21 @@
 <script setup lang="ts">
 const steps = [
   {
-    n: '1',
-    title: 'REACH OUT YOUR WAY',
-    text: 'Start with the recovery checklist form, call the clinic, or send a message. We help you sort urgent warning signs from routine follow-up needs.',
-    cta: 'Start a recovery checklist',
-    href: '#contact',
+    n: '1', title: 'CALL AN OFFICE',
+    text: 'Choose Syracuse, Dallas, or Flushing. Tell the office why you want to be seen, ask about available appointments, and confirm what to bring.',
+    cta: 'Find office contact details', href: '/locations',
     art: '/images/how-it-works/step-1-contact.png',
   },
   {
-    n: '2',
-    title: 'MEET YOUR CARE SUPPORT',
-    text: 'Clinicians, care coordinators, and recovery planners help translate symptoms into a clear follow-up plan—records, referrals, and next appointments in one place.',
-    cta: 'Meet our doctors',
-    href: '/about/meet-our-doctors',
+    n: '2', title: 'TALK WITH THE DOCTOR',
+    text: 'Bring your questions and existing records. Discuss what hurts, what has changed, and any care you have already received. The doctor can explain what further evaluation may be needed.',
+    cta: 'Meet Dr. Li', href: '/about/meet-our-doctors/y-michael-li',
     art: '/images/how-it-works/step-2-care-team.png',
   },
   {
-    n: '3',
-    title: 'BUILD A CLEAR RECOVERY PLAN',
-    text: 'Document what changed, organize visit records, and use a structured checklist so follow-up decisions are clearer and safer.',
-    cta: 'Open the 5-step guide',
-    href: '/medical/what-to-do',
+    n: '3', title: 'LEAVE WITH NEXT STEPS',
+    text: 'Before you leave, ask what comes next, when to follow up, and whom to call with questions. Recommendations depend on your individual evaluation.',
+    cta: 'Prepare for your visit', href: '#visit-preparation',
     art: '/images/how-it-works/step-3-recovery-plan.png',
   },
 ]
